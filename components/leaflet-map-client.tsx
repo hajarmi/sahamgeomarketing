@@ -6,14 +6,10 @@ import "leaflet/dist/leaflet.css"
 
 import { MOCK_POIS } from "@/lib/mock-map-data"
 import { useCompetitors } from "@/hooks/use-competitors"
-import { ATM } from "@/types"
+import { ATM, HoverData } from "@/types"
 import ATMHoverCard from "./atm-hover-card"
 import MapLegend from "./map-legend"
 import { usePopulation } from "@/hooks/use-population"
-
-
-
-
 
 interface LeafletMapClientProps {
   activeLayers: { [key: string]: boolean }
@@ -33,14 +29,12 @@ export default function LeafletMapClient({
   onATMSelect,
 }: LeafletMapClientProps) {
   const [simulationPoint, setSimulationPoint] = useState<{ lng: number; lat: number } | null>(null)
-  const [hoveredATM, setHoveredATM] = useState<any>(null)
+  const [hoveredATM, setHoveredATM] = useState<HoverData | null>(null)
   const [hoverPosition, setHoverPosition] = useState({ x: 0, y: 0 })
   const { data: competitors, loading: competitorsLoading, error: competitorsError } =
   useCompetitors(!!activeLayers.competitors);
   const { data: population, loading: populationLoading, error: populationError } =
   usePopulation(!!activeLayers.population);
-
-
 
   const handleLocationSelect = (location: { lng: number; lat: number }) => {
     setSimulationPoint(location)
@@ -88,8 +82,7 @@ export default function LeafletMapClient({
 
         {/* ATMs */}
         {atms.map((atm) => {
-          const performanceScore =
-            atm.performance ?? Math.round(Math.min(100, (atm.monthly_volume / 1500) * 100))
+          const performanceScore = Math.round(Math.min(100, (atm.monthly_volume / 1500) * 100));
           const safePerformance = Number.isFinite(performanceScore) ? performanceScore : 0
 
           return (
@@ -119,8 +112,16 @@ export default function LeafletMapClient({
                       y: rect.top + pt.y + window.scrollY,
                     })
                     setHoveredATM({
-                      ...atm,
+                      id: atm.id,
+                      name: atm.name,
                       type: atm.bank_name === "Saham Bank" ? "saham" : "competitor",
+                      latitude: atm.latitude,
+                      longitude: atm.longitude,
+                      bank_name: atm.bank_name,
+                      installation_type: atm.installation_type,
+                      monthly_volume: atm.monthly_volume,
+                      services: atm.services,
+                      branch_location: atm.branch_location,
                     })
                   }
                   e.target.setStyle({ fillOpacity: 1, color: "#000000" })
@@ -137,7 +138,7 @@ export default function LeafletMapClient({
               <Popup>
                 <strong>{atm.name || atm.id}</strong>
                 <br />
-                {atm.address}
+                {atm.branch_location}
               </Popup>
             </CircleMarker>
           )
@@ -186,12 +187,11 @@ export default function LeafletMapClient({
                 setHoveredATM({
                   id: p.id,
                   name: p.bank_name ?? "Inconnue",
-                  bank_name: p.bank_name ?? "Inconnue",
-                  address: p.commune ?? "",
-                  monthly_volume: p.nb_atm, // on recycle pour afficher un chiffre
                   type: "competitor",
                   latitude: p.latitude,
                   longitude: p.longitude,
+                  bank_name: p.bank_name ?? "Inconnue",
+                  monthly_volume: p.nb_atm, // on recycle pour afficher un chiffre
                 });
               }
               (e as any).target.setStyle({ fillOpacity: 1, color: "#000000" });
@@ -233,7 +233,15 @@ export default function LeafletMapClient({
                     const pt = map.mouseEventToContainerPoint(e.originalEvent)
                     const rect = map.getContainer().getBoundingClientRect()
                     setHoverPosition({ x: rect.left + pt.x, y: rect.top + pt.y })
-                    setHoveredATM({ ...poi, type: "poi" })
+                    setHoveredATM({ 
+                      id: poi.id,
+                      name: poi.name,
+                      type: "poi",
+                      latitude: poi.lat,
+                      longitude: poi.lng,
+                      category: poi.category,
+                      footTraffic: poi.footTraffic,
+                    })
                   }
                   e.target.setStyle({ fillOpacity: 1, color: "#000000" })
                 },
@@ -304,8 +312,8 @@ export default function LeafletMapClient({
                     type: "population",
                     latitude: p.latitude,
                     longitude: p.longitude,
-                   densite_norm: p.densite_norm,   // valeur normalisée [0..1]
-                   densite: p.densite ?? null,     
+                    densite_norm: p.densite_norm,
+                    densite: p.densite ?? null,
                   });
                 }
                 (e as any).target.setStyle({ fillOpacity: 1, color: "#000000" });

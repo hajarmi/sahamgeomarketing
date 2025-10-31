@@ -10,6 +10,9 @@ import LeafletMap from "@/components/mapbox-map"
 import EnhancedLayerControls from "@/components/enhanced-layer-controls"
 import { ATM } from "@/types"
 
+import { FeatureList } from "@/components/feature-list"
+import { TabsExample } from "@/components/ui/tabs-example"
+
 export default function DashboardPage() {
   const [selectedATM, setSelectedATM] = useState<ATM | null>(null)
   const [activeLayers, setActiveLayers] = useState({
@@ -92,21 +95,8 @@ export default function DashboardPage() {
           <Dashboard />
 
           {/* Map and Controls Section */}
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
-            <div className="lg:col-span-1 space-y-6">
-              <EnhancedLayerControls
-                activeLayers={activeLayers}
-                onLayerToggle={(layer, active) => setActiveLayers((prev) => ({ ...prev, [layer]: active }))}
-                mode="detailed"
-                onLayerConfigChange={handleLayerConfigChange}
-                atms={atms}
-                loading={isLoading}
-                selectedATM={selectedATM}
-                onATMSelect={handleATMSelect}
-              />
-            </div>
-
-            <div className="lg:col-span-3">
+          <div className="flex flex-col lg:flex-row gap-6">
+            <div className="lg:w-3/4">
               <Card className="h-[600px]">
                 <CardHeader className="pb-4">
                   <div className="flex items-center justify-between">
@@ -149,7 +139,21 @@ export default function DashboardPage() {
                 </CardContent>
               </Card>
             </div>
+            <div className="lg:w-1/4 space-y-6">
+              <EnhancedLayerControls
+                activeLayers={activeLayers}
+                onLayerToggle={(layer, active) => setActiveLayers((prev) => ({ ...prev, [layer]: active }))}
+                mode="detailed"
+                onLayerConfigChange={handleLayerConfigChange}
+                atms={atms}
+                loading={isLoading}
+                selectedATM={selectedATM}
+                onATMSelect={handleATMSelect}
+              />
+            </div>
           </div>
+          <TabsExample />
+          <FeatureList />
         </div>
       </main>
     </div>
