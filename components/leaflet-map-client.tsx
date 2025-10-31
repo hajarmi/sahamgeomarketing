@@ -301,11 +301,11 @@ export default function LeafletMapClient({
                   setHoveredATM({
                     id: p.id,
                     name: p.commune || p.commune_norm,
-                    address: "",
-                    monthly_volume: p.densite_norm,
                     type: "population",
                     latitude: p.latitude,
                     longitude: p.longitude,
+                   densite_norm: p.densite_norm,   // valeur normalisée [0..1]
+                   densite: p.densite ?? null,     
                   });
                 }
                 (e as any).target.setStyle({ fillOpacity: 1, color: "#000000" });
