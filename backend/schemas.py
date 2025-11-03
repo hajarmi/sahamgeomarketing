@@ -6,6 +6,7 @@ These models define the data structures and validation rules for API requests an
 from typing import Any, Dict, List, Literal, Optional
 from datetime import datetime   #ajoute
 from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field
 
 
 class LocationData(BaseModel):
@@ -146,3 +147,27 @@ class PopulationPoint(BaseModel):
 class PopulationListResponse(BaseModel):
     population: list[PopulationPoint]
     total_count: int
+
+class POI(BaseModel):
+    id: str
+    latitude: float
+    longitude: float
+    # Métadonnées principales à afficher
+    type: Optional[str] = None
+    key: Optional[str] = None
+    value: Optional[str] = None
+    name: Optional[str] = None
+    brand: Optional[str] = None
+    operator: Optional[str] = None
+    address: Optional[str] = None
+    # Localisation
+    commune: Optional[str] = None
+    province: Optional[str] = None
+    region: Optional[str] = None
+    code: Optional[str] = None       # ex: COMMUNE_PCODE
+    # tags bruts (si dispo)
+    tags: Optional[Dict[str, Any]] = None
+
+class POIListResponse(BaseModel):
+    pois: List[POI]
+    total_count: int    
