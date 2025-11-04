@@ -12,7 +12,9 @@ export function usePopulation(enabled: boolean) {
     if (!enabled) { setData([]); setLoading(false); setError(null); return }
     setLoading(true); setError(null)
 
-    const base = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"
+    const fallbackBase = "/api"
+    const configured = process.env.NEXT_PUBLIC_API_URL?.trim()
+    const base = configured && configured.length > 0 ? configured : fallbackBase
     const url = `${base.replace(/\/$/, "")}/population`
 
     fetch(url)

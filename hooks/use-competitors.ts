@@ -14,9 +14,11 @@ export function useCompetitors(enabled: boolean) {
     setLoading(true);
     setError(null);
 
-    const base = process.env.NEXT_PUBLIC_API_BASE || "http://localhost:8000";
+    const configured = process.env.NEXT_PUBLIC_API_BASE?.trim();
+    const base = configured && configured.length > 0 ? configured : "/api";
+    const endpoint = `${base.replace(/\/$/, "")}/competitors`;
 
-    fetch(`${base}/competitors`)
+    fetch(endpoint)
       .then((r) => {
         if (!r.ok) throw new Error(`HTTP ${r.status}`);
         return r.json();

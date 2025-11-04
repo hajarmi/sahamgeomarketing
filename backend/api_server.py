@@ -11,23 +11,23 @@ from typing import Any, Dict, List, Optional
 import uuid
 
 from fastapi import HTTPException, Depends
-from services import get_competitors # ajoute 
+from .services import get_competitors # ajoute 
 
 from fastapi import Depends, FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
-from services import clear_data_caches 
+from .services import clear_data_caches 
 
 # Import the service layer which manages state and business logic
-from config import settings
-from logging_config import setup_logging
-from schemas import (ATMData, ATMListResponse, DashboardResponse,
+from .config import settings
+from .logging_config import setup_logging
+from .schemas import (ATMData, ATMListResponse, DashboardResponse,
                      DashboardSummary, LocationData, OpportunityZone,
                      PerformanceTrend, PredictionResponse, RegionalAnalysis)
-from services import ATMService, atm_service
+from .services import ATMService, atm_service
 
-from schemas import (CompetitorData, CompetitorListResponse) #ajoute
-from services import get_population    #ajoute
-from schemas import PopulationListResponse   #ajoute
+from .schemas import (CompetitorData, CompetitorListResponse) #ajoute
+from .services import get_population    #ajoute
+from .schemas import PopulationListResponse   #ajoute
 
 # Setup structured logging
 setup_logging()
