@@ -354,11 +354,24 @@ def _load_population_df() -> pd.DataFrame:
     return df
 
 
-def get_population() -> PopulationListResponse:
+def get_population(*, s: float, n: float, w: float, e: float, limit: int = 20, page: int = 1) -> PopulationListResponse:
     df = _load_population_df()
 
+    # Filtre BBOX (gère le cas anti-méridien si w > e)
+    if w <= e:
+        mask = (df["latitude"].between(s, n)) & (df["longitude"].between(w, e))
+    else:
+        mask = (df["latitude"].between(s, n)) & ((df["longitude"] >= w) | (df["longitude"] <= e))
+
+    dfv = df.loc[mask].copy()
+
+    total = int(len(dfv))
+    start = (page - 1) * limit
+    end = start + limit
+    page_df = dfv.iloc[start:end]
+
     population_points: list[PopulationPoint] = []
-    for i, row in df.iterrows():
+    for i, row in page_df.iterrows():
         try:
             population_points.append(
                 PopulationPoint(
@@ -375,8 +388,7 @@ def get_population() -> PopulationListResponse:
             logger.error("Ligne ignorée (Population): %s", e)
             continue
 
-    return PopulationListResponse(population=population_points, total_count=len(population_points))
-
+    return PopulationListResponse(population=population_points, total_count=total)
 
 # =====================================================================
 # POI (avec mapping robuste)
@@ -476,12 +488,26 @@ def _load_poi_df() -> pd.DataFrame:
 
     return df
 
-def get_pois() -> POIListResponse:
+def get_pois(*, s: float, n: float, w: float, e: float, limit: int = 300, page: int = 1) -> POIListResponse:
     df = _load_poi_df()
+
+    # Filtre BBOX (gère aussi le cas anti-méridien si w > e)
+    if w <= e:
+        mask = (df["latitude"].between(s, n)) & (df["longitude"].between(w, e))
+    else:
+        mask = (df["latitude"].between(s, n)) & ((df["longitude"] >= w) | (df["longitude"] <= e))
+
+    dfv = df.loc[mask].copy()
+
+    total = int(len(dfv))
+    start = (page - 1) * limit
+    end = start + limit
+    page_df = dfv.iloc[start:end]
+
     items = []
-    for i, r in df.iterrows():
+    for i, r in page_df.iterrows():
         tags = None
-        if "tags_json" in df.columns and pd.notna(r.get("tags_json")):
+        if "tags_json" in page_df.columns and pd.notna(r.get("tags_json")):
             try:
                 tags = json.loads(r["tags_json"])
             except Exception:
@@ -504,7 +530,9 @@ def get_pois() -> POIListResponse:
             code=(r.get("code") or None),
             tags=tags,
         ))
-    return POIListResponse(pois=items, total_count=len(items))
+
+    return POIListResponse(pois=items, total_count=total)
+
 
 # =====================================================================
 # Utilitaire

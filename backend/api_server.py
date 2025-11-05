@@ -16,6 +16,8 @@ from services import get_competitors # ajoute
 from fastapi import Depends, FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from services import clear_data_caches 
+from fastapi import Query
+
 
 # Import the service layer which manages state and business logic
 from config import settings
@@ -158,6 +160,8 @@ async def get_existing_atms(service: ATMService = Depends(get_atm_service)):
         total_count=len(service.existing_atms)
     )
 
+        
+
 @app.post("/atms", response_model=ATMData, tags=["ATM Management"])
 async def add_atm(atm: ATMData, service: ATMService = Depends(get_atm_service)):
     """Ajoute un nouvel ATM à la base"""
@@ -276,7 +280,7 @@ async def health_check(service: ATMService = Depends(get_atm_service)):
         "atms_count": len(service.existing_atms)
     }
 
-#andpoint ajoute 
+#endpoint ajoute competitoirs
 
 @app.get("/competitors", response_model=CompetitorListResponse, tags=["ATM Management"])
 async def list_competitors():
@@ -292,9 +296,16 @@ async def list_competitors():
     
 
 @app.get("/population", response_model=PopulationListResponse, tags=["Layers"])
-async def list_population():
+async def list_population(
+    s: float = Query(..., description="south"),
+    n: float = Query(..., description="north"),
+    w: float = Query(..., description="west"),
+    e: float = Query(..., description="east"),
+    limit: int = Query(20, ge=1, le=5000),
+    page: int = Query(1, ge=1),
+):
     try:
-        return get_population()
+        return get_population(s=s, n=n, w=w, e=e, limit=limit, page=page)
     except FileNotFoundError as e:
         raise HTTPException(status_code=404, detail=str(e))
     except KeyError as e:
@@ -304,15 +315,22 @@ async def list_population():
         raise HTTPException(status_code=500, detail="Erreur interne lors du chargement de la population")   
 
 @app.get("/pois", response_model=POIListResponse, tags=["Layers"])
-async def list_pois():
+async def list_pois(
+    s: float = Query(..., description="south"),
+    n: float = Query(..., description="north"),
+    w: float = Query(..., description="west"),
+    e: float = Query(..., description="east"),
+    limit: int = Query(300, ge=1, le=5000),
+    page: int = Query(1, ge=1),
+):
     try:
-        return get_pois()
-    except FileNotFoundError as e:
-        raise HTTPException(status_code=404, detail=str(e))
-    except KeyError as e:
-        raise HTTPException(status_code=400, detail=f"CSV invalide: {e}")
-    except Exception as e:
-        logger.error("Erreur /pois: %s", e, exc_info=True)
+        return get_pois(s=s, n=n, w=w, e=e, limit=limit, page=page)
+    except FileNotFoundError as ex:
+        raise HTTPException(status_code=404, detail=str(ex))
+    except KeyError as ex:
+        raise HTTPException(status_code=400, detail=f"CSV invalide: {ex}")
+    except Exception as ex:
+        logger.error("Erreur /pois: %s", ex, exc_info=True)
         raise HTTPException(status_code=500, detail="Erreur interne lors du chargement des POI")
 
     

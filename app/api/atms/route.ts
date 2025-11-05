@@ -59,11 +59,8 @@ const normalizeServices = (value?: string[] | null): string[] => {
   return Array.from(unique.values())
 }
 
-type BackendStatus = "unknown" | "available" | "unreachable"
-let backendStatus: BackendStatus = "unknown"
-
 const loadScrapedAtms = async (): Promise<RawATM[]> => {
-  // Prefer the 'backend' directory, but check 'scripts' as a fallback for legacy structure.
+  // Prefer the 'backend' directory (legacy-friendly).
   const dataPath = path.join(process.cwd(), "backend", "data.json")
 
   try {
@@ -90,9 +87,7 @@ const buildLocalDataset = async () => {
 
   const enrich = (atm: RawATM): ATM | null => {
     const atmId = atm.id || atm.idatm
-    if (!atmId) {
-      return null
-    }
+    if (!atmId) return null
 
     const normalizedServices = normalizeServices(atm.services)
 
@@ -107,7 +102,7 @@ const buildLocalDataset = async () => {
   }
 
   const dedupedAtms = new Map<string, ATM>()
-  for (const atm of rawAtms.map(enrich).filter((atm): atm is ATM => atm !== null)) {
+  for (const atm of rawAtms.map(enrich).filter((a): a is ATM => a !== null)) {
     dedupedAtms.set(atm.id, atm)
   }
 
@@ -123,8 +118,8 @@ const buildLocalDataset = async () => {
   })
 
   const totalCount = atms.length
-  const citiesCovered = new Set(atms.map((atm) => atm.city)).size
-  const regionsCovered = new Set(atms.map((atm) => atm.region)).size
+  const citiesCovered = new Set(atms.map((a) => a.city)).size
+  const regionsCovered = new Set(atms.map((a) => a.region)).size
 
   const bankStats = atms.reduce<Record<string, { bank: string; count: number; totalVolume: number }>>((acc, atm) => {
     const key = atm.bank_name || "Inconnu"
@@ -155,9 +150,7 @@ const buildLocalDataset = async () => {
 
   const availableServices = Array.from(
     atms.reduce((acc, atm) => {
-      for (const service of atm.services) {
-        acc.add(service)
-      }
+      for (const s of atm.services) acc.add(s)
       return acc
     }, new Set<string>()),
   ).sort()
@@ -179,10 +172,10 @@ const buildLocalDataset = async () => {
   }
 
   const performanceSummary = {
-    high_performance: atms.filter((atm) => atm.monthly_volume > 1200).length,
-    medium_performance: atms.filter((atm) => atm.monthly_volume >= 900 && atm.monthly_volume <= 1200).length,
-    low_performance: atms.filter((atm) => atm.monthly_volume < 900).length,
-    maintenance_required: atms.filter((atm) => atm.status === "maintenance").length,
+    high_performance: atms.filter((a) => a.monthly_volume > 1200).length,
+    medium_performance: atms.filter((a) => a.monthly_volume >= 900 && a.monthly_volume <= 1200).length,
+    low_performance: atms.filter((a) => a.monthly_volume < 900).length,
+    maintenance_required: atms.filter((a) => a.status === "maintenance").length,
     portable_atms: countByInstallationType("portable"),
     fixed_atms: countByInstallationType("fixed"),
   }
@@ -197,45 +190,45 @@ const buildLocalDataset = async () => {
     metadata: {
       source: "local",
       generated_at: new Date().toISOString(),
-      missing_services: atms.filter((atm) => atm.services.length === 0).length,
-      missing_installation_type: rawAtms.filter((atm) => !atm.installation_type).length,
-      missing_branch_location: rawAtms.filter((atm) => !atm.branch_location).length,
+      missing_services: atms.filter((a) => a.services.length === 0).length,
+      missing_installation_type: rawAtms.filter((a) => !a.installation_type).length,
+      missing_branch_location: rawAtms.filter((a) => !a.branch_location).length,
     },
   }
 }
 
+/**
+ * Proxy -> FastAPI (127.0.0.1:8000), avec fallback local si injoignable.
+ * IMPORTANT : ce handler Next prend la priorité sur rewrites().
+ */
 export async function GET() {
-  const backendUrl = process.env.BACKEND_API_URL
+  const backendUrl =
+    process.env.NEXT_PUBLIC_API_BASE_URL || "http://127.0.0.1:8000"
 
-  if (backendUrl && backendStatus !== "unreachable") {
-    try {
-      const response = await fetch(`${backendUrl}/atms`, { cache: "no-store" })
-      if (response.ok) {
-        const data = await response.json()
-        backendStatus = "available"
-        return NextResponse.json(data)
-      }
+  try {
+    const response = await fetch(`${backendUrl}/atms`, {
+      cache: "no-store",
+      headers: { accept: "application/json" },
+    })
 
-      console.warn(
-        `[api/atms] Backend responded with status ${response.status}. Falling back to local dataset.`,
-      )
-      if (response.status >= 500) {
-        backendStatus = "unreachable"
-      }
-    } catch (error) {
-      backendStatus = "unreachable"
-      const message =
-        error instanceof Error ? `${error.name}: ${error.message}` : "Unknown error"
-      console.warn(
-        `[api/atms] Backend unreachable (${backendUrl}). Falling back to local dataset. ${message}`,
-      )
+    if (response.ok) {
+      const data = await response.json()
+      return NextResponse.json(data)
     }
+
+    console.warn(`[api/atms] Backend responded ${response.status}, fallback local dataset`)
+  } catch (error) {
+    const msg = error instanceof Error ? `${error.name}: ${error.message}` : String(error)
+    console.warn(`[api/atms] Backend unreachable (${backendUrl}). Fallback local. ${msg}`)
   }
 
   const localData = await buildLocalDataset()
-  if (localData.metadata) {
-    localData.metadata.source =
-      backendUrl && backendStatus === "unreachable" ? "local-fallback" : "local"
-  }
-  return NextResponse.json(localData)
+  return NextResponse.json({
+    ...localData,
+    metadata: {
+      ...(localData.metadata ?? {}),
+      source: "local-fallback",
+      generated_at: new Date().toISOString(),
+    },
+  })
 }

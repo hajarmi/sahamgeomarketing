@@ -1,40 +1,45 @@
-// hooks/use-competitors.ts
-import { useEffect, useState } from "react";
-import type { Competitor, CompetitorListResponse } from "@/types";
+"use client"
+
+import { useEffect, useState } from "react"
+import type { Competitor, CompetitorListResponse } from "@/types"
 
 export function useCompetitors(enabled: boolean) {
-  const [data, setData] = useState<Competitor[]>([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [data, setData] = useState<Competitor[]>([])
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
-    if (!enabled) return;
+    if (!enabled) {
+      setData([])
+      return
+    }
 
-    let cancelled = false;
-    setLoading(true);
-    setError(null);
+    let cancelled = false
+    setLoading(true)
+    setError(null)
 
-    const base = process.env.NEXT_PUBLIC_API_BASE || "http://localhost:8000";
+    // ✅ Corrigé : même variable d’env que le reste du projet
+    const base = process.env.NEXT_PUBLIC_API_BASE_URL || "http://127.0.0.1:8000"
 
     fetch(`${base}/competitors`)
       .then((r) => {
-        if (!r.ok) throw new Error(`HTTP ${r.status}`);
-        return r.json();
+        if (!r.ok) throw new Error(`HTTP ${r.status}`)
+        return r.json()
       })
       .then((json: CompetitorListResponse) => {
-        if (!cancelled) setData(json.competitors || []);
+        if (!cancelled) setData(json.competitors || [])
       })
       .catch((e) => {
-        if (!cancelled) setError(e.message);
+        if (!cancelled) setError(e.message)
       })
       .finally(() => {
-        if (!cancelled) setLoading(false);
-      });
+        if (!cancelled) setLoading(false)
+      })
 
     return () => {
-      cancelled = true;
-    };
-  }, [enabled]);
+      cancelled = true
+    }
+  }, [enabled])
 
-  return { data, loading, error };
+  return { data, loading, error }
 }

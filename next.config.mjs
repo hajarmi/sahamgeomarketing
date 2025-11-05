@@ -32,6 +32,16 @@ const nextConfig = {
     esmExternals: 'loose',
     mdxRs: true,
   },
+
+  // ✅ ✅ ✅ Ajout du proxy API ici :
+  async rewrites() {
+    return [
+      {
+        source: '/api/:path*',
+        destination: 'http://127.0.0.1:8000/:path*', // FastAPI local
+      },
+    ]
+  },
 }
 
 const withMdx = nextMdx({
