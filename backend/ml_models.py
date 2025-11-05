@@ -22,7 +22,7 @@ from sklearn.metrics import mean_squared_error, classification_report
 warnings.filterwarnings('ignore')
 
 # Import Pydantic schemas to enforce data contracts
-from schemas import ATMData, LocationData
+from .schemas import ATMData, LocationData
 
 class ATMLocationPredictor:
     """Modèle de prédiction des volumes et ROI pour les emplacements ATM"""

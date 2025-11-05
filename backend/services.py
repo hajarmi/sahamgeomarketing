@@ -16,6 +16,12 @@ import aiofiles
 import pandas as pd
 from pydantic import ValidationError, parse_obj_as
 
+<<<<<<< HEAD
+from .ml_models import ATMLocationPredictor, CanibalizationAnalyzer
+from .schemas import ATMData, CompetitorData, CompetitorListResponse
+from .schemas import PopulationPoint, PopulationListResponse
+=======
+>>>>>>> cc602676c326901616ad1a6a127f59c8016cd484
 
 
 from ml_models import ATMLocationPredictor, CanibalizationAnalyzer
@@ -205,6 +211,46 @@ class ATMService:
             self.canibalization_analyzer.add_existing_atm(atm)
         logger.info("%d ATMs loaded and analyzer updated.", len(self.existing_atms))
 
+<<<<<<< HEAD
+    async def _persist_data(self):
+        """
+        Persist the current ATM dataset to disk.
+        In the Vercel serverless environment this is ephemeral, but it keeps
+        local development behavior consistent.
+        """
+        try:
+            async with aiofiles.open(DATA_FILE, "w", encoding="utf-8") as f:
+                payload = [atm.dict() for atm in self.existing_atms]
+                await f.write(json.dumps(payload, ensure_ascii=False, indent=2))
+        except Exception as exc:
+            logger.error("Failed to persist ATM data: %s", exc, exc_info=True)
+
+    async def add_new_atm(self, atm: ATMData) -> ATMData:
+        """
+        Register a new ATM in memory and update auxiliary structures.
+        """
+        async with self.lock:
+            if any(existing.id == atm.id for existing in self.existing_atms):
+                raise ValueError(f"An ATM with id '{atm.id}' already exists.")
+
+            self.existing_atms.append(atm)
+            self.canibalization_analyzer.add_existing_atm(atm)
+
+            await self._persist_data()
+
+        return atm
+
+    async def simulate_external_updates(self):
+        """
+        Placeholder used by the former background task to refresh cached data.
+        """
+        await self.reload_data()
+
+    # ... (the rest of the class remains the same)
+
+atm_service = ATMService()
+
+=======
 
 atm_service = ATMService()
 
@@ -213,6 +259,7 @@ atm_service = ATMService()
 # Compétiteurs
 # =====================================================================
 
+>>>>>>> cc602676c326901616ad1a6a127f59c8016cd484
 @lru_cache(maxsize=1)
 def _load_competitors_df() -> pd.DataFrame:
     if not COMPETITORS_FILE.exists():
@@ -547,7 +594,10 @@ def clear_data_caches():
         _load_competitors_df.cache_clear()
     except Exception:
         pass
+<<<<<<< HEAD
+=======
     try:
         _load_poi_df.cache_clear()
     except Exception:
         pass
+>>>>>>> cc602676c326901616ad1a6a127f59c8016cd484
