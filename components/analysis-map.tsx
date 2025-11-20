@@ -52,7 +52,10 @@ export default function AnalysisMap({
         const g = communesRef.current;
         if (g && (g as any).getBounds) {
           const b = (g as any).getBounds() as L.LatLngBounds;
-          if (b && b.isValid()) g._map?.fitBounds(b.pad(0.08));
+          const layerAny = g as any;
+          if (b && b.isValid() && layerAny._map) {
+            layerAny._map.fitBounds(b.pad(0.08));
+}
         }
       }, 0);
     });
