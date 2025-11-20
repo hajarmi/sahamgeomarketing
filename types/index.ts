@@ -1,5 +1,6 @@
+// ---- ATM / Competitors / POI / Population ----
 export type ATMStatus = "active" | "maintenance" | "inactive" | string;
-export type ATMType = "saham" | "competitor" | "poi" | "population" | string;
+export type ATMType = "saham" | "competitor" | "poi" | "population" | "transport" | string;
 
 export interface ATM {
   id: string;
@@ -12,7 +13,8 @@ export interface ATM {
   bank_name: string;
   status: string;
   name: string;
-  installation_type: "fixed" | "portable";
+  // 👇 élargit pour matcher le backend (atm | agency) ET tes anciens fixed/portable
+  installation_type: "atm" | "agency" | "fixed" | "portable";
   services: string[];
   branch_location: string;
   type?: ATMType;
@@ -61,8 +63,28 @@ export interface PopulationPoint {
   densite?: number | null;
 }
 
-export type HoverData = Partial<ATM & Competitor & POI & PopulationPoint>;
+// ---- Transport ----
+export interface TransportPoint {
+  id: string;
+  latitude: number;
+  longitude: number;
+  transport_mode?: string | null; // "train" | "tram" | "bus" | "taxi" | ...
+  name?: string | null;
+  operator?: string | null;
+  network?: string | null;
 
+  // champs bruts OSM (optionnels)
+  osmid?: string | null;
+  osm_type?: string | null;
+  railway?: string | null;
+  highway?: string | null;
+  amenity?: string | null;
+  tram?: string | null;
+  bus?: string | null;
+  route?: string | null;
+}
+
+// ---- API list responses ----
 export type CompetitorListResponse = {
   competitors: Competitor[];
   total_count: number;
@@ -72,3 +94,16 @@ export type PopulationListResponse = {
   population: PopulationPoint[];
   total_count: number;
 };
+
+export type TransportListResponse = {
+  transports: TransportPoint[];
+  total_count: number;
+};
+
+// ---- Hover card union (inclut transport maintenant) ----
+export type HoverData = Partial<
+  ATM & Competitor & POI & PopulationPoint & TransportPoint
+>;
+
+// ---- BBox réutilisé par les hooks
+export type BBox = { s: number; w: number; n: number; e: number } | null;

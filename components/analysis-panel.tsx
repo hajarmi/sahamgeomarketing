@@ -42,88 +42,74 @@ export default function AnalysisPanel({ selectedLocation, simulationMode, setSel
   const [geocodeError, setGeocodeError] = useState<string | null>(null)
   const abortControllerRef = useRef<AbortController | null>(null)
 
-  // Mock analysis calculation with more sophisticated data
+  // ======= NOUVELLE LOGIQUE: charger les vraies données =======
   useEffect(() => {
-    if (selectedLocation && simulationMode) {
+    const run = async () => {
+      if (!selectedLocation || !simulationMode) return
       setLoading(true)
-      // Simulate analysis calculation
-      setTimeout(() => {
-        const mockAnalysis = {
-          potentialScore: Math.floor(Math.random() * 40) + 60, // 60-100
+      try {
+        const url = `/api/communes/indicators?lat=${selectedLocation.lat}&lng=${selectedLocation.lng}`
+        const res = await fetch(url)
+        if (!res.ok) throw new Error(await res.text())
+        const data = await res.json()
+
+        const ind = data.indicators || {}
+
+        const radarData = [
+          { subject: "Population",     A: ((ind.densite_norm ?? 0) * 100), fullMark: 100 },
+          { subject: "Revenus",        A: ((ind.INIV ?? 0) * 100),         fullMark: 100 },
+          { subject: "Accessibilité",  A: ((ind.Indice_acces ?? ind.indice_acces ?? 0) * 100), fullMark: 100 },
+          { subject: "Concurrence",    A: ((1 / (1 + (ind.nb_atm ?? 0))) * 100),               fullMark: 100 },
+          { subject: "Transport",      A: ((ind.Indice_trans ?? ind.indice_trans ?? 0) * 100), fullMark: 100 },
+          { subject: "Éducation",      A: ((ind.IEDU ?? 0) * 100),                              fullMark: 100 },
+        ]
+
+        setAnalysis({
+          potentialScore: Math.round(data.score ?? 0),
           coordinates: selectedLocation,
           demographics: {
-            population500m: Math.floor(Math.random() * 5000) + 2000,
-            population1km: Math.floor(Math.random() * 15000) + 8000,
-            averageIncome: Math.floor(Math.random() * 20000) + 30000,
-            ageGroup: "25-45 ans (dominant)",
+            population500m: ind.densite ? Math.round(ind.densite) : 0,
+            population1km: 0,
+            averageIncome: Math.round((ind.INIV ?? 0) * 100000), // visuel
+            ageGroup: `Jeunesse ${(ind.taux_jeuness ?? 0).toFixed(2)} · Vieillissement ${(ind.taux_vieilless ?? 0).toFixed(2)}`,
           },
           competition: {
-            competitors500m: Math.floor(Math.random() * 5) + 1,
-            competitors1km: Math.floor(Math.random() * 10) + 3,
-            marketShare: Math.floor(Math.random() * 30) + 15,
+            competitors500m: ind.nb_atm ?? 0,
+            competitors1km: undefined,
+            marketShare: undefined,
           },
           accessibility: {
-            footTraffic: Math.floor(Math.random() * 3000) + 1000,
-            vehicleTraffic: Math.floor(Math.random() * 5000) + 2000,
-            publicTransport: Math.random() > 0.5 ? "Excellent" : "Bon",
-            parking: Math.random() > 0.5 ? "Disponible" : "Limité",
+            footTraffic: undefined,
+            vehicleTraffic: undefined,
+            publicTransport:
+              (ind.Indice_trans ?? ind.indice_trans ?? 0) > 0.6
+                ? "Excellent"
+                : (ind.Indice_trans ?? ind.indice_trans ?? 0) > 0.35
+                ? "Bon"
+                : "Faible",
+            parking: (ind.Indice_acces ?? ind.indice_acces ?? 0) > 0.5 ? "Disponible" : "Limité",
           },
-          radarData: [
-            { subject: "Population", A: Math.floor(Math.random() * 40) + 60, fullMark: 100 },
-            { subject: "Revenus", A: Math.floor(Math.random() * 40) + 60, fullMark: 100 },
-            { subject: "Accessibilité", A: Math.floor(Math.random() * 40) + 60, fullMark: 100 },
-            { subject: "Concurrence", A: Math.floor(Math.random() * 40) + 60, fullMark: 100 },
-            { subject: "Flux", A: Math.floor(Math.random() * 40) + 60, fullMark: 100 },
-            { subject: "Infrastructure", A: Math.floor(Math.random() * 40) + 60, fullMark: 100 },
-          ],
+          radarData,
           reasonCodes: [
-            {
-              type: "positive",
-              text: "Forte densité de population dans un rayon de 500m",
-              icon: Users,
-              weight: 25,
-              impact: "Élevé",
-            },
-            {
-              type: "negative",
-              text: "Concurrence élevée avec 3 points de vente proches",
-              icon: Building,
-              weight: 20,
-              impact: "Moyen",
-            },
-            {
-              type: "positive",
-              text: "Excellent flux piéton et véhiculaire",
-              icon: Car,
-              weight: 30,
-              impact: "Très élevé",
-            },
-            {
-              type: "neutral",
-              text: "Revenus moyens dans la zone de chalandise",
-              icon: TrendingUp,
-              weight: 15,
-              impact: "Faible",
-            },
+            { type: "positive", text: `Densité ${(ind.densite_norm ?? 0).toFixed(2)}`, icon: Users,    weight: 20, impact: "Élevé" },
+            { type: "negative", text: `Concurrents nb_atm = ${ind.nb_atm ?? 0}`,       icon: Building, weight: 15, impact: "Moyen" },
+            { type: "positive", text: `Accessibilité ${(ind.Indice_acces ?? ind.indice_acces ?? 0).toFixed(2)}`,
+              icon: Car, weight: 20, impact: "Élevé" },
+            { type: "positive", text: `Éducation (IEDU) ${(ind.IEDU ?? 0).toFixed(2)}`, icon: TrendingUp, weight: 10, impact: "Moyen" },
           ],
-          cannibalization: {
-            percentage: Math.floor(Math.random() * 30) + 10,
-            affectedSites: [
-              { name: "Site A", distance: "800m", impact: "15%" },
-              { name: "Site B", distance: "1.2km", impact: "8%" },
-            ],
-          },
-          roi: {
-            monthlyRevenue: Math.floor(Math.random() * 50000) + 30000,
-            monthlyCosts: Math.floor(Math.random() * 15000) + 10000,
-            paybackPeriod: Math.floor(Math.random() * 12) + 18,
-          },
-        }
-        setAnalysis(mockAnalysis)
+          cannibalization: { percentage: Math.min(40, (ind.nb_atm ?? 0) * 3), affectedSites: [] },
+          roi: { monthlyRevenue: 0, monthlyCosts: 0, paybackPeriod: 0 },
+        })
+      } catch (e) {
+        console.error("[analysis-panel] indicators error:", e)
+        setAnalysis(null)
+      } finally {
         setLoading(false)
-      }, 1500)
+      }
     }
+    run()
   }, [selectedLocation, simulationMode])
+  // ======= FIN NOUVELLE LOGIQUE =======
 
   const handleAddressSearch = async () => {
     if (!searchQuery.trim()) return

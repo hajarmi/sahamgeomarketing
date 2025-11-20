@@ -1,0 +1,926 @@
+﻿name,operator,amenity,address,addr_city,addr_street,addr_housenumber,addr_postcode,lat,lon,city_name
+,BMCE,atm,,,,,,31.62202,-8.010319,Marrakech
+Crédit Agricole,,atm,,,,,,31.366983,-7.942188,Tahannaout
+Banco Santander,,bank,,,,,,35.29332,-2.9393227,Melilla
+Unicaja Banco,,bank,,,,,,35.293324,-2.9389086,Melilla
+Attijariwafa bank,,bank,,,,,,31.434471,-4.2337,Arfoud
+Banque Populaire,,bank,,,,,,31.434877,-4.2334733,Arfoud
+Al Barid Bank,Al Barid Bank,bank,,,,,,35.168064,-5.265595,Chefchaouen
+Banque Populaire,,bank,,,,,,30.92768,-6.9268355,Ouarzazate
+,BCME,bank,,,,,,32.935146,-5.6677837,Khenifra
+Crédit du Maroc,,bank,,,,,,33.894226,-5.5570016,Meknès
+Banque Populaire,,bank,,,,,,33.758766,-5.485176,Bou Fekrane
+Banque Populaire,,bank,,,,,,33.68127,-5.372741,El Hajeb
+Crédit Agricole du Maroc,,bank,,,,,,33.439545,-5.224408,Azrou
+Credit du Maroc,,bank,,,,,,33.44012,-5.2247744,Azrou
+Banque Populaire,,bank,,,,,,33.44451,-5.228852,Azrou
+Banque Populaire,,bank,,,,,,31.920618,-4.4383245,Errachidia
+Crédit Agricole,,bank,,,,,,31.932938,-4.423153,Errachidia
+Bank of Africa,,bank,,,,,,31.43699,-4.2325068,Arfoud
+Crédit agricole du Maroc,,bank,,,,,,31.437458,-4.232233,Arfoud
+Crédit du Maroc,,bank,,,,,,31.435526,-4.2331915,Arfoud
+Banque Populaire,,bank,,,,,,31.510092,-5.0304255,Tinejdad
+attijri wafa bank,,bank,,,,,,31.238089,-6.1277976,Kalaat M'Gouna
+Crédit Agricole du Maroc,,bank,,,,,,31.238123,-6.127735,Kalaat M'Gouna
+Banque Populaire,,bank,,,,,,31.238232,-6.128073,Kalaat M'Gouna
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,30.920616,-6.913998,Ouarzazate
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,30.920427,-6.9167633,Ouarzazate
+Crédit agricole du Maroc,,bank,,,,,,30.92785,-6.926489,Ouarzazate
+Crédit agricole du Maroc,,bank,,,,,,30.92042,-6.9170012,Ouarzazate
+Bank of Africa,,bank,,,,,,30.920597,-6.9143877,Ouarzazate
+Banque Populaire,,bank,,,,,,30.920763,-6.9130583,Ouarzazate
+Banque de Hotelier,,atm,,,,,,31.511139,-9.769308,Essaouira
+,BMCI,atm,,,,,,31.515451,-9.759146,Essaouira
+Banque Populaire,,bank,,,,,,31.64559,-7.978439,Marrakech
+Crédit agricole du Maroc,Credit Agricole,bank,,,,,,31.645554,-7.978751,Marrakech
+Bank of Africa,,bank,,,,,,31.645512,-7.978999,Marrakech
+,الشركة العامة,bank,,,,,,33.959976,-6.8741465,Rabat
+Banque Populaire,,bank,,,,,,34.877636,-6.2874494,Moulay Bousselham
+Crédit Agricole du Maroc,,bank,,,,,,34.87779,-6.286605,Moulay Bousselham
+ATM,,bank,,,,,,31.636328,-8.000567,Marrakech
+,Al Barid bank,atm,,,,,,34.05298,-4.9933286,Méchouar Fès Jdid
+Banque populaire,banque populaire,atm,,,,,,32.68503,-4.743233,Midelt
+Crédit Agricole du Maroc,,bank,,,,,,34.068222,-6.7926116,Salé
+Bank of Africa,,bank,,,,,,33.962185,-6.864071,Rabat
+BMCI,البنك المغربي للتجارة والصناعة,bank,,,,,,33.959503,-6.867783,Rabat
+Crédit agricole du Maroc,,bank,,,,,,33.96258,-6.864331,Rabat
+Crédit du Maroc,,bank,,,,,,33.59402,-7.596075,Casablanca
+Attijariwafa,,bank,,,,,,33.59057,-7.603387,Casablanca
+Attijariwafa,,bank,,,,,,33.594307,-7.5955925,Casablanca
+Attijariwafa,,bank,,,,,,30.42166,-9.593499,Agadir
+Atijariwafa Bank,,bank,,,,,,35.24303,-3.929739,Al Hoceïma
+Banque Populaire,,bank,,,,,,35.007683,-3.543332,Tafersit
+Attijariwafa Bank,,bank,,,,,,35.006413,-3.5396547,Tafersit
+BMCI,البنك المغربي للتجارة والصناعة,bank,,,,,,33.9889,-6.7347617,Salé
+Bank of Africa,,bank,,,,,,33.994633,-6.7408233,Salé
+Banque Populaire,,bank,,,,,,33.996048,-6.741641,Salé
+,Alwajarawa Bank,atm,,,,,,29.578907,-10.035199,Mirleft
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,34.22478,-4.008424,Taza
+,Banque populaire,atm,,,,,,34.22071,-4.0073423,Taza
+,BMCE,bank,,,,,,34.22301,-4.008094,Taza
+BMCI,البنك المغربي للتجارة والصناعة,atm,,,,,,33.595024,-7.627633,Casablanca
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,34.67255,-4.626612,Abdelghaya Souahel
+Banque Chaabi,,bank,,,,,,34.538425,-4.637323,Taounate
+AttijariWafa Bank,,bank,,,,,,34.536602,-4.6384645,Taounate
+BMCI,البنك المغربي للتجارة والصناعة,bank,,,,,,33.577477,-7.6470695,Casablanca
+Banque Populaire,,bank,,,,,,33.577282,-7.6473403,Casablanca
+Banque Populaire,,bank,,,,,,29.378859,-10.173779,Sidi Ifni
+Banque Populaire,,bank,,,,,,33.99361,-6.743784,Salé
+Chaabi,,bank,,,,,,33.989456,-6.734111,Salé
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,33.587135,-7.639214,Casablanca
+Mikkes,,atm,,,,,,34.133904,-5.33189,Charqaoua
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,29.379744,-10.173299,Sidi Ifni
+Bank of Africa,,bank,,,,,,31.518963,-5.5349236,Tinghir
+Western Union,,bank,,,,,,31.518774,-5.5350885,Tinghir
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,30.576036,-7.2056036,Taznakht
+Banque Popularie,,bank,,,,,,30.57548,-7.206059,Taznakht
+,BMCI,atm,,,,,,33.594357,-7.633797,Casablanca
+BMCI Ziraoui,,bank,,,,,,33.59437,-7.633722,Casablanca
+Poste Maroc,Poste Maroc,atm,,,,,,27.149548,-13.1993475,Laâyoune
+Crédit Agricole,,bank,,,,,,35.56976,-5.3852725,Tétouan
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,35.569927,-5.3851595,Tétouan
+Banque Populaire,,bank,,,,,,35.57105,-5.38619,Tétouan
+Crédit du Maroc,,bank,,,,,,35.571865,-5.3857446,Tétouan
+,Al Barid Bank,atm,,,,,,31.624762,-7.976329,Marrakech
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,29.69349,-9.729308,Tiznit
+BMCI,البنك المغربي للتجارة والصناعة,bank,,,,,,29.692781,-9.728305,Tiznit
+Banque Populaire,,bank,,,,,,29.695158,-9.736711,Tiznit
+Banque Populaire,,bank,,,,,,29.695255,-9.731546,Tiznit
+bank populaire,Banque Populaire,atm,,,,,,35.17276,-3.8645053,Aït Youssef Ou Ali
+bank populaire,,bank,,,,,,35.17275,-3.8644567,Aït Youssef Ou Ali
+Poste,Al Barid Bank,atm,,,,,,34.057014,-5.5208783,Moulay Idriss Zarhoun
+Crédit du Maroc,Crédit du Maroc,bank,,,,,,35.785778,-5.812905,Tanger
+Banque Populaire,,bank,,,,,,35.78671,-5.8137174,Tanger
+Credit Agricole du Maroc,,bank,,,,,,35.7806,-5.8137383,Tanger
+Wafacash Western Union,,bank,,,,,,35.78058,-5.8113236,Tanger
+BMCI,البنك المغربي للتجارة والصناعة,bank,,,,,,35.78008,-5.8099265,Tanger
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,35.778603,-5.8075733,Tanger
+Banque Populaire,,bank,,,,,,33.43564,-5.219642,Azrou
+,BMCE BANK,atm,,,,,,34.04738,-5.00542,Fès
+Attijariwafa bank,,bank,,,,,,34.040215,-5.005587,Fès
+Banque Populaire,,bank,,,,,,31.625368,-7.9886074,Marrakech
+CIH,,bank,,,,,,33.994827,-6.847095,Rabat
+Western Union,,bank,,,,,,29.906292,-7.31833,Tissint
+Western Union,,bank,,,,,,30.080841,-6.8706465,Foum Zguid
+Banque Populaire,,bank,,,,,,34.047955,-6.797293,Salé
+Poste Maroc,,atm,,,,,,31.621346,-7.9843264,Marrakech
+Bank of Africa,,bank,,,,,,35.759174,-5.828568,Tanger
+Banque Populaire,,bank,,,,,,35.77854,-5.8078785,Tanger
+BMCI,البنك المغربي للتجارة والصناعة,bank,,,,,,34.01782,-6.828914,Rabat
+Crédit Agricole,,bank,,,,,,34.01642,-6.832422,Rabat
+,Crédit agricole du Maroc القرض الفلاحي,atm,,,,,,34.016434,-6.8323827,Rabat
+BMCI,البنك المغربي للتجارة والصناعة,bank,,,,,,34.020084,-6.835305,Rabat
+Arab Bank,,bank,,,,,,34.0223,-6.836891,Rabat
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,33.58438,-7.6434803,Casablanca
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,33.586246,-7.6348076,Casablanca
+Bank of Africa,,bank,,,,,,33.584003,-7.639737,Casablanca
+BMCI,البنك المغربي للتجارة والصناعة,bank,,,,,,33.5843,-7.6395783,Casablanca
+Banque Populaire,,bank,,,,,,33.58399,-7.640133,Casablanca
+Bank of Africa,,bank,,,,,,33.54384,-7.5624957,Casablanca
+wafa banc,,bank,,,,,,33.54163,-7.5659404,Casablanca
+Attijari Wafa Bank,Attijari Wafa Bank,bank,,,,,,33.564133,-7.555813,Casablanca
+Wafa Salaf,Attijari Wafa Bank,bank,,,,,,33.564095,-7.555697,Casablanca
+BMCI,البنك المغربي للتجارة والصناعة,bank,,,,,,33.579666,-7.6402264,Casablanca
+Banque Populaire,,bank,,,,,,33.581146,-7.6420164,Casablanca
+Banque Populaire,,bank,,,,,,32.283215,-9.225455,Pachalik de Safi
+BMCI,البنك المغربي للتجارة والصناعة,bank,,,,,,35.75922,-5.82849,Tanger
+Attijariwafa bank,,bank,,,,,,35.73092,-5.8822627,Tanger
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,33.578835,-7.6367764,Casablanca
+Banque Populaire,,bank,,,,,,31.634678,-8.016852,Marrakech
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,35.777298,-5.813894,Tanger
+Bank of Africa,,bank,,,,,,35.776836,-5.814104,Tanger
+Banque Populaire,البنك الشعبي,atm,,,,,,35.778168,-5.8140774,Tanger
+Crédit du Maroc,,bank,,,,,,33.592026,-7.639753,Casablanca
+BMCI,البنك المغربي للتجارة والصناعة,bank,,,,,,33.614334,-7.4868054,Casablanca
+Crédit agricole du Maroc,Crédit Agricole,bank,,,,,,33.609344,-7.49685,Casablanca
+Bank of Africa,,bank,,,,,,33.59029,-7.638284,Casablanca
+Banque Populaire,,bank,,,,,,33.573467,-7.655471,Casablanca
+BMCI,البنك المغربي للتجارة والصناعة,bank,,,,,,33.570522,-7.6507463,Casablanca
+Bank of Africa,,bank,,,,,,34.037865,-4.9981947,Fès
+Banque Populaire,,bank,,,,,,34.05239,-6.8045955,Salé
+Banque Populaire,,bank,,,,,,34.015415,-4.974403,Fès
+Crédit agricole du Maroc,,bank,,,,,,33.587704,-7.6437373,Casablanca
+Crédit Agricole du Maroc,,bank,,,,,,31.655165,-8.00377,Marrakech
+BMCI,البنك المغربي للتجارة والصناعة,bank,,,,,,31.647526,-8.00096,Marrakech
+Banque Populaire,,bank,,,,,,31.634119,-8.008586,Marrakech
+Crédit Agricole du Maroc,,bank,,,,,,31.640074,-8.024126,Marrakech
+Crédit Agricole du Maroc,Crédit Agricole du Maroc,bank,,,,,,31.624063,-7.989328,Marrakech
+Crédit Agricole du Maroc,Crédit Agricole du Maroc,bank,,,,,,31.624613,-7.988972,Marrakech
+Banque Populaire,,bank,,,,,,33.367096,-4.7297497,Boulemane
+CFG Bank,,bank,,,,,,33.58751,-7.642907,Casablanca
+,CIH,atm,,,,,,35.5681,-5.377199,Tétouan
+Caixabank,Caixabank,atm,,,,,,35.888393,-5.3138313,Ceuta
+Crédit Agricole du Maroc,,bank,,,,,,35.16828,-5.2665353,Chefchaouen
+Crédit du Maroc,,bank,,,,,,35.168797,-5.268888,Chefchaouen
+Bmci Moulay Youssef,Banque Marocaine pour le Commerce et l'Industrie,bank,,,,,,33.603733,-7.6335216,Casablanca
+Crédit Agricole,,bank,,,,,,33.5554,-7.6847134,Casablanca
+B M C E,,bank,,,,,,33.55629,-7.684813,Casablanca
+banque populaire,,bank,,,,,,33.85845,-5.577901,Meknès
+Crédit Agricole,,bank,,,,,,33.89057,-5.5761447,Meknès
+Attijari Wafa banque,,bank,,,,,,33.891266,-5.576631,Meknès
+CIH,,bank,,,,,,33.891426,-5.5763717,Meknès
+BMCI,البنك المغربي للتجارة والصناعة,bank,,,,,,35.16697,-5.262558,Chefchaouen
+Bank of Africa,,bank,,,,,,35.166473,-5.2643743,Chefchaouen
+Banque Populaire,,bank,,,,,,35.16633,-5.2631135,Chefchaouen
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,34.021088,-6.826997,Rabat
+BMCI,البنك المغربي للتجارة والصناعة,bank,,,,,,33.593357,-7.624133,Casablanca
+Bank of Africa,,bank,,,,,,30.38099,-9.504422,Agadir
+CIH Bank,القرض العقاري والسياحي,bank,,,,,,30.41504,-9.598994,Agadir
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,30.424683,-9.611983,Agadir
+Banque Populaire,,bank,,,,,,30.422802,-9.608536,Agadir
+Crédit du Maroc,Crédit du Maroc,bank,,,,,,30.424643,-9.611878,Agadir
+Banque Du Populaire,,bank,,,,,,31.649162,-8.012911,Marrakech
+Crédit Agricole du Maroc,Crédit Agricole Du Maroc,bank,,,,,,31.652845,-8.017073,Marrakech
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,31.65265,-8.016892,Marrakech
+,BMCE,atm,,,,,,33.528545,-5.1068325,Ifrane
+,Poste Maroc,atm,,,,,,33.528847,-5.1076775,Ifrane
+Crédit Agricole du Maroc,Crédit Agricole du Maroc,bank,,,,,,31.631527,-8.006077,Marrakech
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,31.65418,-8.002883,Marrakech
+BMCI,البنك المغربي للتجارة والصناعة,bank,,,,,,31.509886,-9.767816,Essaouira
+Banque Populaire,,bank,,,,,,31.579985,-9.010191,Sidi El Mokhtar
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,31.65568,-8.01204,Marrakech
+Banque Populaire,,bank,,,,,,31.666634,-8.011036,Marrakech
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,31.658218,-7.9908385,Marrakech
+Bank of Africa,,bank,,,,,,31.664923,-8.032894,Marrakech
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,31.631168,-8.012938,Marrakech
+Bank of Africa,,bank,,,,,,31.630257,-8.017103,Marrakech
+Bank of Africa,,bank,,,,,,31.63182,-8.01081,Marrakech
+Attijariwafa,,atm,,,,,,33.898167,-5.546669,Meknès
+BMCI,البنك المغربي للتجارة والصناعة,bank,,,,,,33.595737,-7.617099,Casablanca
+Banque Populaire,,bank,,,,,,33.898254,-5.552813,Meknès
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,31.624428,-8.003841,Marrakech
+Crédit Agricole du Maroc,Crédit Agricole du Maroc,bank,,,,,,31.63369,-8.001025,Marrakech
+Banque Populaire,,bank,,,,,,31.636183,-8.0150385,Marrakech
+Barid,,atm,,,,,,31.632784,-8.009218,Marrakech
+BMCI,البنك المغربي للتجارة والصناعة,atm,,,,,,31.633257,-8.009091,Marrakech
+Poste Maroc,,atm,,,,,,31.618494,-7.9910855,Marrakech
+Attijariwafa,,atm,,,,,,31.627363,-7.989212,Marrakech
+Attijariwafa bank,,bank,,,,,,34.01754,-6.826878,Rabat
+Banque Populaire,,bank,,,,,,31.51205,-9.772261,Essaouira
+Crédit du Maroc,Crédit du Maroc,bank,,,,,,31.511871,-9.771708,Essaouira
+Banque Populaire,,bank,,,,,,34.65665,-1.898117,Oujda
+Bank of Africa,,bank,,,,,,34.65947,-1.8984973,Oujda
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,34.66448,-1.9068207,Oujda
+,BMCI,atm,,,,,,33.89373,-5.566406,Meknès
+C.I.H,,bank,,,,,,33.992672,-6.7402344,Salé
+Banque Populaire,,bank,,,,,,33.996517,-6.733136,Salé
+C.I.H,,bank,,,,,,33.99834,-6.746528,Salé
+Banque Populaire,,bank,,,,,,34.000473,-6.7429624,Salé
+Banque Populaire,,bank,,,,,,33.996235,-6.7373614,Salé
+Cash Plus,Cash Plus,atm,,,,,,34.686802,-1.9159331,Oujda
+Cash Plus,Cash Plus,atm,,,,,,34.702065,-1.9195118,Oujda
+Cash Plus,Cash Plus,atm,,,,,,34.701443,-1.9126549,Oujda
+CIH,,bank,,,,,,33.999348,-6.844482,Rabat
+Attijariwafa,Attijariwafa,atm,,,,,,31.511892,-9.7722435,Essaouira
+CIH,,bank,,,,,,34.008266,-4.9785237,Fès
+Bank of Africa,,bank,,,,,,34.01381,-6.8287125,Rabat
+Crédit Agricole - Rabat - Chellah,Crédit Agricole,bank,,,,,,34.023403,-6.832297,Rabat
+Bureau de change,,atm,,,,,,33.593952,-7.6183167,Casablanca
+CIH Bank - Rabat - Agdal,CIH Bank,atm,,,,,,34.002342,-6.854072,Rabat
+,Banque Populaire,atm,,,,,,34.006123,-6.8562994,Rabat
+,BMCI,atm,,,,,,34.004097,-6.8517413,Rabat
+Banque Populaire,,bank,,,,,,34.00611,-6.8563156,Rabat
+,CIH Bank,atm,,,,,,34.01151,-6.8587255,Rabat
+Al Barid Bank - Rabat - Akkari,Al Barid Bank,bank,,,,,,34.01108,-6.8592863,Rabat
+,Al Barid Bank,atm,,,,,,34.01102,-6.8592167,Rabat
+CIH Bank - Rabat - Akkari,CIH Bank,bank,,,,,,34.01155,-6.858801,Rabat
+,BMCE,atm,,,,,,34.013844,-6.8564754,Rabat
+Bank of Africa,,bank,,,,,,34.01379,-6.856478,Rabat
+Al Barid Bank,Al Barid Bank,atm,,,,,,34.027,-6.841648,Rabat
+Al Barid Bank,Al Barid Bank,bank,,,,,,34.02703,-6.841688,Rabat
+Banque Populaire,,bank,,,,,,34.02724,-6.840788,Rabat
+Attijariwafa bank,Attijariwafa bank,bank,,,,,,34.021915,-6.83778,Rabat
+Attijariwafa bank,Attijariwafa bank,atm,,,,,,34.021904,-6.837826,Rabat
+Crédit Agricole,Crédit Agricole,atm,,,,,,34.02331,-6.8316684,Rabat
+BMCI - Rabat - Océan,BMCI,bank,,,,,,34.025608,-6.8457847,Rabat
+Crédit Agricole - Rabat - Hassan II,Crédit Agricole,bank,,,,,,34.020515,-6.842274,Rabat
+Crédit Agricole,Crédit Agricole,atm,,,,,,34.02048,-6.8422365,Rabat
+CIH Bank,القرض العقاري والسياحي,atm,,,,,,34.061058,-6.7832203,Salé
+Bank of Africa,,bank,,,,,,34.062,-6.782696,Salé
+CIH Bank,القرض العقاري والسياحي,bank,,,,,,34.061024,-6.7832665,Salé
+wafa bank,,bank,,,,,,33.55139,-7.5885396,Casablanca
+Banque Populaire,,bank,,,,,,33.551434,-7.5884137,Casablanca
+Crédit du Maroc - Rabat - Ibn Sina,Crédit du Maroc,bank,,,,,,33.99051,-6.8516216,Rabat
+BMCE,BMCE,atm,,,,,,33.990837,-6.8515787,Rabat
+Bank of Africa,,bank,,,,,,33.990875,-6.8516617,Rabat
+Crédit du Maroc,Crédit du Maroc,atm,,,,,,33.99051,-6.85157,Rabat
+Banque Populaire,,bank,,,,,,33.9913,-6.851243,Rabat
+Banque Populaire,البنك الشعبي,atm,,,,,,33.991295,-6.851289,Rabat
+Banque Populaire,,bank,,,,,,34.002525,-6.8501506,Rabat
+Crédit du Maroc,Crédit du Maroc,bank,,,,,,34.005478,-6.8495855,Rabat
+Crédit du Maroc,Crédit du Maroc مصرف المغرب,atm,,,,,,34.005505,-6.8495536,Rabat
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,34.00532,-6.8493066,Rabat
+Attijariwafa Bank,التجاري وفا بنك,atm,,,,,,34.005333,-6.849288,Rabat
+Banque Populaire,البنك الشعبي,atm,,,,,,34.05791,-6.7879333,Salé
+Banque Populaire,,bank,,,,,,34.057957,-6.7879252,Salé
+Attijariwafa Bank,التجاري وفا بنك,atm,,,,,,34.05921,-6.784963,Salé
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,34.059204,-6.7850127,Salé
+Al Barid Bank,Al Barid Bank,bank,,,,,,34.059532,-6.7847214,Salé
+Al Barid Bank,Al Barid Bank,atm,,,,,,34.059555,-6.7847486,Salé
+Crédit Agricole du Maroc,Crédit Agricole,bank,,,,,,34.05822,-6.786124,Salé
+Crédit Agricole,Crédit Agricole,atm,,,,,,34.058247,-6.7861295,Salé
+Bank of Africa,,bank,,,,,,34.055393,-6.793143,Salé
+BMCE,BMCE Bank,atm,,,,,,34.055397,-6.7931194,Salé
+Crédit Agricole,Crédit Agricole,atm,,,,,,34.055355,-6.793622,Salé
+BMCI,البنك المغربي للتجارة والصناعة,bank,,,,,,34.05488,-6.793955,Salé
+Banque Populaire,,bank,,,,,,34.223625,-3.3498397,Guercif
+Bmce Bank,,bank,,,,,,34.2268,-3.345287,Guercif
+banque Populaire,,bank,,,,,,32.342964,-6.653191,Oulad Mrah
+Banque Populaire,,bank,,,,,,34.020287,-6.844876,Rabat
+,الشركة العامة (المغرب),bank,,,,,,33.999733,-6.846869,Rabat
+Wafacash,,bank,,,,,,34.69464,-1.9029088,Oujda
+BMCI,البنك المغربي للتجارة والصناعة,bank,,,,,,32.680367,-4.741891,Midelt
+,Banque Populaire,atm,,,,,,31.623075,-7.9894695,Marrakech
+Banque Populaire,,bank,,,,,,34.01891,-6.825161,Rabat
+Bank of Africa,,bank,,,,,,34.017162,-6.8254366,Rabat
+,Barid Al Maghrib,atm,,,,,,34.021084,-6.8275814,Rabat
+ATM,,atm,,,,,,34.06175,-4.983272,Fès
+bmci banq,,bank,,,,,,33.697727,-7.3924108,Mohammédia
+Banque Populaire,,bank,,,,,,34.01386,-6.8545785,Rabat
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,30.531837,-7.920926,Taliouine
+Banque Populaire,,bank,,,,,,30.531788,-7.92064,Taliouine
+Bank of Africa,,bank,,,,,,35.581585,-5.3558264,Tétouan
+Banque Populaire,,bank,,,,,,34.021732,-6.836414,Rabat
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,34.920868,-2.323873,Berkane
+,Barid Bank,atm,,,,,,31.521477,-5.530647,Tinghir
+Banque Populaire,,bank,,,,,,33.59881,-7.6148496,Casablanca
+Banque populaire,Banque Populaire,atm,,,,,,33.599323,-7.6130557,Casablanca
+Banque Populaire,,bank,,,,,,34.923412,-2.309853,Berkane
+Banque Populaire,,bank,,,,,,32.33621,-6.3520555,Beni Mellal
+Banque Populaire,,bank,,,,,,33.589848,-7.5925994,Casablanca
+Crédit du Maroc,,bank,,,,,,33.590252,-7.5930333,Casablanca
+Bank of Africa,,bank,,,,,,33.58572,-7.613722,Casablanca
+Banque Populaire,,bank,,,,,,34.92325,-2.3179235,Berkane
+Bank of Africa,,bank,,,,,,33.592007,-7.6146984,Casablanca
+Banque Populaire,,bank,,,,,,33.592182,-7.614355,Casablanca
+Crédit Agricole du Maroc,,bank,,,,,,34.017834,-6.834671,Rabat
+,Crédit Agricole,atm,,,,,,34.017838,-6.834782,Rabat
+ATM Money Gram Western Union,,atm,,,,,,31.063456,-6.5561213,Skoura Ahl El Oust
+,Attijariwafa,atm,,,,,,31.520031,-5.5321035,Tinghir
+,شقه الاندنوسي,atm,,,,,,35.768562,-5.9316306,Tanger
+BMCI,البنك المغربي للتجارة والصناعة,bank,,,,,,33.5958,-7.5873194,Casablanca
+BMCI,البنك المغربي للتجارة والصناعة,bank,,,,,,34.223156,-5.7083683,Sidi Kacem
+crédit agricole,,atm,,,,,,32.679207,-4.738215,Midelt
+résidence cheminots,ONCF,atm,,,,,,33.599537,-7.566468,Casablanca
+Friend Ayoob,,atm,,,,,,31.650278,-8.050185,Marrakech
+,Siham,atm,,,,,,35.76091,-5.8027534,Tanger
+,Western Union,atm,,,,,,34.06089,-4.9822173,Fès
+,Banque Populaire du Maroc,atm,,,,,,31.592636,-7.986606,Mechouar Kasbah
+Attijari wafa Banqe,,bank,,,,,,31.238089,-6.1277976,Kalaat M'Gouna
+Attirajiwafabank,,bank,,,,,,34.04255,-4.999164,Fès
+,Al Barid Bank,atm,,,,,,29.579668,-10.032331,Mirleft
+Banque Populaire,,bank,,,,,,34.67515,-1.9094855,Oujda
+Banque Populaire,,bank,,,,,,31.506659,-9.7609415,Essaouira
+SGMB,,bank,,,,,,33.003094,-7.6195416,Settat
+Bank of Africa,,bank,,,,,,32.99845,-7.616613,Settat
+Crédit agricole du Maroc,,bank,,,,,,34.018692,-6.8493786,Rabat
+Bank of Africa,,bank,,,,,,34.0212,-6.851593,Rabat
+CIH Bank,القرض العقاري والسياحي,bank,,,,,,31.6374,-8.002844,Marrakech
+Banque Populaire,,bank,,,,,,31.633455,-7.991916,Marrakech
+Credit Agricole Du Maroc,,bank,,,,,,31.637245,-8.011774,Marrakech
+Credit du Maroc,,bank,,,,,,31.63369,-8.001069,Marrakech
+Banque Populaire,البنك الشعبي,atm,,,,,,31.627579,-7.993418,Marrakech
+CIH,,bank,,,,,,31.623314,-7.9896336,Marrakech
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,31.6374,-8.011402,Marrakech
+Banque Populaire,,bank,,,,,,31.634878,-7.998147,Marrakech
+Banque Populaire,,bank,,,,,,31.62289,-7.9910426,Marrakech
+Attijarawafa Bank,,bank,,,,,,33.571014,-7.646197,Casablanca
+,BMCI,atm,,,,,,33.954113,-6.863848,Rabat
+,Credit Agricol,atm,,,,,,32.25896,-4.5043864,Er-Rich
+,908,atm,,,,,,32.05914,-7.4167776,El Kelâat Es-Sraghna
+,907,atm,,,,,,32.058056,-7.40675,El Kelâat Es-Sraghna
+Banque Populaire,,bank,,,,,,26.125828,-14.484209,Boujdour
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,26.125385,-14.484326,Boujdour
+Crédit du Maroc,,bank,,,,,,34.040276,-5.000931,Fès
+Banque Populaire,,bank,,,,,,34.043472,-4.998363,Fès
+Banque Populaire,,bank,,,,,,22.054073,-16.747889,Bir Gandouz
+CIIH bank,,bank,,,,,,34.038002,-4.9998937,Fès
+Attijariwafa bank,Attijariwafa bank,bank,,,,,,34.045803,-5.0035167,Fès
+Bank of Africa,,bank,,,,,,30.46915,-8.879957,Taroudant
+Banque Populaire,,bank,,,,,,30.473923,-8.86707,Taroudant
+Attijariwafa bank,,bank,,,,,,30.474596,-8.866086,Taroudant
+Crédit Agricole,,bank,,,,,,30.474314,-8.866472,Taroudant
+Bank of Africa,,bank,,,,,,30.477728,-8.862962,Taroudant
+Crédit du Maroc,,bank,,,,,,34.038918,-4.998382,Fès
+Al Akhdar Bank,,atm,,,,,,30.421732,-9.605783,Agadir
+BMCI Banque,,bank,,,,,,34.256546,-6.5918894,Kénitra
+,al barid bank,atm,,,,,,31.2436,-7.986016,Asni
+Attijariwafa Bank,Attijariwafa Bank,bank,,,,,,33.898685,-5.5524716,Meknès
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,33.89802,-5.5341244,Meknès
+Crédit du Maroc,Crédit du Maroc,bank,,,,,,33.67841,-5.3727927,El Hajeb
+Banque Populaire,,bank,,,,,,33.528522,-5.108592,Ifrane
+Banque Populaire,,bank,,,,,,33.897366,-5.546277,Meknès
+CIH Bank,القرض العقاري والسياحي,bank,,,,,,33.89839,-5.552508,Meknès
+Bank of Africa,,bank,,,,,,33.89463,-5.5433936,Meknès
+BMCI,البنك المغربي للتجارة والصناعة,bank,,,,,,35.777767,-5.806911,Tanger
+Bmce banque jnane nahda,,bank,,,,,,33.973732,-6.8183775,Rabat
+Attijariwafa bank,Attijariwafa bank,bank,,,,,,34.013443,-4.98174,Fès
+Bank Assafa,Bank Assafa,bank,,,,,,34.01332,-4.9816365,Fès
+,moh 630,atm,,,,,,33.639137,-7.4130745,Chellalate
+Credit du Maroc,,bank,,,,,,35.17766,-2.923959,Nador
+Bank of Africa,,bank,,,,,,35.176163,-2.9233277,Nador
+Bank of Africa,,bank,,,,,,35.170383,-2.9199584,Nador
+Crédit Agricole du Maroc,القرض الفلاحي المغربي,bank,,,,,,35.170795,-2.9199696,Nador
+,은행,atm,,,,,,33.97866,-6.8791084,Rabat
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,33.046898,-3.9904964,Missour
+Crédit Agricole,,bank,,,,,,33.04776,-3.988155,Missour
+Banque Populaire,,bank,,,,,,33.04772,-3.9883478,Missour
+Al Barid Bank,,bank,,,,,,33.047173,-3.98894,Missour
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,32.679436,-4.7359605,Midelt
+Banque Populaire,,bank,,,,,,32.679226,-4.7292943,Midelt
+Bank of Africa,,bank,,,,,,34.009895,-4.9779005,Fès
+,EURO-GAB,atm,,,,,,31.618155,-8.067199,Marrakech
+Al Barid,,bank,,,,,,29.744944,-7.9725885,Tata
+Attijari Wafabank,,bank,,,,,,33.998524,-6.84595,Rabat
+Al Barid Bank,,bank,,,,,,31.690525,-4.95436,Goulmima
+Bank Populaire,,bank,,,,,,31.690918,-4.9540915,Goulmima
+Bank of Africa,,bank,,,,,,29.378742,-10.173615,Sidi Ifni
+,Wafa Bank,atm,,,,,,29.720655,-8.972068,Tafraout
+,BMCE BANK,atm,,,,,,33.574017,-7.528497,Casablanca
+Banque Populaire,,bank,,,,,,27.939447,-12.927776,Tarfaya
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,27.9393,-12.925838,Tarfaya
+,BMCE BANK,atm,,,,,,33.611553,-7.513465,Casablanca
+,BMCI,atm,,,,,,33.611618,-7.5133176,Casablanca
+Banque Populaire,,bank,,,,,,23.703865,-15.927585,Dakhla
+Bank of Africa,,bank,,,,,,23.701923,-15.927522,Dakhla
+Banque Populaire,,bank,,,,,,31.514992,-9.764368,Essaouira
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,23.697575,-15.9315605,Dakhla
+Crédit du Maroc,,bank,,,,,,23.694298,-15.9337015,Dakhla
+Banque de la Poste,,bank,,,,,,23.694456,-15.936316,Dakhla
+Bank of Africa,,bank,,,,,,23.693483,-15.937863,Dakhla
+Banque Populaire,,bank,,,,,,23.689943,-15.938048,Dakhla
+Bank Assafa,,bank,,,,,,23.69037,-15.939375,Dakhla
+Crédit Agricole,,bank,,,,,,23.689922,-15.937874,Dakhla
+Crédit Agricole,,bank,,,,,,23.688654,-15.940595,Dakhla
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,23.689978,-15.938278,Dakhla
+BMCI,البنك المغربي للتجارة والصناعة,bank,,,,,,23.6899,-15.937737,Dakhla
+Bank of Africa,,bank,,,,,,33.60589,-7.629154,Casablanca
+Banque Populaire,,bank,,,,,,23.690107,-15.9465885,Dakhla
+Bank of Africa,,bank,,,,,,23.689873,-15.945215,Dakhla
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,23.69003,-15.946205,Dakhla
+CIH Bank,القرض العقاري والسياحي,bank,,,,,,23.689898,-15.945317,Dakhla
+,BMCE bank,atm,,,,,,30.330717,-5.83764,Zagora
+,Crédit du Maroc,atm,,,,,,30.498138,-9.672345,Aourir
+,Bankia,atm,,,,,,35.88911,-5.303899,Ceuta
+Caixabank,Caixabank,atm,,,,,,35.88805,-5.313352,Ceuta
+Banco Sabadell,Banco Sabadell,atm,,,,,,35.887806,-5.311438,Ceuta
+Santander,Banco Santander,atm,,,,,,35.887703,-5.3111734,Ceuta
+Caixabank,Caixabank,atm,,,,,,35.887455,-5.308062,Ceuta
+Unicaja Banco,Unicaja Banco,atm,,,,,,35.8875,-5.307526,Ceuta
+,Bankia,atm,,,,,,35.891727,-5.303082,Ceuta
+,Caixabank,atm,,,,,,35.889305,-5.3035884,Ceuta
+,Banque Populaire,atm,,,,,,31.503256,-5.540339,Tinghir
+,Banque Populaire,atm,,,,,,30.693544,-6.4485264,Agdz
+,Al Barid Bank,atm,,,,,,30.695335,-6.448294,Agdz
+,Attijariwafa Bank,atm,,,,,,30.782421,-5.563032,Tazzarine
+CIH,CIH,bank,,,,,,33.558388,-7.6931624,Casablanca
+Attijari wafa banque,,bank,,,,,,33.558525,-7.6932683,Casablanca
+Banque Populaire,,bank,,,,,,33.55827,-7.693056,Casablanca
+,Al Barid Bank,atm,,,,,,31.115892,-5.168192,Alnif
+BMCI,البنك المغربي للتجارة والصناعة,bank,,,,,,30.430527,-9.586159,Agadir
+Banque Populaire,,bank,,,,,,30.423471,-9.602648,Agadir
+Banque Populaire,,bank,,,,,,29.720709,-8.974807,Tafraout
+Bank of Africa,,bank,,,,,,31.516043,-9.760432,Essaouira
+,Crédit du Maroc,atm,,,,,,33.590485,-7.604784,Casablanca
+Crédit du Maroc,,bank,,,,,,33.57699,-7.615203,Casablanca
+CIH Bank,القرض العقاري والسياحي,bank,,,,,,33.591103,-7.6053085,Casablanca
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,31.645473,-7.979262,Marrakech
+Bank of Africa,,bank,,,,,,31.63831,-7.9989696,Marrakech
+BMCI,البنك المغربي للتجارة والصناعة,bank,,,,,,33.537464,-7.586132,Casablanca
+Banque Populaire,,bank,,,,,,35.773647,-5.8165545,Tanger
+,Crédit du Maroc,atm,,,,,,31.620321,-7.98659,Marrakech
+Wafacash,,atm,,,,,,35.715015,-5.9075856,Gueznaia
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,33.581387,-7.509952,Casablanca
+Bank of Africa,,bank,,,,,,33.5775,-7.516086,Casablanca
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,33.594265,-7.499081,Casablanca
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,33.58673,-7.501594,Casablanca
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,33.588673,-7.577487,Casablanca
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,33.58552,-7.5758724,Casablanca
+CFG Bank,,bank,,,,,,33.582848,-7.625532,Casablanca
+CIH Bank,القرض العقاري والسياحي,bank,,,,,,33.582676,-7.6292815,Casablanca
+Western Union,Western Union,atm,,,,,,33.593277,-7.62385,Casablanca
+BMCI,البنك المغربي للتجارة والصناعة,bank,,,,,,33.587868,-7.6207304,Casablanca
+CIH Bank,القرض العقاري والسياحي,bank,,,,,,33.598125,-7.488214,Casablanca
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,31.628838,-8.079592,Saâda
+Bank Assafa,,bank,,,,,,33.58218,-7.6312294,Casablanca
+Bank of Africa,,bank,,,,,,33.563156,-7.601177,Casablanca
+Bank of Africa,,bank,,,,,,33.562847,-7.6028776,Casablanca
+CIH Bank,القرض العقاري والسياحي,bank,,,,,,33.570477,-7.6004753,Casablanca
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,33.576042,-7.6343293,Casablanca
+BMCI Bank,,bank,,,,,,33.574745,-7.634769,Casablanca
+Bank of Africa,,bank,,,,,,33.575096,-7.6346345,Casablanca
+Barid Cash,,atm,,,,,,33.574493,-7.6403394,Casablanca
+CIH Bank,القرض العقاري والسياحي,bank,,,,,,33.57395,-7.640787,Casablanca
+Banque Populaire,,bank,,,,,,33.572712,-7.6381407,Casablanca
+Al Barid Bank,,bank,,,,,,33.577766,-7.625259,Casablanca
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,33.605892,-7.5146885,Casablanca
+Banque Populaire,,bank,,,,,,33.60704,-7.5151153,Casablanca
+CIH Bank,القرض العقاري والسياحي,bank,,,,,,33.607014,-7.5169663,Casablanca
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,33.572227,-7.6218753,Casablanca
+Crédit agricole du Maroc,,bank,,,,,,33.572456,-7.5971828,Casablanca
+CIH Bank,القرض العقاري والسياحي,bank,,,,,,33.577095,-7.5994277,Casablanca
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,33.571743,-7.596673,Casablanca
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,33.561874,-7.5975866,Casablanca
+CIH Bank,القرض العقاري والسياحي,bank,,,,,,33.561935,-7.59733,Casablanca
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,33.555626,-7.598437,Casablanca
+Banque Populaire,,bank,,,,,,33.556877,-7.60193,Casablanca
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,30.434788,-9.5714445,Agadir
+Bank of Africa,,bank,,,,,,30.433996,-9.571195,Agadir
+Bank of Africa,,bank,,,,,,33.554775,-7.600223,Casablanca
+Bank of Africa,,bank,,,,,,33.547737,-7.589682,Casablanca
+Bank of Africa,,bank,,,,,,33.570213,-7.615304,Casablanca
+Crédit agricole du Maroc,,bank,,,,,,33.54742,-7.5913286,Casablanca
+BMCI,البنك المغربي للتجارة والصناعة,bank,,,,,,33.54736,-7.597947,Casablanca
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,33.5474,-7.5981216,Casablanca
+Banque Populaire,,bank,,,,,,33.546658,-7.631154,Casablanca
+BMCI,البنك المغربي للتجارة والصناعة,bank,,,,,,33.546143,-7.6314316,Casablanca
+CIH,,bank,,,,,,33.532394,-7.6155076,Casablanca
+BMCI,البنك المغربي للتجارة والصناعة,bank,,,,,,33.527615,-7.6130934,Casablanca
+Crédit Agricole du Maroc,,bank,,,,,,33.542755,-7.585518,Casablanca
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,33.53332,-7.6144295,Casablanca
+BMCI,البنك المغربي للتجارة والصناعة,bank,,,,,,33.532604,-7.6159754,Casablanca
+BMCI,البنك المغربي للتجارة والصناعة,bank,,,,,,30.42125,-9.598047,Agadir
+CFG Bank,,atm,,,,,,33.586815,-7.649076,Casablanca
+Banque Populaire,,bank,,,,,,33.588284,-7.644317,Casablanca
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,33.579445,-7.6564517,Casablanca
+Western Union,,bank,,,,,,33.570145,-7.645519,Casablanca
+Wafacash Western union,,bank,,,,,,33.588562,-7.614445,Casablanca
+Banque Populaire,,bank,,,,,,33.5875,-7.615411,Casablanca
+Crédit du Maroc,,bank,,,,,,33.581245,-7.634122,Casablanca
+CIH Bank,القرض العقاري والسياحي,bank,,,,,,33.586254,-7.634523,Casablanca
+Bank of Africa,,bank,,,,,,33.58559,-7.633686,Casablanca
+CIH Bank,القرض العقاري والسياحي,bank,,,,,,33.537056,-7.669282,Casablanca
+Bank of Africa,,bank,,,,,,33.56434,-7.6440597,Casablanca
+Banque Populaire,,bank,,,,,,33.5646,-7.6681113,Casablanca
+,BMCI,atm,,,,,,33.564724,-7.6681485,Casablanca
+Crédit du Maroc,,bank,,,,,,33.569958,-7.672042,Casablanca
+BMCI Bank,,bank,,,,,,33.57007,-7.6719975,Casablanca
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,31.647366,-8.047702,Marrakech
+BMCI Bank,,bank,,,,,,33.56697,-7.6839895,Casablanca
+Banque Populaire,,bank,,,,,,33.56713,-7.677099,Casablanca
+CIH Bank,القرض العقاري والسياحي,bank,,,,,,33.56727,-7.6771727,Casablanca
+Bank of Africa,,bank,,,,,,33.56743,-7.677147,Casablanca
+Banque Populaire,,bank,,,,,,33.586227,-7.63111,Casablanca
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,33.589676,-7.6364393,Casablanca
+Crédit du Maroc,,bank,,,,,,33.586506,-7.6306434,Casablanca
+BMCI,البنك المغربي للتجارة والصناعة,bank,,,,,,33.590122,-7.6377077,Casablanca
+Bank of Africa,,bank,,,,,,33.578484,-7.63849,Casablanca
+Barid Cash,,atm,,,,,,33.549168,-7.6846023,Casablanca
+Bank Al Yousr,,bank,,,,,,33.571884,-7.647313,Casablanca
+Banque Popular,,bank,,,,,,35.084934,-2.2208421,Saidia
+BMCI,البنك المغربي للتجارة والصناعة,bank,,,,,,33.57441,-7.64377,Casablanca
+Attijarawafa Bank,,bank,,,,,,33.57487,-7.6424456,Casablanca
+Attijarawafa Bank,,bank,,,,,,33.56959,-7.6517496,Casablanca
+Crédit du Maroc,,bank,,,,,,33.569435,-7.653026,Casablanca
+CIH Bank,القرض العقاري والسياحي,bank,,,,,,33.569984,-7.6516905,Casablanca
+Banque Populaire,,bank,,,,,,33.572945,-7.6457586,Casablanca
+Attijarawafa Bank,,bank,,,,,,33.225693,-8.498432,pachalik d'El Jadida
+Banque Populaire,,bank,,,,,,33.252033,-8.514455,pachalik d'El Jadida
+Bank of Africa,,bank,,,,,,33.25285,-8.514549,pachalik d'El Jadida
+BMCI,البنك المغربي للتجارة والصناعة,bank,,,,,,33.248127,-8.501103,pachalik d'El Jadida
+Bank of Africa,,bank,,,,,,33.250694,-8.503194,pachalik d'El Jadida
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,33.2504,-8.50537,pachalik d'El Jadida
+Banque Populaire,,bank,,,,,,33.25204,-8.503511,pachalik d'El Jadida
+Credit Agricole Du Maroc,,bank,,,,,,33.25223,-8.50381,pachalik d'El Jadida
+Bank of Africa,,bank,,,,,,33.2309,-8.486972,pachalik d'El Jadida
+Bank of Africa,,bank,,,,,,33.229393,-8.49336,pachalik d'El Jadida
+BMCI,البنك المغربي للتجارة والصناعة,bank,,,,,,34.679863,-1.9183159,Oujda
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,33.243206,-8.500715,pachalik d'El Jadida
+BMCI,البنك المغربي للتجارة والصناعة,bank,,,,,,33.227425,-8.493368,pachalik d'El Jadida
+Credit Agricole Du Maroc,,bank,,,,,,33.22794,-8.493461,pachalik d'El Jadida
+CIH Bank,القرض العقاري والسياحي,bank,,,,,,33.24368,-8.522587,pachalik d'El Jadida
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,33.245094,-8.5237,pachalik d'El Jadida
+Bank of Africa,,bank,,,,,,33.24522,-8.524489,pachalik d'El Jadida
+Banque Populaire,,bank,,,,,,33.236633,-8.522765,pachalik d'El Jadida
+Banque Populaire,,bank,,,,,,35.138454,-2.4240625,Ras El Ma
+Cash Plus,,atm,,,,,,33.244217,-8.498733,pachalik d'El Jadida
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,33.250164,-8.51757,pachalik d'El Jadida
+Bank of Africa,,bank,,,,,,33.25409,-8.518568,pachalik d'El Jadida
+Banque Populaire,,bank,,,,,,33.25588,-8.513071,pachalik d'El Jadida
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,34.93412,-2.331014,Berkane
+BMCI,البنك المغربي للتجارة والصناعة,bank,,,,,,33.5965,-7.6126857,Casablanca
+Crédit agricole du Maroc,,bank,,,,,,33.575413,-7.6421013,Casablanca
+Attijarawafa Bank,,bank,,,,,,33.58388,-7.631629,Casablanca
+Credit Agricole du Maroc,,bank,,,,,,34.66913,-1.9330318,Oujda
+Banque Populaire,,bank,,,,,,33.56418,-7.6832523,Casablanca
+Crédit agricole du Maroc,,bank,,,,,,33.554504,-7.700213,Casablanca
+Credit Agricole Du Maroc,,bank,,,,,,35.164993,-2.9319642,Nador
+Bank of Africa,,bank,,,,,,35.16711,-2.9325368,Nador
+Banque Populaire,,bank,,,,,,35.15233,-2.9289093,Nador
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,35.153572,-2.9291277,Nador
+Credit Du Maroc,,bank,,,,,,35.1561,-2.929726,Nador
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,35.15345,-2.9196005,Nador
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,35.164665,-2.931566,Nador
+Banque Populaire,,bank,,,,,,35.168118,-2.936021,Nador
+Banque Populaire,,bank,,,,,,34.931347,-2.3309495,Berkane
+Credit du Maroc,,bank,,,,,,34.66913,-1.9327006,Oujda
+Banque Populaire,,bank,,,,,,34.669033,-1.9326134,Oujda
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,34.66878,-1.9323559,Oujda
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,34.664387,-1.9352862,Oujda
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,35.159836,-2.9341812,Nador
+Bank of Africa,,bank,,,,,,35.161568,-2.9328709,Nador
+Banque Populaire,,bank,,,,,,34.660564,-1.9366977,Oujda
+Banque Populaire,,bank,,,,,,35.173035,-2.9368956,Nador
+Banque Populaire,,bank,,,,,,35.17642,-2.9324968,Nador
+BMCI,البنك المغربي للتجارة والصناعة,bank,,,,,,34.92623,-2.3325696,Berkane
+Banque Populaire,,bank,,,,,,34.926163,-2.332685,Berkane
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,35.176586,-2.9299364,Nador
+Banque Populaire,,bank,,,,,,35.178593,-2.9228902,Nador
+Banque Populaire,,bank,,,,,,35.17564,-2.926475,Nador
+Banque Populaire,,bank,,,,,,35.171947,-2.9285486,Nador
+BMCI,البنك المغربي للتجارة والصناعة,bank,,,,,,35.176662,-2.9266334,Nador
+Credit du Maroc,,bank,,,,,,35.172077,-2.9271188,Nador
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,35.172024,-2.9277477,Nador
+Bank of Africa,,bank,,,,,,35.17863,-2.9270463,Nador
+CIH Bank,القرض العقاري والسياحي,bank,,,,,,35.17759,-2.9280522,Nador
+Credit Agricole du Maroc,,bank,,,,,,35.178066,-2.9245827,Nador
+Banque Populaire,,bank,,,,,,35.177277,-2.9275668,Nador
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,35.177094,-2.9262445,Nador
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,35.17951,-2.9218938,Nador
+Banque Populaire,,bank,,,,,,35.17367,-2.920684,Nador
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,35.17415,-2.9206936,Nador
+Umnia Bank,,bank,,,,,,35.171925,-2.920011,Nador
+Banque Populaire,,bank,,,,,,35.16825,-2.9193163,Nador
+Banque Populaire,,bank,,,,,,35.162518,-2.9233637,Nador
+Bank of Africa,,bank,,,,,,35.162132,-2.9283943,Nador
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,35.170486,-2.9323115,Nador
+Al Akhdar Bank,,bank,,,,,,35.170567,-2.931861,Nador
+Banque Populaire,,bank,,,,,,35.16488,-2.931578,Nador
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,35.170033,-2.928667,Nador
+CIH Bank,القرض العقاري والسياحي,bank,,,,,,35.173836,-2.9237795,Nador
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,34.686222,-1.9321775,Oujda
+Banque Populaire,,bank,,,,,,35.16656,-2.928393,Nador
+Banque Populaire,,bank,,,,,,35.172604,-2.9241014,Nador
+Banque Populaire,,bank,,,,,,34.685276,-1.9323304,Oujda
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,34.680813,-1.9179229,Oujda
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,34.66827,-1.9175138,Oujda
+Bank Assafa,,bank,,,,,,34.68323,-1.9165497,Oujda
+Bank of Africa,,bank,,,,,,34.687477,-1.9155116,Oujda
+Banque Populaire,,bank,,,,,,34.657543,-1.9258662,Oujda
+Crédit Agricole du Maroc,,bank,,,,,,34.65774,-1.9140109,Oujda
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,34.65797,-1.915914,Oujda
+Credit Du Maroc,,bank,,,,,,34.65783,-1.9164639,Oujda
+Banque Populaire,,bank,,,,,,33.905895,-5.5245137,Meknès
+Bank of Africa,,bank,,,,,,33.896397,-5.543119,Meknès
+Banque Populaire,,bank,,,,,,33.862713,-5.5666566,Meknès
+Banque Populaire,,bank,,,,,,33.893204,-5.520489,Meknès
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,33.893326,-5.5202875,Meknès
+Bank of Africa,,bank,,,,,,33.89158,-5.504319,Meknès
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,33.89136,-5.5043316,Meknès
+Banque Populaire,,bank,,,,,,33.89628,-6.316401,Tiflet
+Crédit agricole du Maroc,,bank,,,,,,34.268375,-6.5618205,Kénitra
+Banque Populaire,,bank,,,,,,34.268467,-6.5612974,Kénitra
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,34.268955,-6.56133,Kénitra
+Banque Populaire,,bank,,,,,,34.01959,-6.84958,Rabat
+Banque Populaire,,bank,,,,,,34.265152,-6.56614,Kénitra
+Credit Du Maroc,,bank,,,,,,34.021515,-6.8362603,Rabat
+Credit Agricole Du Maroc,,bank,,,,,,34.016525,-6.8337107,Rabat
+CIH Bank,القرض العقاري والسياحي,bank,,,,,,34.01615,-6.8336034,Rabat
+BMCI,البنك المغربي للتجارة والصناعة,bank,,,,,,34.017696,-6.834233,Rabat
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,34.021145,-6.835011,Rabat
+Bank of Africa,,bank,,,,,,34.264072,-6.56424,Kénitra
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,34.262917,-6.562121,Kénitra
+Bank of Africa,,bank,,,,,,34.26668,-6.563242,Kénitra
+BMCI,البنك المغربي للتجارة والصناعة,bank,,,,,,34.26555,-6.564409,Kénitra
+Banque Populaire,,bank,,,,,,34.26534,-6.5593705,Kénitra
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,34.023277,-6.829184,Rabat
+Crédit du Maroc,,bank,,,,,,34.265457,-6.5646477,Kénitra
+Cash Plus,,atm,,,,,,34.04268,-6.8121057,Salé
+Attijariwafa Bank,Attijariwafa Bank,atm,,,,,,34.03972,-6.816284,Salé
+Crédit agricole du Maroc,,bank,,,,,,34.259502,-6.5842037,Kénitra
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,34.25612,-6.5823903,Kénitra
+Banque Populaire,,bank,,,,,,34.25558,-6.582098,Kénitra
+Banque Populaire,,bank,,,,,,34.2639,-6.5723696,Kénitra
+BMCI,البنك المغربي للتجارة والصناعة,bank,,,,,,30.920147,-6.915789,Ouarzazate
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,34.262302,-6.58397,Kénitra
+Banque Populaire,,bank,,,,,,34.26361,-6.580368,Kénitra
+Credit du Maroc,,bank,,,,,,33.972115,-6.8929124,Rabat
+Banque Populaire,,bank,,,,,,33.97521,-6.889578,Rabat
+Crédit Agricole,,bank,,,,,,33.97555,-6.8891454,Rabat
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,33.975674,-6.8888535,Rabat
+Banque Populaire,,bank,,,,,,34.25478,-6.596191,Kénitra
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,34.25945,-6.585478,Kénitra
+Bank of Africa,,bank,,,,,,34.256298,-6.5959625,Kénitra
+Crédit agricole du Maroc,,bank,,,,,,34.259003,-6.586384,Kénitra
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,34.241573,-6.614668,Kénitra
+Crédit agricole du Maroc,,bank,,,,,,34.245476,-6.6123586,Kénitra
+Banque Populaire,,bank,,,,,,34.24355,-6.613595,Kénitra
+Credit du Maroc,,bank,,,,,,34.248734,-6.6063347,Kénitra
+Bank of Africa,,bank,,,,,,34.248684,-6.607043,Kénitra
+BMCI Bank,,bank,,,,,,34.019913,-6.8425045,Rabat
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,34.258575,-6.598193,Kénitra
+Banque Populaire,,bank,,,,,,33.96067,-6.866782,Rabat
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,34.26103,-6.5890746,Kénitra
+Bank of Africa,,bank,,,,,,34.260006,-6.590823,Kénitra
+Banque Populaire,,bank,,,,,,34.012203,-6.828686,Rabat
+Crédit du Maroc,,bank,,,,,,34.01805,-6.8288145,Rabat
+Banque Populaire,,bank,,,,,,34.266003,-6.6145153,Kénitra
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,34.265873,-6.615042,Kénitra
+Crédit agricole du Maroc,,bank,,,,,,34.265938,-6.615368,Kénitra
+Banque Populaire,,bank,,,,,,34.27012,-6.60152,Kénitra
+Crédit agricole du Maroc,,bank,,,,,,34.27005,-6.6015573,Kénitra
+Banque Populaire,,bank,,,,,,34.26916,-6.6111946,Kénitra
+Bank of Africa,,bank,,,,,,34.25643,-6.6111517,Kénitra
+Attijariwafa Bank,التجاري وفا بنك,atm,,,,,,34.061764,-6.8048553,Salé
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,34.2571,-6.6154084,Kénitra
+Banque Populaire,,bank,,,,,,34.25551,-6.615191,Kénitra
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,33.996883,-6.8481116,Rabat
+Banque Popular,,bank,,,,,,34.049335,-6.81703,Salé
+BMCE Bank,البنك المغربي للتجارة الخارجية,atm,,,,,,34.04973,-6.81666,Salé
+Banque Populaire,,bank,,,,,,34.053326,-6.7811313,Salé
+Banque Populaire,,bank,,,,,,34.2613,-6.624729,Kénitra
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,34.02956,-6.8008556,Salé
+BMCI,البنك المغربي للتجارة والصناعة,bank,,,,,,34.030643,-6.8020887,Salé
+Bank of Africa,,bank,,,,,,34.029938,-6.8011312,Salé
+Banque Popular,,bank,,,,,,34.02984,-6.8014035,Salé
+Credit Agricole du Maroc,,bank,,,,,,33.978733,-6.8176203,Rabat
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,34.054043,-6.794818,Salé
+Al Barid Bank,,bank,,,,,,34.05426,-6.7946134,Salé
+Banque Popular,,bank,,,,,,34.034584,-6.805596,Salé
+Credit Agricole Du Maroc,,bank,,,,,,33.97424,-6.8176804,Rabat
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,34.04638,-6.778339,Salé
+Banque Populaire,,bank,,,,,,33.972935,-6.8194666,Rabat
+Credit Agricole Du Maroc,,bank,,,,,,33.97579,-6.821343,Rabat
+Crédit Agricole,,bank,,,,,,33.528595,-5.1085486,Ifrane
+AttijariWafa,,bank,,,,,,33.528477,-5.108704,Ifrane
+,Al Barid Bank,atm,,,,,,31.624994,-7.989681,Marrakech
+Banque Populaire,,atm,,,,,,30.39912,-9.587994,Agadir
+Credit Agricole Maroc,,bank,,,,,,31.501675,-9.758716,Essaouira
+Crédit du Maroc,,bank,,,,,,31.505947,-9.7607765,Essaouira
+CIH Bank,القرض العقاري والسياحي,bank,,,,,,30.407265,-9.555259,Agadir
+Bank of Africa,,bank,,,,,,30.407408,-9.555482,Agadir
+Banque populaire,Banque populaire,atm,,,,,,29.72069,-8.974831,Tafraout
+,Attijariwafa,atm,,,,,,30.693602,-6.4497,Agdz
+Attijari Wafa Bank,,bank,,,,,,33.60127,-7.6389527,Casablanca
+BBVA,BBVA,atm,,,,,,35.887512,-5.308741,Ceuta
+Banque populaire,Banque populaire,atm,,,,,,33.893433,-5.5634174,Meknès
+Bank of Africa,,bank,,,,,,35.569405,-5.3882318,Tétouan
+Al Akhdar Bank,Al Akhdar Bank,bank,,,,,,33.896355,-5.5462213,Meknès
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,31.503265,-9.758162,Essaouira
+Bank Assafa,,bank,,,,,,33.896862,-5.5481396,Meknès
+Banque Populaire,,bank,,,,,,33.90164,-5.555231,Meknès
+Banque Populaire,,bank,,,,,,33.897327,-5.5467486,Meknès
+Crédit agricole du Maroc,Crédit Agricole,bank,,,,,,33.8981,-5.548689,Meknès
+Bank of Africa,,bank,,,,,,33.89817,-5.5480843,Meknès
+bmce bank of africa,bmce bank of africa,bank,,,,,,33.901924,-5.544024,Meknès
+,Credit du maroc,atm,,,,,,31.616127,-7.9889636,Mechouar Kasbah
+Al barid bank,,atm,,,,,,32.156437,-5.630821,Imilchil
+,Al Barid Bank,atm,,,,,,31.624939,-7.989481,Marrakech
+Banque Populaire,,bank,,,,,,33.901184,-5.5410676,Meknès
+CFG Bank,,bank,,,,,,31.606964,-8.000611,Marrakech
+,BMCI,atm,,,,,,34.019962,-6.842482,Rabat
+Attijari Wafabank,,bank,,,,,,33.994442,-6.851227,Rabat
+,Chaabi bank ATM,atm,,,,,,35.56637,-5.392985,Tétouan
+Crédit du Maroc,,bank,,,,,,33.898323,-5.5309477,Meknès
+,Cih banc,atm,,,,,,33.924995,-6.9331822,Témara
+Banque Populaire,,bank,,,,,,33.89364,-5.5364375,Meknès
+Attijariwafa Bank,,bank,,,,,,33.59176,-7.640785,Casablanca
+Crédit Agricole,Crédit Agricole,atm,,,,,,31.689768,-4.954995,Goulmima
+,CIH Bank,atm,,,,,,34.05534,-6.7932506,Salé
+Banque Populaire,,bank,,,,,,30.416807,-9.579296,Agadir
+Crédit Agricole,,atm,,,,,,32.1072,-9.086837,Sebt Gzoula
+Crédit Agricole,,atm,,,,,,31.373774,-5.987557,Boumalne Dadès
+Banque Populaire,,atm,,,,,,31.115755,-5.169196,Alnif
+CIH Bank,,atm,,,,,,32.283413,-9.225642,Pachalik de Safi
+Crédit Agricole du Maroc,,atm,,,,,,31.53262,-9.549282,Ounagha
+Bank of Africa,,bank,,,,,,33.859306,-5.5537033,Meknès
+Banque Populaire,,bank,,,,,,34.579357,-5.955528,Mechra Bel Ksiri
+Banque Populaire,,bank,,,,,,34.575245,-5.9640985,Mechra Bel Ksiri
+Crédit Agricole du Maroc,,atm,,,,,,33.824757,-7.1474447,Cherrat
+Crédit agricole du Maroc,,bank,,,,,,33.96076,-6.8676276,Rabat
+Umnia Bank,,bank,,,,,,33.96078,-6.867865,Rabat
+CIH,,atm,,,,,,34.877773,-6.286723,Moulay Bousselham
+Al Barid Bank,Al Barid Bank البريد بنك,bank,,,,,,33.980938,-5.242186,M'Haya
+Al Barid Bank,,bank,,,,,,33.236805,-5.059219,Timhadit
+Banque Populaire,,bank,,,,,,33.23476,-5.058288,Timhadit
+1,,atm,,,,,,31.472563,-4.2188153,Maadid
+Bank of Africa,,bank,,,,,,33.849686,-7.0412817,Skhirate
+Attijariwafa Bank ATM,,atm,,,,,,31.633556,-8.002001,Marrakech
+Credit Agricole du Maroc,,atm,,,,,,35.16862,-5.262989,Chefchaouen
+Western Union,,atm,,,,,,32.7338,-9.032791,Loualidia
+Banque Populaire,,bank,,,,,,33.84655,-7.0447874,Skhirate
+CIH Bank,,bank,,,,,,33.570816,-7.5559826,Casablanca
+Banque Populaire,,bank,,,,,,30.414295,-9.580531,Agadir
+,Assurance Dalil,atm,,,,,,33.99158,-6.870274,Rabat
+,Bank Al-Maghrib بنك المغرب,atm,,,,,,33.286934,-5.3371468,Aïn Leuh
+Bank Assafa,,bank,,,,,,34.0171,-6.764332,Salé
+Banque BMCE,BMCE Bank,atm,,,,,,33.576473,-7.705515,Casablanca
+,Al Barid Bank,atm,,,,,,31.621428,-7.9843493,Marrakech
+,Al Barid Bank,atm,,,,,,31.633904,-7.9910884,Marrakech
+GAB Attijari wafabank,,atm,,,,,,34.259388,-5.9223504,Sidi Slimane
+GAB Attijari wafa bank1,,atm,,,,,,34.259666,-5.9274397,Sidi Slimane
+,CIH Bank,atm,,,,,,30.410616,-9.597212,Agadir
+,Attijari Wafa Bank,atm,,,,,,33.391495,-7.5640845,Nouaceur
+BitBase - Cajero Bitcoin,BitBase,atm,,,,,,35.270763,-2.9388583,Melilla
+,Attijariwafa,atm,,,,,,35.57003,-5.37229,Tétouan
+,Al Barid Bank,atm,,,,,,34.065536,-4.973685,Fès
+,CIH Bank,atm,,,,,,34.26063,-6.6455584,Mehdya
+,CIH Bank,atm,,,,,,34.257557,-6.593068,Kénitra
+,Al barid bank,atm,,,,,,29.825264,-5.7189984,Bounu
+,Banque de la Poste,atm,,,,,,23.700851,-15.929958,Dakhla
+,Attijariwafa Bank,atm,,,,,,34.054665,-4.9900975,Méchouar Fès Jdid
+,Al Barid Bank,atm,,,,,,35.467957,-6.0306067,Assilah
+,BMCE Bank,atm,,,,,,33.228256,-8.505253,pachalik d'El Jadida
+,Attijariwafa Bank,atm,,,,,,33.227283,-8.506845,pachalik d'El Jadida
+,Al barid bank,atm,,,,,,35.195534,-6.1508,Larache
+,CIH bank,atm,,,,,,33.59428,-7.678848,Casablanca
+,GFC Bank,atm,,,,,,33.59607,-7.676515,Casablanca
+,Al Barid Bank,atm,,,,,,33.600197,-7.6170187,Casablanca
+Bank of Africa,BMCE Bank,atm,,,,,,33.583923,-7.60942,Casablanca
+Banque Populaire,,bank,,,,,,31.436478,-4.2329664,Arfoud
+,Al Barid Bank,atm,,,,,,31.510096,-9.766703,Essaouira
+Banque Populaire,,bank,,,,,,33.906773,-6.9245224,Témara
+,CIH Bank,atm,,,,,,33.24813,-8.498212,pachalik d'El Jadida
+,Umnia Bank,atm,,,,,,30.424091,-9.602114,Agadir
+Barid Al-Maghrib,Al Barid Bank,atm,,,,,,31.283264,-4.269306,Moulay Ali Chérif
+Al Barid Bank,,atm,,,,,,31.516914,-9.761025,Essaouira
+Crédit agricole du Maroc,,bank,,,,,,31.949615,-3.6115434,Boudnib
+,Banque Populaire,atm,,,,,,31.73297,-7.0020957,Demnate
+Al Barid Bank,,bank,,,,,,31.948221,-3.6035542,Boudnib
+Al Barid Bank,Al Barid Bank,bank,,,,,,31.434555,-4.23403,Arfoud
+,Banque Populaire,atm,,,,,,34.057045,-5.5225105,Moulay Idriss Zarhoun
+,Al Barid Bank,atm,,,,,,30.40174,-9.589982,Agadir
+,Banque Populaire,atm,,,,,,31.042711,-7.129743,Tabouraht
+,Banque Populaire,atm,,,,,,30.693663,-6.450944,Agdz
+Agence Bouabid,Banque Populaire,atm,,,,,,30.413239,-9.572822,Agadir
+,CIH Bank,atm,,,,,,30.413424,-9.572178,Agadir
+,Al Barid Bank,atm,,,,,,31.099213,-4.0168285,Taouz
+Umnia Bank,Umnia,atm,,,,,,35.176975,-2.9274094,Nador
+,Al BARID Bank,atm,,,,,,31.521523,-5.5307093,Tinghir
+,Al BARID Bank,atm,,,,,,31.521423,-5.5308394,Tinghir
+,Attijariwafa Bank,atm,,,,,,31.624496,-7.990012,Marrakech
+CIH BANK,CIH,bank,,,,,,34.66456,-1.9081573,Oujda
+CIH Bank,,bank,,,,,,34.66144,-1.898649,Oujda
+,CIH,atm,,,,,,33.851154,-7.0388765,Skhirate
+Al Barid Bank,Al Barid Bank,bank,,,,,,34.012634,-4.981084,Fès
+,CIH Bank,atm,,,,,,33.56542,-7.6572084,Casablanca
+,CFG,atm,,,,,,33.56327,-7.663675,Casablanca
+,Attijariwafa Bank,atm,,,,,,33.563076,-7.663675,Casablanca
+,Attijariwafa Bank,atm,,,,,,33.597984,-7.6647487,Casablanca
+,Attijariwafa Bank,atm,,,,,,33.54414,-7.6393046,Casablanca
+Crédit du Maroc,,bank,,,,,,33.566227,-7.651289,Casablanca
+Crédit Agricole,,bank,,,,,,33.268497,-7.58894,Berrechid
+CIH AL BASSATINE,CIH Bank,bank,,,,,,33.83809,-7.0572376,Skhirate
+,Crédit du Maroc مصرف المغرب,atm,,,,,,33.589695,-7.649582,Casablanca
+,BMCI,atm,,,,,,33.58729,-7.6487155,Casablanca
+Al Barid,,atm,,,,,,29.37831,-10.173876,Sidi Ifni
+Bank of Africa,,atm,,,,,,35.168327,-5.2668653,Chefchaouen
+,CIH Euronet,atm,,,,,,30.544937,-9.708586,Taghazout
+,CIH Euronet,atm,,,,,,30.545324,-9.7102585,Taghazout
+,CIH Euronet,atm,,,,,,30.54548,-9.711515,Taghazout
+,Al Barid Bank,atm,,,,,,31.967474,-6.565962,Azilal
+Attijariwafa bank,,bank,,,,,,33.950848,-6.837729,Rabat
+Cash Plus,,atm,,,,,,35.168262,-5.261165,Chefchaouen
+,Poste Maroc,atm,,,,,,31.862541,-6.942714,Tanant
+,Poste Maroc,atm,,,,,,32.507034,-7.1910915,El Borouj
+Bank Al Yousr,,bank,,,,,,33.590206,-7.6386747,Casablanca
+Crédit du Maroc,,bank,,,,,,33.58957,-7.639181,Casablanca
+Crédit du Maroc,,bank,,,,,,33.58553,-7.6456847,Casablanca
+,Bank Al-Maghrib بنك المغرب,atm,,,,,,35.61659,-5.277839,Martil
+,Bank Al-Maghrib بنك المغرب,atm,,,,,,35.085938,-2.2264402,Saidia
+Banque Populaire,,bank,,,,,,33.593185,-7.640038,Casablanca
+Attijari Wafabank,Attijari Wafabank,bank,,,,,,33.99302,-6.8469515,Rabat
+Agence CFG Bank,,bank,,,,,,34.00433,-6.846488,Rabat
+Agence BMCI,,bank,,,,,,33.99254,-6.8474627,Rabat
+Agence Attijari,Attijariwafa Bank,bank,,,,,,33.961563,-6.86454,Rabat
+Bank of Africa,,bank,,,,,,33.58768,-7.642141,Casablanca
+Crédit du Maroc,,bank,,,,,,33.573193,-7.639165,Casablanca
+,CIH Bank,atm,,,,,,30.846521,-9.818169,Imsouane
+,CIH Bank,atm,,,,,,30.843792,-9.820865,Imsouane
+Banque Populaire,,bank,,,,,,33.576042,-7.638335,Casablanca
+Crédit du Maroc,,bank,,,,,,33.589813,-7.649545,Casablanca
+Crédit du Maroc,,bank,,,,,,33.594326,-7.651803,Casablanca
+Banque Populaire,,bank,,,,,,33.565254,-7.647475,Casablanca
+Umnia Bank,,bank,,,,,,34.2637,-6.5870347,Kénitra
+,Banque populaire,atm,,,,,,33.596226,-7.669077,Casablanca
+,Attijariwafa bank,atm,,,,,,33.57236,-7.669475,Casablanca
+,Banque Populaire البنك الشعبي,atm,,,,,,33.573433,-7.664275,Casablanca
+,CIH bank,atm,,,,,,33.596058,-7.6770587,Casablanca
+,CIH bank,atm,,,,,,33.595707,-7.677021,Casablanca
+,Attijariwafa bank,atm,,,,,,33.56574,-7.676453,Casablanca
+Attijariwafa bank,Attijariwafa bank,bank,,,,,,34.25097,-6.602878,Kénitra
+Bank of Africa,,bank,,,,,,33.592136,-7.6393647,Casablanca
+Banque Populaire,,bank,,,,,,33.5874,-7.64085,Casablanca
+CIH Bank TAZA,,bank,,,,,,34.221428,-4.005355,Taza
+Banque Populaire,,bank,,,,,,34.221344,-4.0051465,Taza
+,CIH Bank,atm,,,,,,34.221783,-4.0076957,Taza
+Umnia Bank,,bank,,,,,,33.59188,-7.641953,Casablanca
+Attijariwafa Bank,,bank,,,,,,33.591133,-7.636428,Casablanca
+CIH Bank,,atm,,,,,,31.62554,-7.987765,Marrakech
+CIH Bank,,atm,,,,,,31.626564,-7.987271,Marrakech
+Banque Populaire,,bank,,,,,,33.591805,-7.6072454,Casablanca
+Banque Populaire,,bank,,,,,,33.55592,-7.683817,Casablanca
+Banque Populaire,,bank,,,,,,33.559723,-7.6117196,Casablanca
+Banque Populaire,,bank,,,,,,33.57193,-7.669018,Casablanca
+Banque Populaire,,bank,,,,,,33.590675,-7.611594,Casablanca
+Banque Populaire,,bank,,,,,,33.554344,-7.623272,Casablanca
+CIH Bank,القرض العقاري والسياحي,bank,,,,,,33.59574,-7.6122947,Casablanca
+BMCI,البنك المغربي للتجارة والصناعة,bank,,,,,,33.57367,-7.6560397,Casablanca
+Bank of Africa,,bank,,,,,,33.587364,-7.6463437,Casablanca
+Banque Populaire,,bank,,,,,,33.57959,-7.636544,Casablanca
+Crédit agricole du Maroc,,bank,,,,,,33.574696,-7.643566,Casablanca
+,posté maroc,atm,,,,,,21.3674,-16.961182,Guerguerat
+,Banque Populaire,atm,,,,,,33.5891,-7.633934,Casablanca
+,Attijariwafa Bank,atm,,,,,,33.58718,-7.639231,Casablanca
+,Crédit du Maroc مصرف المغرب,atm,,,,,,33.589703,-7.6388364,Casablanca
+Attijariwafa Bank,,bank,,,,,,33.84943,-7.0415397,Skhirate
+,Banque Populaire,atm,,,,,,33.166573,-5.5660853,M'rirt
+ATM - El Barid Bank,,atm,,,,,,32.15653,-5.6309714,Imilchil
+Banco de Espaa,,bank,,,,,,,,
+Banque Populaire,,bank,,,,,,,,
+Bank of Africa,,bank,,,,,,,,
+Crédit du Maroc,Crédit du Maroc,bank,,,,,,,,
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,,,
+Bank of Africa,,bank,,,,,,,,
+BMCI,البنك المغربي للتجارة والصناعة,bank,,,,,,,,
+Banque Populaire,,bank,,,,,,,,
+Banque Populaire,,bank,,,,,,,,
+Banque Populaire,,bank,,,,,,,,
+Banque Populaire,,bank,,,,,,,,
+BMCI,البنك المغربي للتجارة والصناعة,bank,,,,,,,,
+Banque Populaire,,bank,,,,,,,,
+BMCI,البنك المغربي للتجارة والصناعة,bank,,,,,,,,
+Banque Populaire,,bank,,,,,,,,
+Bank of Africa,,bank,,,,,,,,
+Bank of Africa,,bank,,,,,,,,
+BMCI,البنك المغربي للتجارة والصناعة,bank,,,,,,,,
+Banque Populaire,,bank,,,,,,,,
+Bank of Africa,,bank,,,,,,,,
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,,,
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,,,
+Crédit agricole du Maroc,,bank,,,,,,,,
+Banque Populaire,,bank,,,,,,,,
+BMCI,البنك المغربي للتجارة والصناعة,bank,,,,,,,,
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,,,
+Banque Populaire,,bank,,,,,,,,
+Bank of Africa,,bank,,,,,,,,
+Bank of Africa,,bank,,,,,,,,
+Banque Populaire,,bank,,,,,,,,
+Bank of Africa,,bank,,,,,,,,
+BMCI,البنك المغربي للتجارة والصناعة,bank,,,,,,,,
+Bank of Africa,,bank,,,,,,,,
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,,,
+Crédit du Maroc,,bank,,,,,,,,
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,,,
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,,,
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,,,
+Credit du Maroc,,bank,,,,,,,,
+Bank of Africa,,bank,,,,,,,,
+Banque Populaire,,bank,,,,,,,,
+Banque Populaire,,bank,,,,,,,,
+,Banque populaire,bank,,,,,,,,
+Bank of Africa,,bank,,,,,,,,
+Banque Populaire,,bank,,,,,,,,
+Bank of Africa,,bank,,,,,,,,
+Banque Populaire,,bank,,,,,,,,
+Bank of Africa,,bank,,,,,,,,
+Crédit du Maroc,,bank,,,,,,,,
+Bank of Africa,,bank,,,,,,,,
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,,,
+Attijariwafa Bank,التجاري وفا بنك,bank,,,,,,,,
+Banque Populaire,,bank,,,,,,,,
+BMCI,البنك المغربي للتجارة والصناعة,bank,,,,,,,,
+Credit Agricole du Maroc,,bank,,,,,,,,
+Bank of Africa,,bank,,,,,,,,
+CFG Bank,,bank,,,,,,,,
+Al Barid Bank,,bank,,,,,,,,

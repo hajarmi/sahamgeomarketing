@@ -85,22 +85,7 @@ const layersConfig = [
         hasIntensity: false,
       },
     },
-    {
-      key: "coverage" as const,
-      label: "Zones de Chalandise",
-      description: "Isochrones 5, 10, 15 min à pied",
-      icon: Target,
-      color: "text-purple-500",
-      bgColor: "bg-purple-500/10",
-      borderColor: "border-purple-500/20",
-      dataPoints: "892 zones",
-      lastUpdate: "Calculé en temps réel",
-      settings: {
-        hasOpacity: true,
-        hasRadius: false,
-        hasIntensity: false,
-      },
-    },
+   
   ]
 
 export default function LayerControls({ activeLayers, onLayerToggle, selectedATM }: LayerControlsProps) {

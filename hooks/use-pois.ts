@@ -6,13 +6,26 @@ import type { POI, POIListResponse } from "@/types"
 
 export type BBox = { s: number; w: number; n: number; e: number } | null
 
-function limitForZoom(z: number | undefined) {
+function limitForZoom(z?: number) {
   if (!z) return 20
   if (z >= 13) return 1500
   if (z >= 11) return 800
   if (z >= 9)  return 400
   if (z >= 7)  return 150
-  return 20 // niveau initial
+  return 20
+}
+
+// retire le slash de fin si présent
+function trimSlash(s: string) {
+  return s.endsWith("/") ? s.slice(0, -1) : s
+}
+
+// base API: .env (tunnel) ou localhost (dev)
+function getApiBase() {
+  // Tunnel: NEXT_PUBLIC_API_URL = "https://...ts.net/api"
+  // Local dev: fallback sans /api
+  const fromEnv = process.env.NEXT_PUBLIC_API_URL
+  return trimSlash(fromEnv || "http://127.0.0.1:8000")
 }
 
 export function usePOIs(enabled: boolean, bbox?: BBox, zoomLevel?: number) {
@@ -25,7 +38,7 @@ export function usePOIs(enabled: boolean, bbox?: BBox, zoomLevel?: number) {
     setError(null)
   }, [])
 
-  // reset à chaque changement de bbox/zoom/enabled
+  // reset visuel quand bbox/zoom/enabled changent
   useEffect(() => {
     if (!enabled || !bbox) {
       setPois([])
@@ -45,7 +58,7 @@ export function usePOIs(enabled: boolean, bbox?: BBox, zoomLevel?: number) {
       setLoading(true)
       setError(null)
       try {
-        const base = process.env.NEXT_PUBLIC_API_BASE_URL || "http://127.0.0.1:8000"
+        const base = getApiBase() // ← unifie /api vs pas /api
         const url = new URL(`${base}/pois`)
         url.searchParams.set("s", String(bbox.s))
         url.searchParams.set("w", String(bbox.w))
@@ -58,9 +71,9 @@ export function usePOIs(enabled: boolean, bbox?: BBox, zoomLevel?: number) {
           headers: { accept: "application/json" },
         })
         if (!res.ok) throw new Error(`HTTP ${res.status}`)
+
         const json: POIListResponse = await res.json()
         if (aborted) return
-
         setPois(json?.pois ?? [])
       } catch (e: any) {
         if (!aborted) setError(e?.message || "Erreur chargement POI")

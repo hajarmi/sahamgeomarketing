@@ -11,7 +11,6 @@ import {
   MapPin,
   Users,
   Building,
-  Target,
   ChevronDown,
   ChevronUp,
   Eye,
@@ -23,6 +22,7 @@ import {
   DollarSign,
   Wifi,
   Calendar,
+  Route, // 👈 for Transport
 } from "lucide-react"
 import { Label } from "@/components/ui/label"
 import { Slider } from "@/components/ui/slider"
@@ -37,10 +37,11 @@ interface LayerControlsProps {
     competitors: boolean
     pois: boolean
     coverage: boolean
+    transport: boolean // 👈 NEW
   }
   onLayerToggle: (layer: keyof LayerControlsProps["activeLayers"], active: boolean) => void
-  mode?: "compact" | "detailed" // Added mode prop for different contexts
-  onLayerConfigChange?: (layer: string, config: any) => void // Added config callback
+  mode?: "compact" | "detailed"
+  onLayerConfigChange?: (layer: string, config: any) => void
   selectedATM?: ATM | null
   atms?: ATM[]
   onATMSelect?: (atm: ATM) => void
@@ -63,8 +64,11 @@ export default function EnhancedLayerControls({
     competitors: 80,
     pois: 90,
     coverage: 60,
+    transport: 90, // 👈 NEW default opacity
   })
-  const [expandedLayers, setExpandedLayers] = useState<string[]>(mode === "detailed" ? ["population"] : [])
+  const [expandedLayers, setExpandedLayers] = useState<string[]>(
+    mode === "detailed" ? ["population"] : []
+  )
 
   const layers = useMemo(
     () => [
@@ -79,11 +83,7 @@ export default function EnhancedLayerControls({
         dataPoints: "2.3M points",
         lastUpdate: "Mis à jour il y a 2h",
         performance: { loadTime: "1.2s", accuracy: "98%" },
-        settings: {
-          hasOpacity: true,
-          hasRadius: true,
-          hasIntensity: true,
-        },
+        settings: { hasOpacity: true, hasRadius: true, hasIntensity: true },
       },
       {
         key: "competitors" as const,
@@ -96,11 +96,7 @@ export default function EnhancedLayerControls({
         dataPoints: "1,247 sites",
         lastUpdate: "Mis à jour il y a 1j",
         performance: { loadTime: "0.8s", accuracy: "100%" },
-        settings: {
-          hasOpacity: true,
-          hasRadius: false,
-          hasIntensity: false,
-        },
+        settings: { hasOpacity: true, hasRadius: false, hasIntensity: false },
       },
       {
         key: "pois" as const,
@@ -113,31 +109,24 @@ export default function EnhancedLayerControls({
         dataPoints: "15.7K POIs",
         lastUpdate: "Mis à jour il y a 6h",
         performance: { loadTime: "2.1s", accuracy: "95%" },
-        settings: {
-          hasOpacity: true,
-          hasRadius: false,
-          hasIntensity: false,
-        },
+        settings: { hasOpacity: true, hasRadius: false, hasIntensity: false },
       },
       {
-        key: "coverage" as const,
-        label: "Zones de Chalandise",
-        description: "Isochrones 5, 10, 15 min à pied",
-        icon: Target,
+        key: "transport" as const, // 👈 NEW layer
+        label: "Transport",
+        description: "Trains, tram, bus, taxi",
+        icon: Route,
         color: "text-purple-500",
         bgColor: "bg-purple-500/10",
         borderColor: "border-purple-500/20",
-        dataPoints: "892 zones",
-        lastUpdate: "Calculé en temps réel",
-        performance: { loadTime: "0.5s", accuracy: "92%" },
-        settings: {
-          hasOpacity: true,
-          hasRadius: false,
-          hasIntensity: false,
-        },
+        dataPoints: "Plusieurs milliers",
+        lastUpdate: "Mis à jour il y a 3h",
+        performance: { loadTime: "1.0s", accuracy: "97%" },
+        settings: { hasOpacity: true, hasRadius: false, hasIntensity: false },
       },
+      
     ],
-    [],
+    []
   )
 
   const handleOpacityChange = useCallback(
@@ -146,10 +135,14 @@ export default function EnhancedLayerControls({
       setLayerOpacity((prev) => ({ ...prev, [layerKey]: newOpacity }))
       onLayerConfigChange?.(layerKey, { opacity: newOpacity })
     },
-    [onLayerConfigChange],
+    [onLayerConfigChange]
   )
 
-  const activeLayersCount = useMemo(() => Object.values(activeLayers).filter(Boolean).length, [activeLayers])
+  const activeLayersCount = useMemo(
+    () => Object.values(activeLayers).filter(Boolean).length,
+    [activeLayers]
+  )
+  const totalLayers = useMemo(() => Object.keys(activeLayers).length, [activeLayers])
 
   const getPerformanceColor = (performance: number) => {
     if (performance >= 90) return "text-green-600"
@@ -158,7 +151,7 @@ export default function EnhancedLayerControls({
   }
 
   const getStatusColor = (status: string) => {
-    switch (status?.toLowerCase()) {
+    switch ((status || "").toLowerCase()) {
       case "connecté":
         return "text-green-600"
       case "instable":
@@ -181,7 +174,7 @@ export default function EnhancedLayerControls({
                 <span>Couches Actives</span>
               </div>
               <Badge variant="secondary" className="text-xs">
-                {activeLayersCount}/4
+                {activeLayersCount}/{totalLayers}
               </Badge>
             </CardTitle>
           </CardHeader>
@@ -206,7 +199,14 @@ export default function EnhancedLayerControls({
           </CardContent>
         </Card>
 
-        {onATMSelect && <ATMList atms={atms || []} selectedATM={selectedATM} onATMSelect={onATMSelect} loading={loading || false} />}
+        {onATMSelect && (
+          <ATMList
+            atms={atms || []}
+            selectedATM={selectedATM}
+            onATMSelect={onATMSelect}
+            loading={loading || false}
+          />
+        )}
 
         {selectedATM && (
           <Card className="h-fit">
@@ -226,11 +226,18 @@ export default function EnhancedLayerControls({
                 <div className="space-y-1">
                   <div className="flex justify-between items-center">
                     <span className="text-xs text-muted-foreground">Performance</span>
-                    <span className={`text-xs font-medium ${getPerformanceColor(Math.round((selectedATM.monthly_volume / 1500) * 100))}`}>
+                    <span
+                      className={`text-xs font-medium ${getPerformanceColor(
+                        Math.round((selectedATM.monthly_volume / 1500) * 100)
+                      )}`}
+                    >
                       {Math.round((selectedATM.monthly_volume / 1500) * 100)}%
                     </span>
                   </div>
-                  <Progress value={Math.round((selectedATM.monthly_volume / 1500) * 100)} className="h-1" />
+                  <Progress
+                    value={Math.round((selectedATM.monthly_volume / 1500) * 100)}
+                    className="h-1"
+                  />
                 </div>
               )}
 
@@ -275,7 +282,7 @@ export default function EnhancedLayerControls({
             </div>
             <div className="flex items-center space-x-2">
               <Badge variant="secondary" className="text-xs">
-                {activeLayersCount}/4 actives
+                {activeLayersCount}/{totalLayers} actives
               </Badge>
               <Badge variant="outline" className="text-xs flex items-center space-x-1">
                 <Database className="w-3 h-3" />
@@ -320,7 +327,7 @@ export default function EnhancedLayerControls({
                               setExpandedLayers((prev) =>
                                 prev.includes(layer.key)
                                   ? prev.filter((key) => key !== layer.key)
-                                  : [...prev, layer.key],
+                                  : [...prev, layer.key]
                               )
                             }
                             className="h-8 w-8 p-0"
@@ -351,13 +358,15 @@ export default function EnhancedLayerControls({
                     <CollapsibleContent className="mt-4 space-y-4">
                       <Separator />
 
-                      {/* Enhanced opacity control with real-time feedback */}
+                      {/* Opacity control */}
                       {layer.settings.hasOpacity && (
                         <div className="space-y-2">
                           <div className="flex items-center justify-between">
                             <Label className="text-sm">Opacité</Label>
                             <div className="flex items-center space-x-2">
-                              <span className="text-xs text-muted-foreground">{layerOpacity[layer.key]}%</span>
+                              <span className="text-xs text-muted-foreground">
+                                {layerOpacity[layer.key]}%
+                              </span>
                               <div
                                 className={`w-4 h-4 rounded border ${layer.color.replace("text-", "bg-")}`}
                                 style={{ opacity: layerOpacity[layer.key] / 100 }}
@@ -383,7 +392,7 @@ export default function EnhancedLayerControls({
                           className="flex-1 bg-transparent"
                           disabled={!isActive}
                           onClick={() => {
-                            // Isolate this layer (turn off others)
+                            // Isoler cette couche (désactiver les autres)
                             Object.keys(activeLayers).forEach((key) => {
                               if (key !== layer.key) {
                                 onLayerToggle(key as keyof typeof activeLayers, false)
@@ -421,15 +430,30 @@ export default function EnhancedLayerControls({
               <div>
                 <h3 className="font-semibold text-lg">{selectedATM.id}</h3>
                 <p className="text-sm text-muted-foreground">{selectedATM.bank_name}</p>
-                <p className="text-xs text-muted-foreground mt-1">{selectedATM.city}, {selectedATM.region}</p>
+                <p className="text-xs text-muted-foreground mt-1">
+                  {selectedATM.city}, {selectedATM.region}
+                </p>
               </div>
               {selectedATM.monthly_volume && (
                 <div className="text-right">
-                  <div className={`text-2xl font-bold ${getPerformanceColor(Math.round((selectedATM.monthly_volume / 1500) * 100))}`}>
+                  <div
+                    className={`text-2xl font-bold ${getPerformanceColor(
+                      Math.round((selectedATM.monthly_volume / 1500) * 100)
+                    )}`}
+                  >
                     {Math.round((selectedATM.monthly_volume / 1500) * 100)}%
                   </div>
-                  <Badge variant="outline" className={getPerformanceColor(Math.round((selectedATM.monthly_volume / 1500) * 100))}>
-                    {Math.round((selectedATM.monthly_volume / 1500) * 100) >= 90 ? "Excellente" : Math.round((selectedATM.monthly_volume / 1500) * 100) >= 80 ? "Bonne" : "Faible"}
+                  <Badge
+                    variant="outline"
+                    className={getPerformanceColor(
+                      Math.round((selectedATM.monthly_volume / 1500) * 100)
+                    )}
+                  >
+                    {Math.round((selectedATM.monthly_volume / 1500) * 100) >= 90
+                      ? "Excellente"
+                      : Math.round((selectedATM.monthly_volume / 1500) * 100) >= 80
+                      ? "Bonne"
+                      : "Faible"}
                   </Badge>
                 </div>
               )}
@@ -439,11 +463,18 @@ export default function EnhancedLayerControls({
               <div className="space-y-2">
                 <div className="flex justify-between items-center">
                   <span className="text-sm text-muted-foreground">Performance globale</span>
-                  <span className={`text-sm font-medium ${getPerformanceColor(Math.round((selectedATM.monthly_volume / 1500) * 100))}`}>
+                  <span
+                    className={`text-sm font-medium ${getPerformanceColor(
+                      Math.round((selectedATM.monthly_volume / 1500) * 100)
+                    )}`}
+                  >
                     {Math.round((selectedATM.monthly_volume / 1500) * 100)}%
                   </span>
                 </div>
-                <Progress value={Math.round((selectedATM.monthly_volume / 1500) * 100)} className="h-2" />
+                <Progress
+                  value={Math.round((selectedATM.monthly_volume / 1500) * 100)}
+                  className="h-2"
+                />
               </div>
             )}
 
@@ -452,9 +483,13 @@ export default function EnhancedLayerControls({
                 <div className="bg-blue-50 p-3 rounded-lg">
                   <div className="flex items-center space-x-2 mb-1">
                     <Activity className="w-4 h-4 text-blue-600" />
-                    <span className="text-xs text-blue-600 uppercase tracking-wide font-medium">Transactions/jour</span>
+                    <span className="text-xs text-blue-600 uppercase tracking-wide font-medium">
+                      Transactions/jour
+                    </span>
                   </div>
-                  <div className="text-lg font-bold text-blue-800">{Math.round(selectedATM.monthly_volume / 30)}</div>
+                  <div className="text-lg font-bold text-blue-800">
+                    {Math.round(selectedATM.monthly_volume / 30)}
+                  </div>
                 </div>
               )}
 
@@ -462,7 +497,9 @@ export default function EnhancedLayerControls({
                 <div className="bg-green-50 p-3 rounded-lg">
                   <div className="flex items-center space-x-2 mb-1">
                     <Wifi className="w-4 h-4 text-green-600" />
-                    <span className="text-xs text-green-600 uppercase tracking-wide font-medium">Disponibilité</span>
+                    <span className="text-xs text-green-600 uppercase tracking-wide font-medium">
+                      Disponibilité
+                    </span>
                   </div>
                   <div className="text-lg font-bold text-green-800">99.5%</div>
                 </div>
@@ -472,9 +509,13 @@ export default function EnhancedLayerControls({
                 <div className="bg-purple-50 p-3 rounded-lg">
                   <div className="flex items-center space-x-2 mb-1">
                     <BarChart3 className="w-4 h-4 text-purple-600" />
-                    <span className="text-xs text-purple-600 uppercase tracking-wide font-medium">Volume mensuel</span>
+                    <span className="text-xs text-purple-600 uppercase tracking-wide font-medium">
+                      Volume mensuel
+                    </span>
                   </div>
-                  <div className="text-lg font-bold text-purple-800">{selectedATM.monthly_volume}</div>
+                  <div className="text-lg font-bold text-purple-800">
+                    {selectedATM.monthly_volume}
+                  </div>
                 </div>
               )}
 
@@ -482,9 +523,13 @@ export default function EnhancedLayerControls({
                 <div className="bg-yellow-50 p-3 rounded-lg">
                   <div className="flex items-center space-x-2 mb-1">
                     <DollarSign className="w-4 h-4 text-yellow-600" />
-                    <span className="text-xs text-yellow-600 uppercase tracking-wide font-medium">ROI</span>
+                    <span className="text-xs text-yellow-600 uppercase tracking-wide font-medium">
+                      ROI
+                    </span>
                   </div>
-                  <div className="text-lg font-bold text-yellow-800">{selectedATM.roi.toFixed(1)}%</div>
+                  <div className="text-lg font-bold text-yellow-800">
+                    {selectedATM.roi.toFixed(1)}%
+                  </div>
                 </div>
               )}
             </div>
@@ -499,10 +544,10 @@ export default function EnhancedLayerControls({
                       selectedATM.cashLevel === "Optimal"
                         ? "text-green-600 border-green-200"
                         : selectedATM.cashLevel === "Bon"
-                          ? "text-yellow-600 border-yellow-200"
-                          : selectedATM.cashLevel === "Faible"
-                            ? "text-orange-600 border-orange-200"
-                            : "text-red-600 border-red-200"
+                        ? "text-yellow-600 border-yellow-200"
+                        : selectedATM.cashLevel === "Faible"
+                        ? "text-orange-600 border-orange-200"
+                        : "text-red-600 border-red-200"
                     }
                   >
                     {selectedATM.cashLevel}

@@ -48,7 +48,6 @@ class ATMData(BaseModel):
     id: str = Field(..., description="Unique identifier for the ATM.", example="ATMCASA01")
     latitude: float = Field(..., ge=-90, le=90, example=33.5951)
     longitude: float = Field(..., ge=-180, le=180, example=-7.6185)
-    monthly_volume: Optional[float] = Field(1000, description="Monthly transaction volume.", example=1300)
     bank_name: Optional[str] = Field("Saham Bank", description="The name of the bank owning the ATM.", example="Saham Bank")
     status: Optional[Literal['active', 'inactive', 'maintenance']] = Field("active", description="Current status of the ATM.")
     installation_type: Optional[Literal['agency', 'mobile']] = Field("agency", description="Type of ATM installation.")
@@ -171,3 +170,29 @@ class POI(BaseModel):
 class POIListResponse(BaseModel):
     pois: List[POI]
     total_count: int    
+    
+
+class TransportPoint(BaseModel):
+    id: str
+    latitude: float
+    longitude: float
+
+    transport_mode: Optional[str] = None  # "train" / "bus" / "tram" / "taxi" ...
+    name: Optional[str] = None
+    operator: Optional[str] = None
+    network: Optional[str] = None
+
+    # tags OSM bruts, si tu veux les garder
+    osmid: Optional[str] = None
+    osm_type: Optional[str] = None
+    railway: Optional[str] = None
+    highway: Optional[str] = None
+    amenity: Optional[str] = None
+    tram: Optional[str] = None
+    bus: Optional[str] = None
+    route: Optional[str] = None
+
+
+class TransportListResponse(BaseModel):
+    transports: List[TransportPoint]
+    total_count: int

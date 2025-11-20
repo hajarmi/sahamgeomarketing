@@ -492,3 +492,6 @@
   background: rgba(0, 0, 0, 0.8) !important;
   color: hsl(var(--color-muted-foreground)) !important;
 }
+.leaflet-dragging .leaflet-tooltip {
+  display: none !important;
+}

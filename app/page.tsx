@@ -1,19 +1,19 @@
 "use client"
 
-import { useState, useCallback, useEffect, useReducer } from "react"
-import type { KeyboardEvent } from "react"
+import { useState, useCallback, useEffect, useReducer, type KeyboardEvent } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { MapPin, Target, BarChart3, Layers, Search, Brain, Calculator } from "lucide-react"
+
 import LeafletMap from "@/components/mapbox-map"
 import AnalysisPanel from "@/components/analysis-panel"
 import ScoringDashboard from "@/components/scoring-dashboard"
 import EnhancedLayerControls from "@/components/enhanced-layer-controls"
 import LocationAnalyzer from "@/components/location-analyzer"
 import ScenarioSimulator from "@/components/scenario-simulator"
-import { ATM } from "@/types"
+import type { ATM } from "@/types"
 
 export default function HomePage() {
   const [selectedLocation, setSelectedLocation] = useState<{
@@ -21,12 +21,14 @@ export default function HomePage() {
     lat: number
     address?: string
   } | null>(null)
+
   const [activeLayers, setActiveLayers] = useState({
     population: true,
     competitors: true,
     pois: false,
     coverage: false,
   })
+
   const [simulationMode, setSimulationMode] = useState(false)
   const [activeTab, setActiveTab] = useState("map")
   const [selectedATM, setSelectedATM] = useState<ATM | null>(null)
@@ -41,6 +43,7 @@ export default function HomePage() {
     }
   }
 
+  // Chargement ATMs
   useEffect(() => {
     const fetchATMs = async () => {
       setIsLoading(true)
@@ -51,50 +54,43 @@ export default function HomePage() {
         setAtms(data.atms)
       } catch (error) {
         console.error("Error fetching ATMs:", error)
-        setAtms([]) // Clear data on error
+        setAtms([])
       } finally {
         setIsLoading(false)
       }
     }
-
     fetchATMs()
   }, [refreshKey])
 
+  // Résultat recherche adresse (événement custom)
   useEffect(() => {
-    const handleAddressSearchResult = (event: CustomEvent) => {
-      console.log("[v0] Address search result received:", event.detail)
-      setSelectedLocation(event.detail)
-      // Switch to map tab to show the result on the map
+    const handleAddressSearchResult = (event: Event) => {
+      const custom = event as CustomEvent<{ lng: number; lat: number; address?: string }>
+      setSelectedLocation(custom.detail)
       setActiveTab("map")
     }
 
-    window.addEventListener("addressSearchResult", handleAddressSearchResult as EventListener)
-
+    window.addEventListener("addressSearchResult", handleAddressSearchResult)
     return () => {
-      window.removeEventListener("addressSearchResult", handleAddressSearchResult as EventListener)
+      window.removeEventListener("addressSearchResult", handleAddressSearchResult)
     }
   }, [])
 
   const handleLayerConfigChange = useCallback((layer: string, config: any) => {
     console.log(`[v0] Layer ${layer} config updated:`, config)
-    // Here you would update the map visualization in real-time
   }, [])
 
   const handleATMSelect = useCallback((atm: ATM) => {
-    console.log("[v0] ATM selected:", atm)
     setSelectedATM(atm)
     setActiveTab("map")
-    // Center the map on the selected ATM
     if (atm.latitude && atm.longitude) {
-      setSelectedLocation({
-        lng: atm.longitude,
-        lat: atm.latitude,
-      })
+      setSelectedLocation({ lng: atm.longitude, lat: atm.latitude })
     }
   }, [])
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
+      {/* HEADER */}
       <header className="border-b bg-card/95 backdrop-blur-sm sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
@@ -117,7 +113,6 @@ export default function HomePage() {
                 <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse-slow" />
                 <span className="font-medium">IA Active</span>
               </Badge>
-
               <Button
                 variant={simulationMode ? "default" : "outline"}
                 size="sm"
@@ -132,20 +127,20 @@ export default function HomePage() {
         </div>
       </header>
 
+      {/* HERO */}
       <section className="bg-gradient-to-br from-primary/10 via-secondary/5 to-background border-b">
         <div className="container mx-auto px-4 py-16">
           <div className="max-w-4xl">
             <h2 className="text-5xl font-bold text-foreground mb-6 text-balance leading-tight">
-              Solution de géomarketing avancée pour l'optimisation intelligente des réseaux de points de vente
+              Solution de géomarketing avancée pour l&apos;optimisation intelligente des réseaux de points de vente
             </h2>
             <p className="text-xl text-muted-foreground mb-12 text-pretty leading-relaxed">
-              Analysez, simulez et optimisez l'emplacement de vos automates bancaires, magasins ou services. Calculs de
-              potentiel, analyse de cannibalisation et recommandations explicables.
+              Analysez, simulez et optimisez l&apos;emplacement de vos automates bancaires, magasins ou services.
+              Calculs de potentiel, analyse de cannibalisation et recommandations explicables.
             </p>
 
-
-
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+              {/* Carte -> onglet scoring */}
               <Card
                 role="button"
                 tabIndex={0}
@@ -213,6 +208,7 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* MAIN TABS */}
       <main className="flex-1 container mx-auto px-4 py-8 flex flex-col">
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6 flex flex-col flex-1">
           <TabsList className="grid w-full grid-cols-6 lg:w-auto lg:grid-cols-6 h-12">
@@ -242,13 +238,16 @@ export default function HomePage() {
             </TabsTrigger>
           </TabsList>
 
+          {/* MAP */}
           <TabsContent value="map" className="space-y-6 flex-1">
             <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 h-full min-h-[600px]">
               <div className="lg:col-span-1 flex flex-col max-h-full">
                 <div className="flex-1 overflow-hidden">
                   <EnhancedLayerControls
                     activeLayers={activeLayers}
-                    onLayerToggle={(layer, active) => setActiveLayers((prev) => ({ ...prev, [layer]: active }))}
+                    onLayerToggle={(layer, active) =>
+                      setActiveLayers((prev) => ({ ...prev, [layer]: active }))
+                    }
                     mode="compact"
                     onLayerConfigChange={handleLayerConfigChange}
                     selectedATM={selectedATM}
@@ -276,7 +275,12 @@ export default function HomePage() {
                         </CardDescription>
                       </div>
                       <div className="flex items-center space-x-2">
-                        <Button variant="outline" size="sm" onClick={forceRefresh} aria-label="Refresh map data">
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          onClick={forceRefresh}
+                          aria-label="Refresh map data"
+                        >
                           Actualiser les données
                         </Button>
                       </div>
@@ -303,6 +307,7 @@ export default function HomePage() {
             </div>
           </TabsContent>
 
+          {/* ANALYSIS */}
           <TabsContent value="analysis" className="space-y-6">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
               <div className="lg:col-span-2">
@@ -335,6 +340,7 @@ export default function HomePage() {
             </div>
           </TabsContent>
 
+          {/* SCORING – carte sans légende / points */}
           <TabsContent value="scoring" className="space-y-6">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
               <div className="lg:col-span-2">
@@ -342,18 +348,26 @@ export default function HomePage() {
                   <CardHeader>
                     <CardTitle className="flex items-center space-x-2">
                       <Target className="w-5 h-5" />
-                      <span>Sélection d'Emplacement</span>
+                      <span>Sélection d&apos;Emplacement</span>
                     </CardTitle>
-                    <CardDescription>Cliquez sur la carte pour analyser le potentiel d'un emplacement</CardDescription>
+                    <CardDescription>
+                      Cliquez sur la carte pour analyser le potentiel d&apos;un emplacement
+                    </CardDescription>
                   </CardHeader>
                   <CardContent className="p-0 h-[calc(100%-80px)]">
                     <LeafletMap
-                      activeLayers={activeLayers}
+                      activeLayers={{
+                        population: false,
+                        competitors: false,
+                        pois: false,
+                        coverage: false,
+                      }}
                       simulationMode={true}
                       onLocationSelect={setSelectedLocation}
-                      selectedATM={selectedATM}
+                      selectedATM={null}
                       onATMSelect={handleATMSelect}
-                      atms={atms}
+                      atms={[]}
+                      isScoring={true} // 👈 très important
                     />
                   </CardContent>
                 </Card>
@@ -364,12 +378,15 @@ export default function HomePage() {
             </div>
           </TabsContent>
 
+          {/* LAYERS */}
           <TabsContent value="layers" className="space-y-6">
             <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
               <div className="lg:col-span-1">
                 <EnhancedLayerControls
                   activeLayers={activeLayers}
-                  onLayerToggle={(layer, active) => setActiveLayers((prev) => ({ ...prev, [layer]: active }))}
+                  onLayerToggle={(layer, active) =>
+                    setActiveLayers((prev) => ({ ...prev, [layer]: active }))
+                  }
                   mode="detailed"
                   onLayerConfigChange={handleLayerConfigChange}
                   selectedATM={selectedATM}
@@ -386,7 +403,9 @@ export default function HomePage() {
                       <Layers className="w-5 h-5" />
                       <span>Visualisation des Couches</span>
                     </CardTitle>
-                    <CardDescription>Configurez et visualisez les différentes couches de données</CardDescription>
+                    <CardDescription>
+                      Configurez et visualisez les différentes couches de données
+                    </CardDescription>
                   </CardHeader>
                   <CardContent className="p-0 h-[calc(100%-80px)]">
                     <LeafletMap
@@ -403,6 +422,7 @@ export default function HomePage() {
             </div>
           </TabsContent>
 
+          {/* Reason codes & ROI */}
           <TabsContent value="reason-codes" className="space-y-6">
             <LocationAnalyzer />
           </TabsContent>
@@ -413,6 +433,7 @@ export default function HomePage() {
         </Tabs>
       </main>
 
+      {/* FOOTER */}
       <footer className="border-t bg-muted/30">
         <div className="container mx-auto px-4 py-12">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -424,7 +445,7 @@ export default function HomePage() {
                 <span className="text-lg font-semibold text-foreground">GeoMarketing Pro</span>
               </div>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                Solution de géomarketing avancée pour l'optimisation intelligente des réseaux de points de vente.
+                Solution de géomarketing avancée pour l&apos;optimisation intelligente des réseaux de points de vente.
               </p>
             </div>
 
@@ -433,7 +454,7 @@ export default function HomePage() {
               <div className="space-y-2 text-sm text-muted-foreground">
                 <p>• Densité démographique</p>
                 <p>• Analyse concurrentielle</p>
-                <p>• Points d'intérêt (POI)</p>
+                <p>• Points d&apos;intérêt (POI)</p>
                 <p>• Zones de chalandise</p>
               </div>
             </div>
@@ -443,13 +464,10 @@ export default function HomePage() {
             <div className="text-sm text-muted-foreground">
               © {new Date().getFullYear()} GeoMarketing Pro - The FrontlineUnit - Tous droits réservés
             </div>
-            <div className="text-sm text-muted-foreground">
-              Developed by The Frontline Unit
-            </div>
+            <div className="text-sm text-muted-foreground">Developed by The Frontline Unit</div>
           </div>
         </div>
       </footer>
     </div>
   )
 }
-

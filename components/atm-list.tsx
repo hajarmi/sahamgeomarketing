@@ -131,10 +131,11 @@ export default function ATMList({ atms, selectedATM, onATMSelect, loading }: ATM
     }
   }
 
-  const getPerformanceLevel = (volume: number) => {
-    if (volume > 1200) return { level: "Élevé", color: "text-green-600" }
-    if (volume > 900) return { level: "Moyen", color: "text-yellow-600" }
-    return { level: "Faible", color: "text-red-600" }
+  const getPerformanceLevel = (status: string) => {
+    if (status === "active") return { level: "Élevé", color: "text-green-600" }
+    if (status === "maintenance") return { level: "Moyen", color: "text-yellow-600" }
+    if (status === "inactive") return { level: "Faible", color: "text-red-600" }
+    return { level: "Inconnu", color: "text-gray-600" }
   }
 
   if (loading) {
@@ -256,7 +257,8 @@ export default function ATMList({ atms, selectedATM, onATMSelect, loading }: ATM
           <div className="space-y-2">
             {filteredResults.map((atm) => {
               const isSelected = selectedATM?.id === atm.id
-              const performance = getPerformanceLevel(atm.monthly_volume)
+              const performance = getPerformanceLevel(atm.status)
+
 
               return (
                 <div
@@ -300,11 +302,12 @@ export default function ATMList({ atms, selectedATM, onATMSelect, loading }: ATM
 
                     {/* Performance Metrics */}
                     <div className="grid grid-cols-2 gap-2 text-xs">
-                      <div className="flex items-center space-x-1">
+                       <div className="flex items-center space-x-1">
                         <TrendingUp className="w-3 h-3 text-muted-foreground" />
-                        <span className="text-muted-foreground">Volume:</span>
-                        <span className={`font-medium ${performance.color}`}>{atm.monthly_volume}</span>
+                        <span className="text-muted-foreground">Performance:</span>
+                        <span className={`font-medium ${performance.color}`}>{performance.level}</span>
                       </div>
+
                       <div className="flex items-center space-x-1">
                         <MapPin className="w-3 h-3 text-muted-foreground" />
                         <span className="text-muted-foreground truncate">{atm.city}</span>

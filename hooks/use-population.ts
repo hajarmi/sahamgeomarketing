@@ -5,13 +5,25 @@ import { useEffect, useState, useCallback } from "react"
 import type { PopulationPoint, PopulationListResponse } from "@/types"
 import type { BBox } from "./use-pois"
 
-function limitForZoom(z: number | undefined) {
+// même logique que use-pois : densité variable selon le zoom
+function limitForZoom(z?: number) {
   if (!z) return 20
   if (z >= 13) return 1200
   if (z >= 11) return 600
   if (z >= 9)  return 300
   if (z >= 7)  return 120
   return 20
+}
+
+// retire un éventuel "/" à la fin
+function trimSlash(s: string) {
+  return s.endsWith("/") ? s.slice(0, -1) : s
+}
+
+// 🔥 unifie /api vs local
+function getApiBase() {
+  const fromEnv = process.env.NEXT_PUBLIC_API_URL // tunnel → "...ts.net/api"
+  return trimSlash(fromEnv || "http://127.0.0.1:8000") // local → sans /api
 }
 
 export function usePopulation(enabled: boolean, bbox?: BBox, zoomLevel?: number) {
@@ -24,6 +36,7 @@ export function usePopulation(enabled: boolean, bbox?: BBox, zoomLevel?: number)
     setError(null)
   }, [])
 
+  // reset à chaque changement pour éviter du flicker visuel
   useEffect(() => {
     if (!enabled || !bbox) {
       setData([])
@@ -43,7 +56,8 @@ export function usePopulation(enabled: boolean, bbox?: BBox, zoomLevel?: number)
       setLoading(true)
       setError(null)
       try {
-        const base = process.env.NEXT_PUBLIC_API_BASE_URL || "http://127.0.0.1:8000"
+        const base = getApiBase()
+
         const url = new URL(`${base}/population`)
         url.searchParams.set("s", String(bbox.s))
         url.searchParams.set("w", String(bbox.w))
@@ -56,6 +70,7 @@ export function usePopulation(enabled: boolean, bbox?: BBox, zoomLevel?: number)
           headers: { accept: "application/json" },
         })
         if (!res.ok) throw new Error(`HTTP ${res.status}`)
+
         const json: PopulationListResponse = await res.json()
         if (aborted) return
 
