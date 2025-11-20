@@ -33,6 +33,7 @@ interface MapboxMapProps {
     coverage: boolean
   }
   simulationMode: boolean
+  isScoring?: boolean  
   onLocationSelect: (location: { lng: number; lat: number; address?: string }) => void
   atms: ATM[]
   selectedATM?: ATM | null
