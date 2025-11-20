@@ -27,6 +27,7 @@ export default function HomePage() {
     competitors: true,
     pois: false,
     coverage: false,
+    transport: true,
   })
 
   const [simulationMode, setSimulationMode] = useState(false)
@@ -455,7 +456,6 @@ export default function HomePage() {
                 <p>• Densité démographique</p>
                 <p>• Analyse concurrentielle</p>
                 <p>• Points d&apos;intérêt (POI)</p>
-                <p>• Zones de chalandise</p>
               </div>
             </div>
           </div>
