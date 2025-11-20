@@ -536,21 +536,7 @@ export default function LayerControls({ activeLayers, onLayerToggle, selectedATM
                         </div>
                       )}
 
-                      {layer.key === "coverage" && (
-                        <div className="space-y-3">
-                          <Label className="text-sm">Temps de marche</Label>
-                          <div className="space-y-2">
-                            {["5 min", "10 min", "15 min"].map((time) => (
-                              <div key={time} className="flex items-center space-x-2">
-                                <Switch id={`${layer.key}-${time}`} defaultChecked disabled={!isActive} />
-                                <Label htmlFor={`${layer.key}-${time}`} className="text-xs">
-                                  {time}
-                                </Label>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      )}
+                      
 
                       <div className="flex space-x-2">
                         <Button variant="outline" size="sm" className="flex-1 bg-transparent" disabled={!isActive}>
