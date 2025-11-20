@@ -22,11 +22,11 @@ export default function HomePage() {
     address?: string
   } | null>(null)
 
+  // ✅ plus de coverage ici : seulement les couches que tu utilises
   const [activeLayers, setActiveLayers] = useState({
     population: true,
     competitors: true,
     pois: false,
-    coverage: false,
     transport: true,
   })
 
@@ -357,18 +357,19 @@ export default function HomePage() {
                   </CardHeader>
                   <CardContent className="p-0 h-[calc(100%-80px)]">
                     <LeafletMap
+                      // ✅ plus de coverage ici non plus
                       activeLayers={{
                         population: false,
                         competitors: false,
                         pois: false,
-                        coverage: false,
+                        transport: false,
                       }}
                       simulationMode={true}
                       onLocationSelect={setSelectedLocation}
                       selectedATM={null}
                       onATMSelect={handleATMSelect}
                       atms={[]}
-                      isScoring={true} // 👈 très important
+                      isScoring={true}
                     />
                   </CardContent>
                 </Card>
