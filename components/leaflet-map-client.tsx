@@ -21,6 +21,11 @@ import { useTransport } from "@/hooks/use-transport"
 import type { ATM, HoverData } from "@/types"
 import ATMHoverCard from "./atm-hover-card"
 import MapLegend from "./map-legend"
+import type { Map as LeafletMap } from "leaflet"
+import { useRef } from "react"
+
+const mapRef = useRef<LeafletMap | null>(null)
+
 
 interface LeafletMapClientProps {
   activeLayers: { [key: string]: boolean }
@@ -287,17 +292,33 @@ export default function LeafletMapClient({
         </div>
       )}
 
+      
+      
+       
       <MapContainer
-        center={[31.7917, -7.0926]}
-        zoom={6}
-        style={{ height: "100%", width: "100%" }}
-        className="rounded-lg"
-        whenCreated={(map) => {
-          const b = map.getBounds()
-          setBBox({ s: b.getSouth(), w: b.getWest(), n: b.getNorth(), e: b.getEast() })
+         center={[31.79, -7.09]}
+         zoom={zoomLevel}
+         className="rounded-lg"
+         style={{ height: "100%", width: "100%" }}
+         whenReady={() => {
+         const map = mapRef.current
+         if (!map) return
+
+         const b = map.getBounds()
+
+         setBBox({
+          s: b.getSouth(),
+          w: b.getWest(),
+          n: b.getNorth(),
+          e: b.getEast(),
+       })
+
           setZoomLevel(map.getZoom())
-        }}
+      }}
+      ref={mapRef}
       >
+  
+
         <TileLayer
           url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
           attribution="&copy; OpenStreetMap &copy; CARTO"
@@ -496,7 +517,8 @@ export default function LeafletMapClient({
           activeLayers.pois &&
           !poisLoading &&
           pois.map((poi) => {
-            const cat = (poi.value || poi.type || poi.key || "").toLowerCase()
+            const cat = (poi.category || poi.type || poi.name || "").toLowerCase()
+
             const color = getTypeColor(cat)
             return (
               <CircleMarker
@@ -518,19 +540,10 @@ export default function LeafletMapClient({
                       const rect = map.getContainer().getBoundingClientRect()
                       setHoverPosition({ x: rect.left + pt.x, y: rect.top + pt.y })
                       setHoveredATM({
-                        id: poi.id,
                         type: "poi",
-                        name: poi.name ?? `${poi.value ?? poi.type ?? "POI"}`,
+                        name: poi.name ?? `${poi.category ?? poi.type ?? "POI"}`,
                         latitude: poi.latitude,
                         longitude: poi.longitude,
-                        key: poi.key ?? null,
-                        value: poi.value ?? null,
-                        brand: poi.brand ?? null,
-                        operator: poi.operator ?? null,
-                        address: poi.address ?? null,
-                        commune: poi.commune ?? null,
-                        province: poi.province ?? null,
-                        region: poi.region ?? null,
                       })
                     }
                     ;(e as any).target.setStyle({ fillOpacity: 1, color: "#000000" })
@@ -542,13 +555,20 @@ export default function LeafletMapClient({
                 }}
               >
                 <Popup>
-                  <strong>{poi.name || (poi.value ?? poi.type) || "POI"}</strong>
-                  <br />
-                  {poi.brand ? `${poi.brand} · ` : ""}
-                  {(poi.value ?? poi.type ?? poi.key) || "-"}
-                  <br />
-                  {poi.commune || poi.region || poi.province || ""}
+                   <strong>{poi.name || poi.category || poi.type || "POI"}</strong>
+                   <br />
+                   {/* catégorie + type */}
+                   {poi.category && (
+                     <>
+                       {poi.category}
+                       {poi.type ? ` (${poi.type})` : ""}
+                       <br />
+                     </>
+                   )}
+                   {/* ville */}
+                   {poi.city || ""}
                 </Popup>
+
               </CircleMarker>
             )
           })}
