@@ -20,6 +20,7 @@ export default function DashboardPage() {
     competitors: true,
     pois: false,
     coverage: false,
+    transport: true
   })
   const [simulationMode, setSimulationMode] = useState(false)
   const [atms, setAtms] = useState<ATM[]>([])
