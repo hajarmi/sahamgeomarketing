@@ -25,7 +25,8 @@ const hoverStyle: L.PathOptions = {
 
 export default function CommuneLayer({ onPick }: Props) {
   const map = useMap()
-  const { data, loading } = useCommunes()
+  const { data, loading } = useCommunes(true)
+
 
   if (loading || !data) return null
 

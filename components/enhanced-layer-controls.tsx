@@ -36,7 +36,6 @@ interface LayerControlsProps {
     population: boolean
     competitors: boolean
     pois: boolean
-    coverage: boolean
     transport: boolean // 👈 NEW
   }
   onLayerToggle: (layer: keyof LayerControlsProps["activeLayers"], active: boolean) => void
@@ -63,7 +62,6 @@ export default function EnhancedLayerControls({
     population: 70,
     competitors: 80,
     pois: 90,
-    coverage: 60,
     transport: 90, // 👈 NEW default opacity
   })
   const [expandedLayers, setExpandedLayers] = useState<string[]>(

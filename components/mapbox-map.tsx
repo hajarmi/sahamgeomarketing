@@ -30,7 +30,7 @@ interface MapboxMapProps {
     population: boolean
     competitors: boolean
     pois: boolean
-    coverage: boolean
+    transport: boolean
   }
   simulationMode: boolean
   isScoring?: boolean  
