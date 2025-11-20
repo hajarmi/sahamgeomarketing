@@ -14,7 +14,8 @@ type CommuneListResponse = {
   communes: CommuneFeature[]
 }
 
-export default function useCommunes(enabled: boolean) {
+
+export default function useCommunes(enabled: boolean = true) {  
   const [data, setData] = useState<CommuneFeature[]>([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
