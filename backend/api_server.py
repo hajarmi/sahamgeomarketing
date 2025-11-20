@@ -287,3 +287,7 @@ async def communes_indicators(
     except Exception as e:
         logger.error("Erreur /communes/indicators: %s", e, exc_info=True)
         raise HTTPException(status_code=500, detail="Erreur interne lors du calcul des indicateurs")
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run("backend.api_server:app", host="0.0.0.0", port=8000, reload=True)
