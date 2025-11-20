@@ -1,37 +1,15 @@
-from datetime import datetime
-from http.server import BaseHTTPRequestHandler
+# api/index.py
 
-from backend.services import atm_service
+import os
+import sys
 
-from ._utils import ensure_service, handle_options, respond_json
+# S'assurer que la racine du projet est dans le PYTHONPATH
+ROOT_DIR = os.path.dirname(os.path.dirname(__file__))
+if ROOT_DIR not in sys.path:
+    sys.path.append(ROOT_DIR)
 
+# Importer l'app FastAPI existante
+from backend.api_server import app as fastapi_app  # <-- ton fichier que tu as collé avant
 
-class handler(BaseHTTPRequestHandler):
-    def do_OPTIONS(self):
-        handle_options(self)
-
-    def do_GET(self):
-        ensure_service()
-        payload = {
-            "message": "Saham Bank Geomarketing AI API",
-            "version": "1.0.0",
-            "status": "active",
-            "timestamp": datetime.utcnow().isoformat() + "Z",
-            "metrics": {
-                "models_loaded": atm_service.predictor.is_trained,
-                "atms_cached": len(atm_service.existing_atms),
-            },
-            "endpoints": {
-                "predict": "/api/predict",
-                "existing_atms": "/api/atms",
-                "health": "/api/health",
-                "dashboard": "/api/analytics/dashboard",
-                "competitors": "/api/competitors",
-                "population": "/api/population",
-            },
-        }
-        respond_json(self, 200, payload)
-
-    def log_message(self, format, *args):
-        return
-
+# Vercel cherche une variable "app" (ASGI : FastAPI, Starlette, etc.)
+app = fastapi_app
