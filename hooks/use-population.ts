@@ -59,10 +59,10 @@ export function usePopulation(enabled: boolean, bbox?: BBox, zoomLevel?: number)
         const base = getApiBase()
 
         const url = new URL(`${base}/population`)
-        url.searchParams.set("s", String(bbox.s))
-        url.searchParams.set("w", String(bbox.w))
-        url.searchParams.set("n", String(bbox.n))
-        url.searchParams.set("e", String(bbox.e))
+        url.searchParams.set("s", String(bbox!.s))
+        url.searchParams.set("w", String(bbox!.w))
+        url.searchParams.set("n", String(bbox!.n))
+        url.searchParams.set("e", String(bbox!.e))
         url.searchParams.set("limit", String(limitForZoom(zoomLevel)))
 
         const res = await fetch(url.toString(), {
