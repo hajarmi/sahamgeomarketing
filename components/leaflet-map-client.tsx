@@ -24,7 +24,6 @@ import MapLegend from "./map-legend"
 import type { Map as LeafletMap } from "leaflet"
 import { useRef } from "react"
 
-const mapRef = useRef<LeafletMap | null>(null)
 
 
 interface LeafletMapClientProps {
@@ -60,6 +59,8 @@ export default function LeafletMapClient({
   const [communesError, setCommunesError] = useState<string | null>(null)
 
   const showCommunes = activeLayers?.communes ?? true
+  
+  const mapRef = useRef<LeafletMap | null>(null)
 
   useEffect(() => {
     if (!showCommunes) return
