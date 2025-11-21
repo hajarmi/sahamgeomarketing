@@ -60,10 +60,10 @@ export function usePOIs(enabled: boolean, bbox?: BBox, zoomLevel?: number) {
       try {
         const base = getApiBase() // ← unifie /api vs pas /api
         const url = new URL(`${base}/pois`)
-        url.searchParams.set("s", String(bbox.s))
-        url.searchParams.set("w", String(bbox.w))
-        url.searchParams.set("n", String(bbox.n))
-        url.searchParams.set("e", String(bbox.e))
+        url.searchParams.set("s", String(bbox!.s))
+        url.searchParams.set("w", String(bbox!.w))
+        url.searchParams.set("n", String(bbox!.n))
+        url.searchParams.set("e", String(bbox!.e))
         url.searchParams.set("limit", String(limitForZoom(zoomLevel)))
 
         const res = await fetch(url.toString(), {
