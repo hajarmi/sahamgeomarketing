@@ -15,14 +15,14 @@ type ActiveLayers = {
   population: boolean
   competitors: boolean
   pois: boolean
-  coverage: boolean
+  transport: boolean
 }
 
 const initialActiveLayers: ActiveLayers = {
   population: true,
   competitors: true,
   pois: false,
-  coverage: false,
+  transport: false,
 }
 
 export default function MapVisualization() {
