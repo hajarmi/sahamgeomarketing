@@ -1,11 +1,11 @@
+
+
+
 fastapi
 uvicorn[standard]
 pandas
 numpy
-scikit-learn
 joblib
 pydantic
 aiofiles
-gunicorn
-python-json-logger
-pydantic-settings
+

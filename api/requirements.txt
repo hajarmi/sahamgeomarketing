@@ -1,7 +1,0 @@
-aiofiles
-joblib
-numpy
-pandas
-pydantic
-pydantic-settings
-scikit-learn
