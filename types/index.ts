@@ -100,6 +100,11 @@ export type TransportListResponse = {
   total_count: number;
 };
 
+export interface POIListResponse {
+  pois: POI[];
+  total_count: number;
+};
+
 // ---- Hover card union (inclut transport maintenant) ----
 export type HoverData = Partial<
   ATM & Competitor & POI & PopulationPoint & TransportPoint
