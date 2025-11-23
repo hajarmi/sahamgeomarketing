@@ -1,0 +1,11 @@
+
+
+
+fastapi
+uvicorn[standard]
+pandas
+numpy
+joblib
+pydantic
+aiofiles
+
