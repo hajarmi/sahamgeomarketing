@@ -20,12 +20,16 @@ function trimSlash(s: string) {
   return s.endsWith("/") ? s.slice(0, -1) : s
 }
 
-// base API: .env (tunnel) ou localhost (dev)
-function getApiBase() {
-  // Tunnel: NEXT_PUBLIC_API_URL = "https://...ts.net/api"
-  // Local dev: fallback sans /api
+// base API: UNIQUEMENT via la variable d'env
+function getApiBase(): string | null {
   const fromEnv = process.env.NEXT_PUBLIC_API_URL
-  return trimSlash(fromEnv || "http://127.0.0.1:8000")
+
+  if (!fromEnv) {
+    console.error("[usePOIs] NEXT_PUBLIC_API_URL is NOT defined")
+    return null
+  }
+
+  return trimSlash(fromEnv)
 }
 
 export function usePOIs(enabled: boolean, bbox?: BBox, zoomLevel?: number) {
@@ -57,8 +61,16 @@ export function usePOIs(enabled: boolean, bbox?: BBox, zoomLevel?: number) {
     async function run() {
       setLoading(true)
       setError(null)
+
+      const base = getApiBase()
+      if (!base) {
+        // on arrête proprement si l'API n'est pas configurée
+        setError("API non configurée")
+        setLoading(false)
+        return
+      }
+
       try {
-        const base = getApiBase() // ← unifie /api vs pas /api
         const url = new URL(`${base}/pois`)
         url.searchParams.set("s", String(bbox!.s))
         url.searchParams.set("w", String(bbox!.w))
