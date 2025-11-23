@@ -18,10 +18,15 @@ export function useCompetitors(enabled: boolean) {
     setLoading(true)
     setError(null)
 
-    // ✅ Corrigé : même variable d’env que le reste du projet
-    
-    const base = process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000/api"
+    // ✅ On utilise uniquement la variable d'environnement
+    const base = process.env.NEXT_PUBLIC_API_URL as string
 
+    if (!base) {
+      console.error("[useCompetitors] NEXT_PUBLIC_API_URL is NOT defined")
+      setError("API non configurée")
+      setLoading(false)
+      return
+    }
 
     fetch(`${base}/competitors`)
       .then((r) => {
