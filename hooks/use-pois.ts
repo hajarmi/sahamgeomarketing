@@ -15,23 +15,6 @@ function limitForZoom(z?: number) {
   return 20
 }
 
-// retire le slash de fin si présent
-function trimSlash(s: string) {
-  return s.endsWith("/") ? s.slice(0, -1) : s
-}
-
-// base API: UNIQUEMENT via la variable d'env
-function getApiBase(): string | null {
-  const fromEnv = process.env.NEXT_PUBLIC_API_URL
-
-  if (!fromEnv) {
-    console.error("[usePOIs] NEXT_PUBLIC_API_URL is NOT defined")
-    return null
-  }
-
-  return trimSlash(fromEnv)
-}
-
 export function usePOIs(enabled: boolean, bbox?: BBox, zoomLevel?: number) {
   const [pois, setPois] = useState<POI[]>([])
   const [loading, setLoading] = useState(false)
@@ -62,23 +45,17 @@ export function usePOIs(enabled: boolean, bbox?: BBox, zoomLevel?: number) {
       setLoading(true)
       setError(null)
 
-      const base = getApiBase()
-      if (!base) {
-        // on arrête proprement si l'API n'est pas configurée
-        setError("API non configurée")
-        setLoading(false)
-        return
-      }
-
       try {
-        const url = new URL(`${base}/pois`)
-        url.searchParams.set("s", String(bbox!.s))
-        url.searchParams.set("w", String(bbox!.w))
-        url.searchParams.set("n", String(bbox!.n))
-        url.searchParams.set("e", String(bbox!.e))
-        url.searchParams.set("limit", String(limitForZoom(zoomLevel)))
+        const params = new URLSearchParams({
+          s: String(bbox!.s),
+          w: String(bbox!.w),
+          n: String(bbox!.n),
+          e: String(bbox!.e),
+          limit: String(limitForZoom(zoomLevel)),
+        })
 
-        const res = await fetch(url.toString(), {
+        // 👉 On appelle UNIQUEMENT l'API Next interne
+        const res = await fetch(`/api/pois?${params.toString()}`, {
           signal: controller.signal,
           headers: { accept: "application/json" },
         })
