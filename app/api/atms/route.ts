@@ -204,21 +204,39 @@ const buildLocalDataset = async () => {
 export async function GET() {
   const backendUrl = process.env.NEXT_PUBLIC_API_URL;
 
+  // 1. Vérif de la variable d’env
   if (!backendUrl) {
-    console.error("[api/atms] NEXT_PUBLIC_API_URL is NOT defined");
-    return NextResponse.json(
-      { error: "Backend URL not configured" },
-      { status: 500 }
-    );
+    console.error("[api/atms] NEXT_PUBLIC_API_URL is NOT defined, fallback local dataset");
+    const fallback = await buildLocalDataset();
+    return NextResponse.json(fallback, { status: 200 });
   }
 
   console.log("[api/atms] Using backend:", backendUrl);
 
-  const response = await fetch(`${backendUrl}/atms`, {
-    cache: "no-store",
-    headers: { accept: "application/json" },
-  });
+  try {
+    // 2. Appel du backend FastAPI via Tailscale
+    const response = await fetch(`${backendUrl}/atms`, {
+      cache: "no-store",
+      headers: { accept: "application/json" },
+    });
 
-  // ... (gérer OK / erreurs)
+    if (response.ok) {
+      const data = await response.json();
+      return NextResponse.json(data, { status: 200 });
+    }
+
+    console.warn(
+      "[api/atms] Backend responded",
+      response.status,
+      "- falling back to local dataset"
+    );
+  } catch (error) {
+    console.error("[api/atms] Backend unreachable, falling back to local dataset:", error);
+  }
+
+  // 3. Fallback local (backend KO ou erreur)
+  const fallback = await buildLocalDataset();
+  return NextResponse.json(fallback, { status: 200 });
 }
+
 
