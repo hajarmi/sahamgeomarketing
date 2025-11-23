@@ -202,33 +202,23 @@ const buildLocalDataset = async () => {
  * IMPORTANT : ce handler Next prend la priorité sur rewrites().
  */
 export async function GET() {
-  const backendUrl =
-    process.env.NEXT_PUBLIC_API_BASE_URL || "http://127.0.0.1:8000"
+  const backendUrl = process.env.NEXT_PUBLIC_API_URL;
 
-  try {
-    const response = await fetch(`${backendUrl}/atms`, {
-      cache: "no-store",
-      headers: { accept: "application/json" },
-    })
-
-    if (response.ok) {
-      const data = await response.json()
-      return NextResponse.json(data)
-    }
-
-    console.warn(`[api/atms] Backend responded ${response.status}, fallback local dataset`)
-  } catch (error) {
-    const msg = error instanceof Error ? `${error.name}: ${error.message}` : String(error)
-    console.warn(`[api/atms] Backend unreachable (${backendUrl}). Fallback local. ${msg}`)
+  if (!backendUrl) {
+    console.error("[api/atms] NEXT_PUBLIC_API_URL is NOT defined");
+    return NextResponse.json(
+      { error: "Backend URL not configured" },
+      { status: 500 }
+    );
   }
 
-  const localData = await buildLocalDataset()
-  return NextResponse.json({
-    ...localData,
-    metadata: {
-      ...(localData.metadata ?? {}),
-      source: "local-fallback",
-      generated_at: new Date().toISOString(),
-    },
-  })
+  console.log("[api/atms] Using backend:", backendUrl);
+
+  const response = await fetch(`${backendUrl}/atms`, {
+    cache: "no-store",
+    headers: { accept: "application/json" },
+  });
+
+  // ... (gérer OK / erreurs)
 }
+
