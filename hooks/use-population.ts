@@ -20,10 +20,16 @@ function trimSlash(s: string) {
   return s.endsWith("/") ? s.slice(0, -1) : s
 }
 
-// 🔥 unifie /api vs local
-function getApiBase() {
-  const fromEnv = process.env.NEXT_PUBLIC_API_URL // tunnel → "...ts.net/api"
-  return trimSlash(fromEnv || "http://127.0.0.1:8000") // local → sans /api
+// ✅ on supprime COMPLETEMENT le fallback 127.0.0.1
+function getApiBase(): string | null {
+  const fromEnv = process.env.NEXT_PUBLIC_API_URL
+
+  if (!fromEnv) {
+    console.error("[usePopulation] NEXT_PUBLIC_API_URL is NOT defined")
+    return null
+  }
+
+  return trimSlash(fromEnv)
 }
 
 export function usePopulation(enabled: boolean, bbox?: BBox, zoomLevel?: number) {
@@ -36,7 +42,7 @@ export function usePopulation(enabled: boolean, bbox?: BBox, zoomLevel?: number)
     setError(null)
   }, [])
 
-  // reset à chaque changement pour éviter du flicker visuel
+  // reset visuel
   useEffect(() => {
     if (!enabled || !bbox) {
       setData([])
@@ -55,9 +61,16 @@ export function usePopulation(enabled: boolean, bbox?: BBox, zoomLevel?: number)
     async function run() {
       setLoading(true)
       setError(null)
-      try {
-        const base = getApiBase()
 
+      const base = getApiBase()
+
+      if (!base) {
+        setError("API non configurée : NEXT_PUBLIC_API_URL manquante")
+        setLoading(false)
+        return
+      }
+
+      try {
         const url = new URL(`${base}/population`)
         url.searchParams.set("s", String(bbox!.s))
         url.searchParams.set("w", String(bbox!.w))
@@ -69,6 +82,7 @@ export function usePopulation(enabled: boolean, bbox?: BBox, zoomLevel?: number)
           signal: controller.signal,
           headers: { accept: "application/json" },
         })
+
         if (!res.ok) throw new Error(`HTTP ${res.status}`)
 
         const json: PopulationListResponse = await res.json()
@@ -83,10 +97,12 @@ export function usePopulation(enabled: boolean, bbox?: BBox, zoomLevel?: number)
     }
 
     run()
+
     return () => {
       aborted = true
       controller.abort()
     }
+
   }, [enabled, bbox?.s, bbox?.w, bbox?.n, bbox?.e, zoomLevel])
 
   return { data, loading, error, reset }
