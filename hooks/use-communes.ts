@@ -14,7 +14,6 @@ type CommuneListResponse = {
   communes: CommuneFeature[]
 }
 
-
 export default function useCommunes(enabled: boolean = true) {  
   const [data, setData] = useState<CommuneFeature[]>([])
   const [loading, setLoading] = useState(false)
@@ -30,8 +29,15 @@ export default function useCommunes(enabled: boolean = true) {
     setLoading(true)
     setError(null)
 
-    // Même logique que tes autres hooks
-    const base = process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000/api"
+    // 👉 On lit UNIQUEMENT l'URL depuis la variable d'environnement
+    const base = process.env.NEXT_PUBLIC_API_URL as string
+
+    if (!base) {
+      console.error("[useCommunes] NEXT_PUBLIC_API_URL is NOT defined")
+      setError("API non configurée")
+      setLoading(false)
+      return
+    }
 
     fetch(`${base}/communes`)
       .then((res) => {
@@ -41,7 +47,6 @@ export default function useCommunes(enabled: boolean = true) {
       .then((json: CommuneListResponse | any) => {
         if (cancelled) return
 
-        // Normalisation pour ton layer
         const communes: CommuneFeature[] = (json.communes || json.features || []).map(
           (f: any) => {
             const coords = f.geometry?.coordinates
