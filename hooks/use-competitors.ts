@@ -18,17 +18,7 @@ export function useCompetitors(enabled: boolean) {
     setLoading(true)
     setError(null)
 
-    // ✅ On utilise uniquement la variable d'environnement
-    const base = process.env.NEXT_PUBLIC_API_URL as string
-
-    if (!base) {
-      console.error("[useCompetitors] NEXT_PUBLIC_API_URL is NOT defined")
-      setError("API non configurée")
-      setLoading(false)
-      return
-    }
-
-    fetch(`${base}/competitors`)
+    fetch("/api/competitors")   // ✅ appel interne sur Vercel
       .then((r) => {
         if (!r.ok) throw new Error(`HTTP ${r.status}`)
         return r.json()
