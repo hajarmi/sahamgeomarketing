@@ -54,7 +54,7 @@ export function usePOIs(enabled: boolean, bbox?: BBox, zoomLevel?: number) {
           limit: String(limitForZoom(zoomLevel)),
         })
 
-        // 👉 On appelle UNIQUEMENT l'API Next interne
+        // ❗ ICI : on appelle UNIQUEMENT l'API Next interne
         const res = await fetch(`/api/pois?${params.toString()}`, {
           signal: controller.signal,
           headers: { accept: "application/json" },
