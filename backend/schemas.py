@@ -49,10 +49,18 @@ class ATMData(BaseModel):
     latitude: float = Field(..., ge=-90, le=90, example=33.5951)
     longitude: float = Field(..., ge=-180, le=180, example=-7.6185)
     bank_name: Optional[str] = Field("Saham Bank", description="The name of the bank owning the ATM.", example="Saham Bank")
-    status: Optional[Literal['active', 'inactive', 'maintenance']] = Field("active", description="Current status of the ATM.")
-    installation_type: Optional[Literal['agency', 'mobile']] = Field("agency", description="Type of ATM installation.")
+    status: Optional[Literal['active', 'inactive', 'maintenance']] = Field(
+        "active",
+        description="Current status of the ATM."
+    )
+    # 👉 ICI : on ajoute 'atm' aux valeurs possibles
+    installation_type: Optional[Literal['agency', 'mobile', 'atm']] = Field(
+        "agency",
+        description="Type of ATM installation."
+    )
     city: Optional[str] = Field("Unknown", example="Casablanca")
     region: Optional[str] = Field("Unknown", example="Casablanca-Settat")
+
 
 
 class PredictionResponse(BaseModel):
