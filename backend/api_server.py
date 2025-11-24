@@ -85,24 +85,33 @@ async def root():
 @app.get("/health", tags=["Monitoring"])
 async def health_check(service: ATMService = Depends(get_atm_service)):
     return {
-        "status": "healthy",  # on ne dépend plus des modèles ML
+        "status": "healthy",
         "timestamp": datetime.now().isoformat(),
-        "models_loaded": False,  # ML désactivée dans cette version
+        "models_loaded": service.predictor.is_trained,
         "atms_count": len(service.existing_atms),
     }
-
 
 # ---------- Predictions / ATMs ----------
 @app.post("/predict", response_model=PredictionResponse, tags=["Predictions"])
 async def predict_location(location: LocationData, service: ATMService = Depends(get_atm_service)):
-    """
-    Endpoint de prédiction désactivé dans cette version (modèles ML retirés).
-    """
-    raise HTTPException(
-        status_code=503,
-        detail="Prediction model is disabled in this deployment (no ML models available).",
-    )
-
+    try:
+        prediction = service.predictor.predict_location(location)
+        canib = service.canibalization_analyzer.calculate_canibalization(location)
+        adjusted_score = prediction["global_score"] * (1 - canib["canibalization_risk"] / 200)
+        return PredictionResponse(
+            predicted_volume=prediction["predicted_volume"],
+            roi_probability=prediction["roi_probability"],
+            roi_prediction=prediction["roi_prediction"],
+            global_score=round(max(0, adjusted_score), 2),
+            reason_codes=prediction["reason_codes"],
+            recommendation=prediction["recommendation"],
+            canibalization_analysis=canib,
+        )
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=f"Invalid input for prediction: {e}")
+    except Exception as e:
+        logger.error("Error during prediction", extra={"error": str(e)}, exc_info=True)
+        raise HTTPException(status_code=500, detail="Internal error during prediction.")
 
 @app.get("/atms", response_model=ATMListResponse, tags=["ATM Management"])
 async def get_existing_atms(service: ATMService = Depends(get_atm_service)):
@@ -279,6 +288,3 @@ async def communes_indicators(
         logger.error("Erreur /communes/indicators: %s", e, exc_info=True)
         raise HTTPException(status_code=500, detail="Erreur interne lors du calcul des indicateurs")
 
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run("backend.api_server:app", host="0.0.0.0", port=8000, reload=True)

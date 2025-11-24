@@ -12,15 +12,14 @@ class handler(BaseHTTPRequestHandler):
 
     def do_GET(self):
         ensure_service()
-
         payload = {
-            "status": "healthy",  # plus de notion de modèle
+            "status": "healthy" if atm_service.predictor.is_trained else "degraded",
             "timestamp": datetime.utcnow().isoformat() + "Z",
-            "models_loaded": False,  # ML désactivée
+            "models_loaded": atm_service.predictor.is_trained,
             "atms_count": len(atm_service.existing_atms),
         }
-
         respond_json(self, 200, payload)
 
     def log_message(self, format, *args):
         return
+
