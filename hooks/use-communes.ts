@@ -14,7 +14,7 @@ type CommuneListResponse = {
   communes: CommuneFeature[]
 }
 
-export default function useCommunes(enabled: boolean = true) {  
+export default function useCommunes(enabled: boolean = true) {
   const [data, setData] = useState<CommuneFeature[]>([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -29,17 +29,11 @@ export default function useCommunes(enabled: boolean = true) {
     setLoading(true)
     setError(null)
 
-    // 👉 On lit UNIQUEMENT l'URL depuis la variable d'environnement
-    const base = process.env.NEXT_PUBLIC_API_URL as string
-
-    if (!base) {
-      console.error("[useCommunes] NEXT_PUBLIC_API_URL is NOT defined")
-      setError("API non configurée")
-      setLoading(false)
-      return
-    }
-
-    fetch(`${base}/communes`)
+    // ❗ ICI : comme pour les POIs, on appelle UNIQUEMENT l'API Next interne
+    // Pas de NEXT_PUBLIC_API_URL côté client
+    fetch("/api/communes", {
+      headers: { accept: "application/json" },
+    })
       .then((res) => {
         if (!res.ok) throw new Error(`HTTP ${res.status}`)
         return res.json()
@@ -47,31 +41,44 @@ export default function useCommunes(enabled: boolean = true) {
       .then((json: CommuneListResponse | any) => {
         if (cancelled) return
 
-        const communes: CommuneFeature[] = (json.communes || json.features || []).map(
-          (f: any) => {
-            const coords = f.geometry?.coordinates
-            const [lng, lat] = Array.isArray(coords) ? coords : [0, 0]
+        const raw = json.communes || json.features || []
 
-            const name =
-              f.properties?.commune_norm ||
-              f.properties?.nom ||
-              f.properties?.nom_commune ||
-              "Commune inconnue"
+        const communes: CommuneFeature[] = raw.map((f: any) => {
+          const coords = f.geometry?.coordinates
+          let lng = 0
+          let lat = 0
 
-            const code =
-              f.properties?.code_commune ||
-              f.properties?.code ||
-              f.properties?.id
-
-            return {
-              name,
-              code,
-              lat,
-              lng,
-              properties: f.properties,
-            }
+          // Cas Point [lng, lat]
+          if (Array.isArray(coords)) {
+            ;[lng, lat] = coords
           }
-        )
+          // Cas Polygon/MultiPolygon -> on prend le premier point
+          else if (
+            Array.isArray(coords?.[0]) &&
+            Array.isArray(coords[0][0])
+          ) {
+            ;[lng, lat] = coords[0][0]
+          }
+
+          const name =
+            f.properties?.commune_norm ||
+            f.properties?.nom ||
+            f.properties?.nom_commune ||
+            "Commune inconnue"
+
+          const code =
+            f.properties?.code_commune ||
+            f.properties?.code ||
+            f.properties?.id
+
+          return {
+            name,
+            code,
+            lat,
+            lng,
+            properties: f.properties,
+          }
+        })
 
         setData(communes)
       })
