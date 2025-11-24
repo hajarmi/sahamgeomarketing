@@ -25,10 +25,10 @@ export function usePopulation(enabled: boolean, bbox?: BBox) {
 
       try {
         const params = new URLSearchParams({
-          s: String(bbox.s),
-          w: String(bbox.w),
-          n: String(bbox.n),
-          e: String(bbox.e),
+          s: String(bbox!.s),
+          w: String(bbox!.w),
+          n: String(bbox!.n),
+          e: String(bbox!.e),
         })
 
         // 👉 IMPORTANT : on appelle UNIQUEMENT l’API interne Next
