@@ -10,7 +10,7 @@ from typing import List
 import numpy as np
 
 # Import Pydantic schemas
-from schemas import ATMData, LocationData
+from .schemas import ATMData, LocationData
 
 
 class ATMLocationPredictor:
