@@ -49,7 +49,7 @@ class handler(BaseHTTPRequestHandler):
     except FileNotFoundError as exc:
       respond_error(self, 404, str(exc))
     except Exception as exc:
-      respond_error(self, 500, "Unable to load communes data", [str(exc)])
+      respond_error(seldf, 500, "Unable to load communes data", [str(exc)])
 
   def log_message(self, format, *args):
     return
