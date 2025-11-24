@@ -8,4 +8,4 @@ numpy
 joblib
 pydantic
 aiofiles
-
+pydantic-settings
