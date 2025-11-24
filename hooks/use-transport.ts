@@ -11,10 +11,6 @@ function limitForZoom(z?: number) {
   return 300
 }
 
-/**
- * Charge les points de transport (train/tram/bus/taxi) dans la BBOX courante.
- * Appelle l’API Next `/api/transport`, qui elle-même proxie vers FastAPI `/transport`.
- */
 export function useTransport(
   enabled: boolean,
   bbox: BBox,
@@ -23,8 +19,8 @@ export function useTransport(
   const [data, setData] = useState<TransportPoint[]>([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
-  const abortRef = useRef<AbortController | null>(null)
 
+  const abortRef = useRef<AbortController | null>(null)
   const limit = useMemo(() => limitForZoom(zoom), [zoom])
 
   const reset = () => {
@@ -37,8 +33,8 @@ export function useTransport(
   useEffect(() => {
     if (!enabled || !bbox) return
 
-    // annule la requête précédente si on rebouge
     abortRef.current?.abort()
+
     const ac = new AbortController()
     abortRef.current = ac
 
@@ -47,17 +43,28 @@ export function useTransport(
         setLoading(true)
         setError(null)
 
-        const url = `/api/transport?s=${bbox.s}&n=${bbox.n}&w=${bbox.w}&e=${bbox.e}&limit=${limit}&page=1`
-        const res = await fetch(url, { signal: ac.signal })
-        if (!res.ok) {
-          const txt = await res.text()
-          throw new Error(txt || `HTTP ${res.status}`)
-        }
+        const params = new URLSearchParams({
+          s: String(bbox.s),
+          n: String(bbox.n),
+          w: String(bbox.w),
+          e: String(bbox.e),
+          limit: String(limit),
+          page: "1",
+        })
+
+        const res = await fetch(`/api/transport?${params.toString()}`, {
+          signal: ac.signal,
+          headers: { accept: "application/json" },
+        })
+
+        if (!res.ok) throw new Error(`HTTP ${res.status}`)
+
         const json: TransportListResponse = await res.json()
         setData(json.transports || [])
+
       } catch (e: any) {
         if (e?.name === "AbortError") return
-        setError(e?.message ?? "Erreur chargement transport")
+        setError(e?.message ?? "Erreur transport")
       } finally {
         setLoading(false)
       }
