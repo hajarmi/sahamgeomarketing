@@ -118,11 +118,12 @@ export default function LeafletMapClient({
   } = useCompetitors(!!activeLayers.competitors)
 
   const {
-    data: population,
-    loading: populationLoading,
-    error: populationError,
-    reset: resetPopulation,
-  } = usePopulation(!!activeLayers.population, bbox, zoomLevel)
+  population,
+  loading: populationLoading,
+  error: populationError,
+  reset: resetPopulation,
+  } = usePopulation(!!activeLayers.population, bbox)
+
 
   const {
     pois,
