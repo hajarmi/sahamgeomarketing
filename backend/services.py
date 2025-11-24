@@ -18,7 +18,7 @@ import aiofiles
 import pandas as pd
 from pydantic import ValidationError, parse_obj_as
 
-from .ml_models import ATMLocationPredictor, CanibalizationAnalyzer
+from ml_models import ATMLocationPredictor, CanibalizationAnalyzer
 
 from schemas import (
     ATMData,
