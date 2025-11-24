@@ -64,5 +64,8 @@ export function usePopulation(enabled: boolean, bbox?: BBox) {
   }, [enabled, bbox?.s, bbox?.w, bbox?.n, bbox?.e])
 
   // 👉 On garde la même forme que avant pour ne pas casser leaflet-map-client.tsx
-  return { data, loading, error, reset }
+  
+  return { population: data, loading, error, reset }
+
+
 }
