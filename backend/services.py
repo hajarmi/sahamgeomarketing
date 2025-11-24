@@ -18,7 +18,7 @@ import aiofiles
 import pandas as pd
 from pydantic import ValidationError, parse_obj_as
 
-from backend.ml_models import ATMLocationPredictor, CanibalizationAnalyzer
+#from backend.ml_models import ATMLocationPredictor, CanibalizationAnalyzer
 
 from schemas import (
     ATMData,
@@ -150,46 +150,32 @@ def _load_atm_csv() -> List[ATMData]:
 
 class ATMService:
     def __init__(self):
-        self.predictor = ATMLocationPredictor()
-        self.canibalization_analyzer = CanibalizationAnalyzer()
+        # plus de predictor / canibalization_analyzer
         self.existing_atms: List[ATMData] = []
         self.lock = asyncio.Lock()
 
     async def _load_and_merge_atms(self) -> List[ATMData]:
-     csv_atms: List[ATMData] = _load_atm_csv()
-     return csv_atms
-
+        # pour l'instant on ne merge que le CSV local
+        csv_atms: List[ATMData] = _load_atm_csv()
+        return csv_atms
 
     async def initialize(self):
-        logger.info("Training ML models (temporarily disabled)...")
-        try:
-            # self.predictor.train()
-            self.predictor.is_trained = True
-            logger.info("Skipping model training, using dummy predictor.")
-        except Exception as e:
-            logger.error(f"Error initializing predictor: {e}", exc_info=True)
-
-        logger.info("Loading ATM data...")
+        logger.info("Initialisation ATMService (sans modèles ML)...")
         await self.reload_data()
 
     async def reload_data(self):
         self.existing_atms = await self._load_and_merge_atms()
-        self.canibalization_analyzer = CanibalizationAnalyzer()
-        for atm in self.existing_atms:
-            self.canibalization_analyzer.add_existing_atm(atm)
-        logger.info("%d ATMs loaded and analyzer updated.", len(self.existing_atms))
+        logger.info("%d ATMs chargés depuis le CSV.", len(self.existing_atms))
 
-    
     async def add_new_atm(self, atm: ATMData) -> ATMData:
         async with self.lock:
             if any(existing.id == atm.id for existing in self.existing_atms):
                 raise ValueError(f"An ATM with id '{atm.id}' already exists.")
             self.existing_atms.append(atm)
-            self.canibalization_analyzer.add_existing_atm(atm)
-            
         return atm
 
     async def simulate_external_updates(self):
+        # pour l’instant on se contente de recharger les données du CSV
         await self.reload_data()
 
 
