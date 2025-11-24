@@ -20,7 +20,7 @@ from pydantic import ValidationError, parse_obj_as
 
 from .ml_models import ATMLocationPredictor, CanibalizationAnalyzer
 
-from schemas import (
+from .schemas import (
     ATMData,
     CompetitorData,
     CompetitorListResponse,
