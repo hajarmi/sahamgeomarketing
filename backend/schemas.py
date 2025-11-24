@@ -25,7 +25,7 @@ class LocationData(BaseModel):
     residential_area: Optional[int] = Field(1, ge=0, le=1, description="1 if in a residential area, 0 otherwise.", example=0)
 
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "latitude": 33.59,
                 "longitude": -7.61,
