@@ -8,7 +8,6 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { MapPin, Target, BarChart3, Layers, Search, Brain, Calculator } from "lucide-react"
 
 import LeafletMap from "@/components/mapbox-map"
-import AnalysisPanel from "@/components/analysis-panel"
 import ScoringDashboard from "@/components/scoring-dashboard"
 import EnhancedLayerControls from "@/components/enhanced-layer-controls"
 import LocationAnalyzer from "@/components/location-analyzer"
@@ -217,10 +216,6 @@ export default function HomePage() {
               <MapPin className="w-4 h-4" />
               <span className="hidden sm:inline">Carte</span>
             </TabsTrigger>
-            <TabsTrigger value="analysis" className="flex items-center space-x-2 px-4">
-              <Search className="w-4 h-4" />
-              <span className="hidden sm:inline">Analyse</span>
-            </TabsTrigger>
             <TabsTrigger value="scoring" className="flex items-center space-x-2 px-4">
               <Brain className="w-4 h-4" />
               <span className="hidden sm:inline">Scoring</span>
@@ -308,38 +303,7 @@ export default function HomePage() {
             </div>
           </TabsContent>
 
-          {/* ANALYSIS */}
-          <TabsContent value="analysis" className="space-y-6">
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-              <div className="lg:col-span-2">
-                <Card className="h-[600px]">
-                  <CardHeader>
-                    <CardTitle className="flex items-center space-x-2">
-                      <MapPin className="w-5 h-5" />
-                      <span>Vue Carte</span>
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="p-0 h-[calc(100%-80px)]">
-                    <LeafletMap
-                      activeLayers={activeLayers}
-                      simulationMode={simulationMode}
-                      onLocationSelect={setSelectedLocation}
-                      selectedATM={selectedATM}
-                      onATMSelect={handleATMSelect}
-                      atms={atms}
-                    />
-                  </CardContent>
-                </Card>
-              </div>
-              <div className="lg:col-span-1">
-                <AnalysisPanel
-                  selectedLocation={selectedLocation}
-                  simulationMode={simulationMode}
-                  setSelectedLocation={setSelectedLocation}
-                />
-              </div>
-            </div>
-          </TabsContent>
+          
 
           {/* SCORING – carte sans légende / points */}
           <TabsContent value="scoring" className="space-y-6">
