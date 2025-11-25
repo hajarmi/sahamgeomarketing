@@ -28,9 +28,30 @@ export default function AnalysisMap({
   const communesRef = useRef<L.GeoJSON>(null);
 
   useEffect(() => {
-    fetch("/geo/cities.geojson").then(r=>r.json()).then(setCities).catch(()=>setCities(null));
-    fetch("/geo/communes.geojson").then(r=>r.json()).then(setCommunes).catch(()=>setCommunes(null));
-  }, []);
+  fetch("/geo/cities.geojson")
+    .then(r => r.json())
+    .then(setCities)
+    .catch(() => setCities(null));
+
+  fetch("/api/communes")   // <--- ICI le changement important
+    .then(r => {
+      if (!r.ok) throw new Error(`HTTP ${r.status}`);
+      return r.json();
+    })
+    .then(json => {
+      // ton API renvoie { communes: [...], total_count, metadata }
+      const geojson = {
+        type: "FeatureCollection",
+        features: json.communes || []
+      };
+      setCommunes(geojson as any);
+    })
+    .catch((err) => {
+      console.error("Erreur chargement communes:", err);
+      setCommunes(null);
+    });
+}, []);
+
 
   function Events() {
     useMapEvents({
