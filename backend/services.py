@@ -954,3 +954,18 @@ async def clear_data_caches():
         logger.info("Caches vidés et ATMs rechargés depuis le CSV.")
     except Exception as e:
         logger.error("Erreur lors du rechargement des ATMs: %s", e, exc_info=True)
+
+def get_communes():
+    """
+    Retourne toutes les communes depuis le GeoJSON.
+    """
+    gj = _load_communes_geojson()
+
+    # On renvoie un format similaire aux autres services
+    return {
+        "communes": gj.get("features", []),
+        "total_count": len(gj.get("features", [])),
+        "metadata": {
+            "source": "local_geojson",
+        }
+    }
