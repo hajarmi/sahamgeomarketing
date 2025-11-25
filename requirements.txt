@@ -9,5 +9,6 @@ joblib
 pydantic
 aiofiles
 pydantic-settings
+requests
 
 
