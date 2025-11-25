@@ -7,9 +7,9 @@ import requests
 
 from ._utils import handle_options, respond_error, respond_json
 
-
 NOMINATIM_URL = "https://nominatim.openstreetmap.org/search"
-USER_AGENT = "saham-geomarketing/1.0 (contact@example.com)"  # mets ton mail si tu veux
+# Mets ton vrai mail ici, Nominatim l’exige dans le User-Agent
+USER_AGENT = "saham-geomarketing/1.0 (contact@example.com)"
 
 
 class handler(BaseHTTPRequestHandler):
@@ -18,60 +18,79 @@ class handler(BaseHTTPRequestHandler):
 
     def do_GET(self):
         try:
-            # --- query string ---
-            query = urlparse(self.path).query
-            params = parse_qs(query)
+            # --- Récupération des query params ---
+            parsed = urlparse(self.path)
+            params = parse_qs(parsed.query)
 
-            q = params.get("q", [None])[0]
-            countrycodes = params.get("countrycodes", [None])[0]
-            limit = params.get("limit", [None])[0]
+            q = (params.get("q") or [None])[0]
+            countrycodes = (params.get("countrycodes") or [None])[0]
+            limit_raw = (params.get("limit") or [None])[0]
 
+            # q est obligatoire
             if not q:
-                respond_error(self, 400, "Missing query parameter 'q'")
+                respond_error(self, 400, "Missing 'q' query parameter")
                 return
 
-            if not countrycodes:
-                countrycodes = "ma"
-
+            # limit optionnel → int, défaut = 5
             try:
-                limit_i = int(limit) if limit is not None else 5
+                limit = int(limit_raw) if limit_raw is not None else 5
             except ValueError:
-                limit_i = 5
+                limit = 5
 
-            # --- appel Nominatim ---
-            r = requests.get(
+            # --- Appel Nominatim ---
+            query_params = {
+                "q": q,
+                "format": "json",
+                "addressdetails": 1,
+                "limit": limit,
+            }
+            if countrycodes:
+                query_params["countrycodes"] = countrycodes
+
+            resp = requests.get(
                 NOMINATIM_URL,
-                params={
-                    "q": q,
-                    "format": "jsonv2",
-                    "addressdetails": 1,
-                    "limit": limit_i,
-                    "countrycodes": countrycodes,
-                },
+                params=query_params,
                 headers={"User-Agent": USER_AGENT},
-                timeout=5,
+                timeout=10,
             )
-            if r.status_code != 200:
+
+            if resp.status_code != 200:
+                # Erreur côté Nominatim
                 respond_error(
                     self,
                     502,
                     "Upstream geocoding error",
-                    [f"status={r.status_code}", r.text[:200]],
+                    [f"status={resp.status_code}", resp.text[:200]],
                 )
                 return
 
-            data = r.json()
+            try:
+                results = resp.json()
+            except Exception as exc:
+                respond_error(self, 502, "Invalid JSON from geocoding service", [str(exc)])
+                return
 
-            # tu peux filtrer / simplifier la réponse ici si tu veux
-            respond_json(self, 200, data)
+            if not results:
+                respond_error(self, 404, "No result for this query", [q])
+                return
+
+            # On prend le meilleur résultat (le premier)
+            best = results[0]
+
+            payload = {
+                "query": q,
+                "lat": float(best.get("lat")),
+                "lng": float(best.get("lon")),
+                "display_name": best.get("display_name"),
+                "raw": results,
+            }
+
+            respond_json(self, 200, payload)
 
         except Exception as exc:
-            respond_error(
-                self,
-                500,
-                "Internal geocoding error",
-                [str(exc)],
-            )
+            # Vraie erreur interne Python
+            respond_error(self, 500, "Internal error in /api/geocode", [str(exc)])
 
     def log_message(self, format, *args):
+        # Pas de spam dans les logs
         return
