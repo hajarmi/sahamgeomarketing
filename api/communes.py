@@ -6,7 +6,7 @@ from ._utils import handle_options, respond_error, respond_json
 
 
 # ⚠️ Adapte ce chemin au nom réel de ton fichier communes
-COMMUNES_FILE = os.path.join("backend", "data", "communes_maroc.geojson")
+COMMUNES_FILE = os.path.join("backend", "data", "communes.geojson")
 
 
 def _load_communes_geojson():
