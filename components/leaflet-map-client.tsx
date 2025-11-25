@@ -63,27 +63,43 @@ export default function LeafletMapClient({
   const mapRef = useRef<LeafletMap | null>(null)
 
   useEffect(() => {
-    if (!showCommunes) return
-    let abort = false
-    const run = async () => {
-      try {
-        setLoadingCommunes(true)
-        setCommunesError(null)
-        const res = await fetch("/api/communes/geojson", { cache: "force-cache" })
-        if (!res.ok) throw new Error(await res.text())
-        const gj = (await res.json()) as GeoJSONType
-        if (!abort) setCommunes(gj)
-      } catch (e: any) {
-        if (!abort) setCommunesError(e?.message ?? "Erreur chargement communes")
-      } finally {
-        if (!abort) setLoadingCommunes(false)
+  if (!showCommunes) return
+  let abort = false
+
+  const run = async () => {
+    try {
+      setLoadingCommunes(true)
+      setCommunesError(null)
+
+      // 🔹 Appel du handler Vercel /api/communes
+      const res = await fetch("/api/communes", { cache: "force-cache" })
+      if (!res.ok) throw new Error(`HTTP ${res.status}: ${await res.text()}`)
+
+      const json = await res.json()
+
+      // Ton API renvoie { communes: [...], total_count, metadata }
+      const gj: GeoJSONType = {
+        type: "FeatureCollection",
+        features: (json.communes || json.features || []) as any,
       }
+
+      if (!abort) setCommunes(gj)
+    } catch (e: any) {
+      if (!abort) {
+        console.error("Erreur chargement communes:", e)
+        setCommunesError(e?.message ?? "Erreur chargement communes")
+      }
+    } finally {
+      if (!abort) setLoadingCommunes(false)
     }
-    run()
-    return () => {
-      abort = true
-    }
-  }, [showCommunes])
+  }
+
+  run()
+  return () => {
+    abort = true
+  }
+}, [showCommunes])
+
 
   const handleLocationSelect = (location: { lng: number; lat: number }) => {
     setSimulationPoint(location)
