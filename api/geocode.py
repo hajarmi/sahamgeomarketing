@@ -28,7 +28,7 @@ class handler(BaseHTTPRequestHandler):
 
             # q est obligatoire
             if not q:
-                respond_error(self, 400, "Missing 'q' query parameter")
+                respond_error(self, 700, "Missing 'q' query parameter")
                 return
 
             # limit optionnel → int, défaut = 5
